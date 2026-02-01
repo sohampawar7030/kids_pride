@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Branches – Aaryans World School</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+/* ── City Filter ── */
+.city-filter {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 0 0 48px;
+}
+.city-btn {
+  padding: 9px 22px;
+  border-radius: 50px;
+  border: 1.5px solid #e2ddd4;
+  background: #fff;
+  font-size: .82rem;
+  font-weight: 600;
+  color: var(--clr-text-soft);
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+}
+.city-btn:hover { border-color: var(--clr-primary); color: var(--clr-primary); }
+.city-btn.active {
+  background: var(--clr-primary);
+  color: #fff;
+  border-color: var(--clr-primary);
+}
+
+/* ── Branches Grid ── */
+.branches-full-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+.branch-full-card {
+  background: #fff;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+}
+.branch-full-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); }
+
+.bfc__header {
+  height: 160px;
+  position: relative;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2.6rem;
+}
+.bfc__header--pune   { background: linear-gradient(145deg, #1a3c5e, #2a5a8a); }
+.bfc__header--hubli  { background: linear-gradient(145deg, #2e7d52, #4caf76); }
+.bfc__header--belgavi { background: linear-gradient(145deg, #e8a838, #c8882a); }
+.bfc__header--solapur { background: linear-gradient(145deg, #2a5a8a, #1a3c5e); }
+
+.bfc__city-badge {
+  position: absolute; top: 14px; left: 14px;
+  background: rgba(255,255,255,.15);
+  backdrop-filter: blur(6px);
+  border-radius: 50px;
+  padding: 5px 14px;
+  font-size: .7rem;
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.bfc__star {
+  position: absolute; top: 14px; right: 14px;
+  background: var(--clr-accent);
+  border-radius: 50px;
+  padding: 4px 10px;
+  font-size: .65rem;
+  color: var(--clr-navy);
+  font-weight: 700;
+}
+
+.bfc__body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
+.bfc__body h3 { font-family: var(--ff-display); font-size: 1.15rem; color: var(--clr-primary); margin-bottom: 6px; }
+.bfc__body .bfc-tagline { font-size: .78rem; color: var(--clr-accent); font-weight: 600; margin-bottom: 10px; }
+.bfc__body p { font-size: .82rem; color: var(--clr-text-soft); line-height: 1.65; flex: 1; }
+.bfc__body .bfc-details { margin-top: 18px; display: flex; flex-direction: column; gap: 6px; }
+.bfc__body .bfc-detail { font-size: .76rem; color: var(--clr-text-soft); display: flex; align-items: center; gap: 8px; }
+.bfc__body .bfc-detail .d-icon { color: var(--clr-primary); font-size: .82rem; }
+.bfc__body .bfc-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 16px; font-size: .8rem; font-weight: 600; color: var(--clr-primary); transition: var(--transition); }
+.bfc__body .bfc-link:hover { color: var(--clr-accent); gap: 10px; }
+
+/* ── Stats Row (top) ── */
+.branches-stats {
+  background: var(--clr-primary);
+  padding: 42px 0;
+}
+.branches-stats .stats-bar .stat__num { color: #fff; }
+.branches-stats .stats-bar .stat__label { color: rgba(255,255,255,.5); }
+
+/* ── Map placeholder ── */
+.map-section { background: #fff; padding: 80px 0; }
+.map-placeholder {
+  border-radius: var(--radius);
+  background: var(--clr-cream);
+  border: 2px dashed #d5cfc4;
+  height: 340px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 12px;
+}
+.map-placeholder .mp-icon { font-size: 2.8rem; }
+.map-placeholder h3 { font-family: var(--ff-display); color: var(--clr-primary); font-size: 1.1rem; }
+.map-placeholder p { font-size: .8rem; color: var(--clr-text-soft); }
+
+/* ── CTA ── */
+.branches-cta-section {
+  background: linear-gradient(135deg, var(--clr-green), #2e7d52);
+  padding: 70px 0;
+  text-align: center;
+}
+.branches-cta-section h2 { font-family: var(--ff-display); color: #fff; font-size: clamp(1.6rem,3vw,2.2rem); margin-bottom: 10px; }
+.branches-cta-section p { color: rgba(255,255,255,.6); margin-bottom: 26px; font-size: .93rem; }
+
+/* Responsive */
+@media (max-width: 680px) {
+  .branches-full-grid { grid-template-columns: 1fr; }
+}
+</style>
+
+<style>
+/* ── Scroll-reveal base ── */
+._rev { opacity:0; transform:translateY(30px); transition:opacity .68s cubic-bezier(.16,1,.3,1), transform .68s cubic-bezier(.16,1,.3,1); }
+._vis { opacity:1; transform:translateY(0); }
+
+/* ── Branch Cards ── */
+.branch-card { background:#fff; border-radius:14px; padding:30px 26px; box-shadow:0 2px 10px rgba(26,60,94,.1); transition:.36s cubic-bezier(.4,0,.2,1); border-left:3px solid transparent; position:relative; overflow:hidden; display:flex; flex-direction:column; gap:8px; }
+.branch-card::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(232,168,56,.06) 0%,transparent 55%); opacity:0; transition:opacity .4s; pointer-events:none; }
+.branch-card:hover { border-left-color:var(--clr-accent); box-shadow:0 0 32px rgba(232,168,56,.2),0 8px 28px rgba(26,60,94,.14); transform:translateY(-4px); }
+.branch-card:hover::before { opacity:1; }
+.branch-card__loc { font-size:.71rem; color:var(--clr-accent); text-transform:uppercase; letter-spacing:.12em; font-weight:600; position:relative; z-index:1; }
+.branch-card h3 { font-family:var(--ff-display); font-size:1.06rem; color:var(--clr-primary); position:relative; z-index:1; }
+.branch-card p { font-size:.8rem; color:var(--clr-text-soft); line-height:1.62; position:relative; z-index:1; }
+
+/* ── Full Branch Cards ── */
+.branch-full-card { background:#fff; border-radius:14px; overflow:hidden; box-shadow:0 2px 10px rgba(26,60,94,.1); transition:.36s cubic-bezier(.4,0,.2,1); position:relative; display:flex; flex-direction:column; }
+.branch-full-card::after { content:''; position:absolute; inset:0; background:linear-gradient(160deg,rgba(232,168,56,.07) 0%,transparent 45%); opacity:0; transition:opacity .42s; pointer-events:none; z-index:1; }
+.branch-full-card:hover { box-shadow:0 0 38px rgba(232,168,56,.2),0 10px 32px rgba(26,60,94,.15); transform:translateY(-5px); }
+.branch-full-card:hover::after { opacity:1; }
+.bfc__header { height:162px; position:relative; display:flex; align-items:center; justify-content:center; font-size:2.6rem; }
+.bfc__header--pune { background:linear-gradient(145deg,#1a3c5e,#2a5a8a); }
+.bfc__header--hubli { background:linear-gradient(145deg,#2e7d52,#4caf76); }
+.bfc__header--belgavi { background:linear-gradient(145deg,#e8a838,#c8882a); }
+.bfc__header--solapur { background:linear-gradient(145deg,#2a5a8a,#1a3c5e); }
+.bfc__header::after { content:''; position:absolute; inset:0; background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.12) 50%,transparent 70%); background-size:200% 100%; animation:shimmer 3s ease-in-out infinite; pointer-events:none; }
+.bfc__city-badge { position:absolute; top:14px; left:14px; background:rgba(255,255,255,.14); backdrop-filter:blur(6px); border-radius:50px; padding:5px 14px; font-size:.69rem; color:#fff; font-weight:600; letter-spacing:.08em; text-transform:uppercase; z-index:2; }
+.bfc__star { position:absolute; top:14px; right:14px; background:var(--clr-accent); border-radius:50px; padding:4px 11px; font-size:.64rem; color:var(--clr-navy); font-weight:700; z-index:2; box-shadow:0 2px 10px rgba(232,168,56,.35); }
+.bfc__body { padding:24px; flex:1; display:flex; flex-direction:column; position:relative; z-index:2; }
+.bfc__body h3 { font-family:var(--ff-display); font-size:1.14rem; color:var(--clr-primary); margin-bottom:5px; }
+.bfc-tagline { font-size:.77rem; color:var(--clr-accent); font-weight:600; margin-bottom:10px; }
+.bfc__body p { font-size:.81rem; color:var(--clr-text-soft); line-height:1.66; flex:1; }
+.bfc-details { margin-top:18px; display:flex; flex-direction:column; gap:5px; }
+.bfc-detail { font-size:.75rem; color:var(--clr-text-soft); display:flex; align-items:center; gap:8px; }
+.bfc-detail .d-icon { color:var(--clr-primary); font-size:.81rem; }
+.bfc-link { display:inline-flex; align-items:center; gap:6px; margin-top:16px; font-size:.79rem; font-weight:600; color:var(--clr-primary); transition:.3s; }
+.bfc-link:hover { color:var(--clr-accent); gap:11px; }
+
+/* ── Value Cards ── */
+.value-card { background:#fff; border-radius:14px; padding:36px 30px; box-shadow:0 2px 10px rgba(26,60,94,.1); text-align:center; transition:.36s cubic-bezier(.4,0,.2,1); position:relative; overflow:hidden; }
+.value-card::before { content:''; position:absolute; bottom:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--clr-accent),var(--clr-green),var(--clr-accent)); background-size:200% 100%; animation:borderFlow 3s linear infinite; transform:scaleX(0); transition:transform .38s cubic-bezier(.16,1,.3,1); transform-origin:left; }
+.value-card:hover { box-shadow:0 0 34px rgba(232,168,56,.18),0 8px 28px rgba(26,60,94,.14); transform:translateY(-5px); }
+.value-card:hover::before { transform:scaleX(1); }
+.value-card__icon { width:66px; height:66px; margin:0 auto 20px; border-radius:18px; display:flex; align-items:center; justify-content:center; font-size:1.65rem; }
+.value-card__icon--1 { background:rgba(26,60,94,.07); }
+.value-card__icon--2 { background:rgba(46,125,82,.08); }
+.value-card__icon--3 { background:rgba(232,168,56,.1); }
+.value-card__icon--4 { background:rgba(26,60,94,.07); }
+.value-card h4 { font-family:var(--ff-display); font-size:1.02rem; color:var(--clr-primary); margin-bottom:8px; }
+.value-card p { font-size:.79rem; color:var(--clr-text-soft); line-height:1.66; }
+
+/* ── Panel Cards ── */
+.panel-card { background:#fff; border-radius:14px; overflow:hidden; box-shadow:0 2px 10px rgba(26,60,94,.1); transition:.36s cubic-bezier(.4,0,.2,1); text-align:center; position:relative; }
+.panel-card::after { content:''; position:absolute; inset:0; background:linear-gradient(180deg,transparent 55%,rgba(232,168,56,.06) 100%); opacity:0; transition:opacity .4s; pointer-events:none; z-index:1; }
+.panel-card:hover { box-shadow:0 0 36px rgba(232,168,56,.2),0 10px 34px rgba(26,60,94,.15); transform:translateY(-5px); }
+.panel-card:hover::after { opacity:1; }
+.panel-card__avatar { height:200px; display:flex; align-items:center; justify-content:center; font-size:4rem; position:relative; overflow:hidden; }
+.panel-card__avatar::after { content:''; position:absolute; inset:0; background:linear-gradient(100deg,transparent 32%,rgba(255,255,255,.1) 50%,transparent 68%); background-size:200% 100%; animation:shimmer 3.4s ease-in-out infinite; pointer-events:none; }
+.panel-card__avatar--1 { background:linear-gradient(145deg,#1a3c5e,#2a5a8a); }
+.panel-card__avatar--2 { background:linear-gradient(145deg,#2e7d52,#4caf76); }
+.panel-card__avatar--3 { background:linear-gradient(145deg,#e8a838,#c8882a); }
+.panel-card__avatar--4 { background:linear-gradient(145deg,#2a5a8a,#1a3c5e); }
+.panel-card__info { padding:24px 20px; position:relative; z-index:2; }
+.panel-card__info h3 { font-family:var(--ff-display); font-size:1.06rem; color:var(--clr-primary); margin-bottom:4px; }
+.panel-card__info .role { font-size:.72rem; color:var(--clr-accent); text-transform:uppercase; letter-spacing:.11em; font-weight:600; margin-bottom:8px; }
+.panel-card__info p { font-size:.78rem; color:var(--clr-text-soft); line-height:1.6; }
+
+/* ── Event Cards ── */
+.event-card { border-radius:14px; overflow:hidden; box-shadow:0 2px 10px rgba(26,60,94,.1); transition:.36s cubic-bezier(.4,0,.2,1); background:#fff; border:1px solid #f0ebe0; position:relative; }
+.event-card::before { content:''; position:absolute; inset:0; background:linear-gradient(145deg,rgba(232,168,56,.06) 0%,transparent 48%); opacity:0; transition:opacity .4s; pointer-events:none; z-index:1; }
+.event-card:hover { box-shadow:0 0 36px rgba(232,168,56,.2),0 10px 32px rgba(26,60,94,.15); transform:translateY(-5px); border-color:rgba(232,168,56,.25); }
+.event-card:hover::before { opacity:1; }
+.event-card__header { height:182px; display:flex; align-items:center; justify-content:center; font-size:2.8rem; position:relative; overflow:hidden; }
+.ec--1{background:linear-gradient(145deg,#1a3c5e,#2a5a8a)} .ec--2{background:linear-gradient(145deg,#e8a838,#c8882a)} .ec--3{background:linear-gradient(145deg,#2e7d52,#4caf76)} .ec--4{background:linear-gradient(145deg,#2a5a8a,#1a3c5e)} .ec--5{background:linear-gradient(145deg,#c8882a,#2e7d52)} .ec--6{background:linear-gradient(145deg,#4caf76,#1a3c5e)}
+.event-card__header::after { content:''; position:absolute; inset:0; background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.1) 50%,transparent 70%); background-size:200% 100%; animation:shimmer 3.2s ease-in-out infinite; pointer-events:none; }
+.event-card__date-badge { position:absolute; top:16px; left:16px; background:rgba(255,255,255,.14); backdrop-filter:blur(6px); border-radius:12px; padding:8px 14px; text-align:center; z-index:2; }
+.edb-day { font-family:var(--ff-display); font-size:1.3rem; color:#fff; font-weight:700; line-height:1; }
+.edb-mon { font-size:.61rem; color:rgba(255,255,255,.68); text-transform:uppercase; letter-spacing:.08em; }
+.event-card__body { padding:22px; position:relative; z-index:2; }
+.event-card__body h3 { font-family:var(--ff-display); font-size:1.06rem; color:var(--clr-primary); margin-bottom:5px; }
+.ec-type { font-size:.69rem; color:var(--clr-accent); text-transform:uppercase; letter-spacing:.11em; font-weight:600; margin-bottom:8px; }
+.event-card__body p { font-size:.79rem; color:var(--clr-text-soft); line-height:1.62; }
+
+/* ── Video Cards ── */
+.video-card { background:#fff; border-radius:14px; overflow:hidden; box-shadow:0 2px 10px rgba(26,60,94,.1); transition:.36s cubic-bezier(.4,0,.2,1); cursor:pointer; position:relative; }
+.video-card::before { content:''; position:absolute; inset:0; background:linear-gradient(160deg,rgba(232,168,56,.07) 0%,transparent 50%); opacity:0; transition:opacity .4s; pointer-events:none; z-index:1; }
+.video-card:hover { box-shadow:0 0 34px rgba(232,168,56,.2),0 8px 30px rgba(26,60,94,.14); transform:translateY(-4px); }
+.video-card:hover::before { opacity:1; }
+.video-card__thumb { height:192px; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; }
+.vc--1{background:linear-gradient(145deg,#0f2137,#1a3c5e)} .vc--2{background:linear-gradient(145deg,#1a3c5e,#2e7d52)} .vc--3{background:linear-gradient(145deg,#2e7d52,#e8a838)} .vc--4{background:linear-gradient(145deg,#e8a838,#1a3c5e)}
+.video-card__thumb::after { content:''; position:absolute; inset:0; background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.09) 50%,transparent 70%); background-size:200% 100%; animation:shimmer 3.6s ease-in-out infinite; pointer-events:none; }
+.video-card__play { width:56px; height:56px; background:rgba(255,255,255,.93); border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 18px rgba(0,0,0,.22); transition:.32s cubic-bezier(.16,1,.3,1); z-index:2; position:relative; }
+.video-card:hover .video-card__play { transform:scale(1.14); background:#fff; box-shadow:0 6px 24px rgba(0,0,0,.28); }
+.video-card__play svg { width:20px; height:20px; fill:var(--clr-primary); margin-left:3px; }
+.video-card__duration { position:absolute; bottom:12px; right:12px; background:rgba(0,0,0,.56); border-radius:6px; padding:3px 9px; font-size:.67rem; color:#fff; font-weight:600; z-index:2; }
+.video-card__info { padding:18px; position:relative; z-index:2; }
+.video-card__info h4 { font-size:.89rem; color:var(--clr-primary); margin-bottom:4px; font-weight:600; }
+.vc-cat { font-size:.71rem; color:var(--clr-accent); font-weight:600; text-transform:uppercase; letter-spacing:.06em; }
+
+/* ── Photo Items ── */
+.photo-item { position:relative; border-radius:14px; overflow:hidden; cursor:pointer; margin-bottom:16px; break-inside:avoid; }
+.photo-item__img { width:100%; display:flex; align-items:center; justify-content:center; font-size:2rem; color:rgba(255,255,255,.55); transition:transform .48s cubic-bezier(.16,1,.3,1); }
+.photo-item:hover .photo-item__img { transform:scale(1.06); }
+.photo-item__overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(15,33,55,.72) 0%,transparent 56%); opacity:0; transition:opacity .36s; display:flex; align-items:flex-end; padding:22px; }
+.photo-item:hover .photo-item__overlay { opacity:1; }
+.photo-item__overlay span { color:#fff; font-size:.81rem; font-weight:500; }
+.photo-item::after { content:''; position:absolute; inset:0; background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.08) 50%,transparent 70%); background-size:200% 100%; animation:shimmer 4s ease-in-out infinite; pointer-events:none; border-radius:14px; }
+.pi--h1{height:222px} .pi--h2{height:182px} .pi--h3{height:244px} .pi--h4{height:162px} .pi--h5{height:202px} .pi--h6{height:192px}
+.c1{background:linear-gradient(145deg,#1a3c5e,#2a5a8a)} .c2{background:linear-gradient(145deg,#2e7d52,#4caf76)} .c3{background:linear-gradient(145deg,#e8a838,#c8882a)} .c4{background:linear-gradient(145deg,#2a5a8a,#4caf76)} .c5{background:linear-gradient(145deg,#c8882a,#1a3c5e)} .c6{background:linear-gradient(145deg,#4caf76,#e8a838)} .c7{background:linear-gradient(145deg,#0f2137,#2e7d52)} .c8{background:linear-gradient(145deg,#1a3c5e,#e8a838)}
+
+/* ── Info Cards ── */
+.info-card { display:flex; align-items:flex-start; gap:18px; padding:22px; background:#fff; border-radius:14px; box-shadow:0 2px 10px rgba(26,60,94,.1); transition:.36s cubic-bezier(.4,0,.2,1); position:relative; overflow:hidden; margin-bottom:16px; }
+.info-card::before { content:''; position:absolute; left:0; top:0; bottom:0; width:3px; background:linear-gradient(180deg,var(--clr-accent),var(--clr-green)); transform:scaleY(0); transition:transform .38s cubic-bezier(.16,1,.3,1); transform-origin:top; }
+.info-card:hover { box-shadow:0 0 28px rgba(232,168,56,.18),0 6px 22px rgba(26,60,94,.12); transform:translateX(4px); }
+.info-card:hover::before { transform:scaleY(1); }
+.info-card__icon { width:52px; height:52px; min-width:52px; border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:1.3rem; }
+.ic--addr{background:rgba(26,60,94,.07)} .ic--phone{background:rgba(46,125,82,.09)} .ic--email{background:rgba(232,168,56,.11)} .ic--corp{background:rgba(26,60,94,.07)}
+.info-card__text .ic-label { font-size:.69rem; color:var(--clr-text-soft); text-transform:uppercase; letter-spacing:.11em; font-weight:600; margin-bottom:4px; }
+.info-card__text .ic-value { font-size:.87rem; color:var(--clr-primary); font-weight:500; line-height:1.58; }
+.info-card__text .ic-value a { color:var(--clr-primary); transition:color .3s; }
+.info-card__text .ic-value a:hover { color:var(--clr-accent); }
+
+/* ── FAQ ── */
+.faq-item { background:#fff; border-radius:14px; padding:28px; box-shadow:0 2px 10px rgba(26,60,94,.1); transition:.36s cubic-bezier(.4,0,.2,1); position:relative; overflow:hidden; border:1px solid transparent; }
+.faq-item::before { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--clr-accent),var(--clr-green)); transform:scaleX(0); transition:transform .38s cubic-bezier(.16,1,.3,1); transform-origin:left; }
+.faq-item:hover { box-shadow:0 0 28px rgba(232,168,56,.16),0 6px 24px rgba(26,60,94,.12); border-color:rgba(232,168,56,.18); }
+.faq-item:hover::before { transform:scaleX(1); }
+.faq-item h4 { font-size:.9rem; color:var(--clr-primary); margin-bottom:8px; display:flex; align-items:flex-start; gap:10px; }
+.faq-item h4 .faq-icon { color:var(--clr-accent); font-size:.84rem; flex-shrink:0; margin-top:1px; }
+.faq-item p { font-size:.79rem; color:var(--clr-text-soft); line-height:1.7; padding-left:22px; }
+
+/* ── Curriculum Cards (dark bg) ── */
+.curriculum-card { border-radius:14px; padding:38px 30px; border:1px solid rgba(255,255,255,.07); background:rgba(255,255,255,.04); transition:.36s cubic-bezier(.4,0,.2,1); position:relative; overflow:hidden; }
+.curriculum-card::before { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--clr-accent),var(--clr-green),var(--clr-accent)); background-size:200% 100%; animation:borderFlow 3s linear infinite; transform:scaleX(0); transition:transform .4s cubic-bezier(.16,1,.3,1); transform-origin:left; }
+.curriculum-card:hover { background:rgba(255,255,255,.08); border-color:rgba(232,168,56,.28); }
+.curriculum-card:hover::before { transform:scaleX(1); }
+.curriculum-card__icon { font-size:2rem; margin-bottom:18px; }
+.curriculum-card h3 { color:#fff; font-family:var(--ff-display); font-size:1.1rem; margin-bottom:10px; }
+.curriculum-card p { color:rgba(255,255,255,.48); font-size:.81rem; line-height:1.72; }
+
+/* ── Hero trust ── */
+.hero__trust-item { text-align:center; }
+.hero__trust-item .num { font-family:var(--ff-display); font-size:1.72rem; font-weight:700; color:#fff; }
+.hero__trust-item .num span { color:var(--clr-accent); }
+.hero__trust-item .lbl { font-size:.71rem; color:rgba(255,255,255,.42); text-transform:uppercase; letter-spacing:.11em; margin-top:3px; }
+</style>
+
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="container navbar__inner">
+    <a href="index.html" class="navbar__logo">Aaryans<span>.</span></a>
+    <div class="navbar__nav">
+      <a href="index.html">Home</a>
+      <div class="nav-drop">
+        <a href="#" class="nav-drop__toggle">About <svg viewBox="0 0 12 12" fill="currentColor"><path d="M2 4l4 4 4-4"/></svg></a>
+        <div class="nav-drop__menu">
+          <a href="about.html">About Us</a>
+          <a href="about.html#vision">Vision &amp; Mission</a>
+          <a href="about.html#md">Managing Director</a>
+          <a href="about.html#panel">Director Panel</a>
+        </div>
+      </div>
+      <div class="nav-drop">
+        <a href="#" class="nav-drop__toggle">Academics <svg viewBox="0 0 12 12" fill="currentColor"><path d="M2 4l4 4 4-4"/></svg></a>
+        <div class="nav-drop__menu">
+          <a href="academics.html#preprimary">Pre-Primary</a>
+          <a href="academics.html#primary">Primary</a>
+          <a href="academics.html#secondary">Secondary</a>
+        </div>
+      </div>
+      <a href="branches.html" class="active">Branches</a>
+      <div class="nav-drop">
+        <a href="#" class="nav-drop__toggle">Gallery <svg viewBox="0 0 12 12" fill="currentColor"><path d="M2 4l4 4 4-4"/></svg></a>
+        <div class="nav-drop__menu">
+          <a href="gallery.html#photos">Photo Gallery</a>
+          <a href="gallery.html#events">Mega Events</a>
+          <a href="gallery.html#videos">Videos</a>
+        </div>
+      </div>
+      <a href="contact.html">Contact</a>
+    </div>
+    <a href="contact.html" class="navbar__cta">Quick Enquiry</a>
+    <div class="navbar__ham"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero" style="background-color:#1a3c5e;">
+  <div class="page-hero__bg" style="background:linear-gradient(135deg,#0f2137,#2e7d52,#1a3c5e);"></div>
+  <div class="page-hero__overlay"></div>
+  <div class="page-hero__content">
+    <div class="breadcrumb"><a href="index.html">Home</a> &nbsp;›&nbsp; Branches</div>
+    <span class="tag">Our Network</span>
+    <h1>Branches</h1>
+    <p>16 campuses across Pune, Solapur, Belagavi, and Hubballi — excellence wherever you are</p>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="branches-stats">
+  <div class="container">
+    <div class="stats-bar">
+      <div class="stat"><div class="stat__num">16</div><div class="stat__label">Branches</div></div>
+      <div class="stat"><div class="stat__num">4</div><div class="stat__label">Cities</div></div>
+      <div class="stat"><div class="stat__num">12,000<span style="color:var(--clr-accent)">+</span></div><div class="stat__label">Students</div></div>
+      <div class="stat"><div class="stat__num">28</div><div class="stat__label">Acre Main Campus</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANCHES LIST -->
+<section class="section-pad" style="background:var(--clr-cream);">
+  <div class="container">
+    <div class="section-heading">
+      <span class="tag">Explore</span>
+      <h2>Find Your Nearest Branch</h2>
+      <p>Filter by city to discover the campus closest to you</p>
+    </div>
+    <div class="city-filter">
+      <button class="city-btn active">All Cities</button>
+      <button class="city-btn">📍 Pune</button>
+      <button class="city-btn">📍 Hubballi</button>
+      <button class="city-btn">📍 Belagavi</button>
+      <button class="city-btn">📍 Solapur</button>
+    </div>
+    <div class="branches-full-grid">
+
+      <!-- PUNE -->
+      <div class="branch-full-card">
+        <div class="bfc__header bfc__header--pune">🏫<span class="bfc__city-badge">Pune</span><span class="bfc__star">⭐ Mother Branch</span></div>
+        <div class="bfc__body">
+          <h3>Bhilarewadi</h3>
+          <div class="bfc-tagline">28-Acre Mother Branch</div>
+          <p>Our flagship campus — a sprawling 28-acre eco-friendly campus blending modern infrastructure with nature.</p>
+          <div class="bfc-details">
+            <div class="bfc-detail"><span class="d-icon">📍</span> Pune–Satara Road, Before Old Katraj Ghat</div>
+            <div class="bfc-detail"><span class="d-icon">📞</span> +91 96997 74488</div>
+          </div>
+          <a href="contact.html" class="bfc-link">Get Directions →</a>
+        </div>
+      </div>
+
+      <div class="branch-full-card">
+        <div class="bfc__header bfc__header--pune">🏢<span class="bfc__city-badge">Pune</span></div>
+        <div class="bfc__body">
+          <h3>Bharati Vidyapeeth</h3>
+          <div class="bfc-tagline">Premium CBSE Education</div>
+          <p>Premium CBSE education in the heart of Pune, ideally located for families across central Pune.</p>
+          <div class="bfc-details">
+            <div class="bfc-detail"><span class="d-icon">📍</span> Bharati Vidyapeeth, Pune</div>
+          </div>
+          <a href="contact.html" class="bfc-link">Get Directions →</a>
+        </div>
+      </div>
+
+      <div class="branch-full-card">
+        <div class="bfc__header bfc__header--pune">🎓<span class="bfc__city-badge">Pune</span></div>
+        <div class="bfc__body">
+          <h3>Bibvewadi</h3>
+          <div class="bfc-tagline">Modern Infrastructure</div>
+          <p>Modern infrastructure with a holistic approach to education in a vibrant neighbourhood.</p>
+          <div class="bfc-details">
+            <div class="bfc-detail"><span class="d-icon">📍</span> Bibvewadi, Pune</div>
+          </div>
+          <a href="contact.html" class="bfc-link">Get Directions →</a>
+        </div>
+      </div>
+
+      <div class="branch-full-card">
+        <div class="bfc__header bfc__header--pune">📚<span class="bfc__city-badge">Pune</span></div>
+        <div class="bfc__body">
+          <h3>Datta Nagar</h3>
+          <div class="bfc-tagline">Nurturing Young Minds</div>
+          <p>A caring, nurturing environment designed for young learners with dedicated and experienced educators.</p>
+          <div class="bfc-details">
+            <div class="bfc-detail"><span class="d-icon">📍</span> Datta Nagar, Pune</div>
+          </div>
+          <a href="contact.html" class="bfc-link">Get Directions →</a>
+        </div>
+      </div>
+
+      <div class="branch-full-card">
+        <div class="bfc__header bfc__header--pune">🌱<span class="bfc__city-badge">Pune</span></div>
+        <div class="bfc__body">
+          <h3>Gokul Nagar</h3>
+          <div class="bfc-tagline">Primary Excellence</div>
+          <p>Excellence in primary education with a strong focus on foundational skills and character development.</p>
+          <div class="bfc-details">
+            <div class="bfc-detail"><span class="d-icon">📍</span> Gokul Nagar, Pune</div>
+          </div>
+          <a href="contact.html" class="bfc-link">Get Directions →</a>
+        </div>
+      </div>
+
+      <div class="branch-full-card">
+        <div class="bfc__header bfc__header--pune">🤝<span class="bfc__city-badge">Pune</span></div>
+        <div class="bfc__body">
+          <h3>Manaji Nagar</h3>
+          <div class="bfc-tagline">Community-Focused Learning</div>
+          <p>A community-focused learning environment where students grow alongside their neighbours.</p>
+          <div class="bfc-details">
+            <div class="bfc-detail"><span class="d-icon">📍</span> Manaji Nagar, Pune</div>
+          </div>
+          <a href="contact.html" class="bfc-link">Get Directions →</a>
+        </div>
+      </div>
+
+      <div class="branch-full-card">
+        <div class="bfc__header bfc__header--pune">🌳<span class="bfc__city-badge">Pune</span></div>
+        <div class="bfc__body">
+          <h3>Undri</h3>
+          <div class="bfc-tagline">Future-Ready Education Hub</div>
+          <p>A future-ready education hub equipped with the latest technology and thoughtful learning spaces.</p>
+          <div class="bfc-details">
+            <div class="bfc-detail"><span class="d-icon">📍</span> Undri, Pune</div>
+          </div>
+          <a href="contact.html" class="bfc-link">Get Directions →</a>
+        </div>
+      </div>
+
+      <div class="branch-full-card">
+        <div class="bfc__header bfc__header--pune">💡<span class="bfc__city-badge">Pune</span></div>
+        <div class="bfc__body">
+          <h3>Wadgaon Dhayari</h3>
+          <div class="bfc-tagline">Growing Minds, Growing Futures</div>
+          <p>Dedicated to growing young minds with innovative teaching approaches and a supportive atmosphere.</p>
+          <div class="bfc-details">
+            <div class="bfc-detail"><span class="d-icon">📍</span> Wadgaon Dhayari, Pune</div>
+          </div>
+          <a href="contact.html" class="bfc-link">Get Directions →</a>
+        </div>
+      </div>
+
+      <div class="branch-full-card">
+        <div class="bfc__header bfc__header--pune">📖<span class="bfc__city-badge">Pune</span></div>
+        <div class="bfc__body">
+          <h3>Warje</h3>
+          <div class="bfc-tagline">Comprehensive CBSE Curriculum</div>
+          <p>Comprehensive CBSE curriculum in a well-equipped campus serving the Warje community with pride.</p>
+          <div class="bfc-details">
+            <div class="bfc-detail"><span class="d-icon">📍</span> Warje, Pune</div>
+          </div>
+          <a href="contact.html" class="bfc-link">Get Directions →</a>
+        </div>
+      </div>
+
+      <!-- HUBLI -->
+      <div class="branch-full-card">
+        <div class="bfc__header bfc__header--hubli">🌿<span class="bfc__city-badge">Hubballi</span></div>
+        <div class="bfc__body">
+          <h3>Keshwapur</h3>
+          <div class="bfc-tagline">Expanding Excellence to Karnataka</div>
+          <p>Expanding the AWS legacy of excellence into Karnataka with a dedicated campus in Keshwapur.</p>
+          <div class="bfc-details">
+            <div class="bfc-detail"><span class="d-icon">📍</span> Keshwapur, Hubballi</div>
+          </div>
+          <a href="contact.html" class="bfc-link">Get Directions →</a>
+        </div>
+      </div>
+
+      <div class="branch-full-card">
+        <div class="bfc__header bfc__header--hubli">🏆<span class="bfc__city-badge">Hubballi</span></div>
+        <div class="bfc__body">
+          <h3>Vishweshwar Nagar</h3>
+          <div class="bfc-tagline">Excellence in Karnataka</div>
+          <p>Bringing world-class education standards to Hubballi with a focus on all-round student development.</p>
+          <div class="bfc-details">
+            <div class="bfc-detail"><span class="d-icon">📍</span> Vishweshwar Nagar, Hubballi</div>
+          </div>
+          <a href="contact.html" class="bfc-link">Get Directions →</a>
+        </div>
+      </div>
+
+      <!-- BELGAVI -->
+      <div class="branch-full-card">
+        <div class="bfc__header bfc__header--belgavi">⭐<span class="bfc__city-badge">Belagavi</span></div>
+        <div class="bfc__body">
+          <h3>Sadashiv Nagar</h3>
+          <div class="bfc-tagline">Quality Education in Belgavi</div>
+          <p>Quality education in the heart of Belgavi, serving families with a strong tradition of learning.</p>
+          <div class="bfc-details">
+            <div class="bfc-detail"><span class="d-icon">📍</span> Sadashiv Nagar, Belgavi</div>
+          </div>
+          <a href="contact.html" class="bfc-link">Get Directions →</a>
+        </div>
+      </div>
+
+      <div class="branch-full-card">
+        <div class="bfc__header bfc__header--belgavi">🎨<span class="bfc__city-badge">Belagavi</span></div>
+        <div class="bfc__body">
+          <h3>Tilakwadi</h3>
+          <div class="bfc-tagline">Innovation and Tradition Combined</div>
+          <p>A perfect blend of innovation and tradition, offering modern education in a culturally rich setting.</p>
+          <div class="bfc-details">
+            <div class="bfc-detail"><span class="d-icon">📍</span> Tilakwadi, Belgavi</div>
+          </div>
+          <a href="contact.html" class="bfc-link">Get Directions →</a>
+        </div>
+      </div>
+
+      <!-- SOLAPUR -->
+      <div class="branch-full-card">
+        <div class="bfc__header bfc__header--solapur">🌟<span class="bfc__city-badge">Solapur</span></div>
+        <div class="bfc__body">
+          <h3>Solapur</h3>
+          <div class="bfc-tagline">World-Class Education in Solapur</div>
+          <p>Bringing the Aaryans World School promise of world-class education to the vibrant city of Solapur.</p>
+          <div class="bfc-details">
+            <div class="bfc-detail"><span class="d-icon">📍</span> Solapur, Maharashtra</div>
+          </div>
+          <a href="contact.html" class="bfc-link">Get Directions →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- MAP PLACEHOLDER -->
+<section class="map-section">
+  <div class="container">
+    <div class="section-heading">
+      <span class="tag tag--green">Location</span>
+      <h2>Find Us on the Map</h2>
+      <p>Locate our branches across Maharashtra and Karnataka</p>
+    </div>
+    <div class="map-placeholder">
+      <div class="mp-icon">🗺️</div>
+      <h3>Interactive Map Coming Soon</h3>
+      <p>Pin-drop locations for all 16 branches will be available here</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="branches-cta-section">
+  <div class="container">
+    <h2>Can't Find a Branch Near You?</h2>
+    <p>Contact our team — we'd be happy to help you find the best option.</p>
+    <a href="contact.html" class="btn btn--white">Contact Us <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9h12M10 5l4 4-4 4"/></svg></a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <div class="footer__brand-title">Aaryans<span>.</span> World School</div>
+        <p>Established in 2005, nurturing minds and building character across 16 campuses in 4 cities. Excellence in education — always.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Quick Links</h4>
+        <a href="about.html">About Us</a>
+        <a href="academics.html#preprimary">Pre Primary</a>
+        <a href="academics.html#primary">Primary</a>
+        <a href="academics.html#secondary">Secondary</a>
+        <a href="gallery.html">Gallery</a>
+      </div>
+      <div class="footer__col">
+        <h4>Premium Ventures</h4>
+        <a href="#">Aaryans YO Bhajiwala</a>
+        <a href="#">Aaryans Commando Training</a>
+        <a href="#">Aaryans Farm Fresh</a>
+        <a href="#">Aaryans Preschool</a>
+        <a href="#">Aaryans Edutainment Park</a>
+      </div>
+      <div class="footer__col footer__contact">
+        <h4>Contact</h4>
+        <p><span class="icon">📍</span> Bhilarewadi, Pune – 411046</p>
+        <p><span class="icon">📞</span> +91 96997 74488</p>
+        <p><span class="icon">✉️</span> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d3b2b2a1aab2bda0a4bca1bfb7a0b0bbbcbcbf93b4beb2babffdb0bcbe">[email&#160;protected]</a></p>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2025 Aaryans World School. All Rights Reserved.</span>
+      <div class="footer__socials">
+        <a href="#">f</a><a hr
