@@ -2033,3 +2033,147 @@
         </div>
       </div>
       <div class="footer__bottom">
+<script>
+ /* ============================================================
+           KIDS PRIDE ENGLISH MEDIUM SCHOOL — SCRIPTS
+           Mobile Navigation + Scroll Reveal Animations
+           ============================================================ */
+
+          console.log('🚀 Script.js loaded');
+
+          // Wait for DOM to be fully loaded
+          document.addEventListener('DOMContentLoaded', function () {
+            console.log('✓ DOM loaded, initializing scripts...');
+
+            // ── Mobile Navigation ──
+            const ham = document.querySelector('.navbar__ham');
+            const nav = document.querySelector('.navbar__nav');
+            const cta = document.querySelector('.navbar__cta');
+            const body = document.body;
+
+            console.log('Mobile Nav Elements:', {
+              hamburger: !!ham,
+              navMenu: !!nav,
+              ctaButton: !!cta
+            });
+
+            if (ham && nav) {
+              console.log('✓ Mobile navigation initialized');
+
+              // Toggle main menu
+              ham.addEventListener('click', function (e) {
+                e.stopPropagation();
+                console.log('🍔 Hamburger clicked');
+                ham.classList.toggle('active');
+                nav.classList.toggle('active');
+                if (cta) cta.classList.toggle('active');
+                body.classList.toggle('nav-open');
+
+                // Close all dropdowns when menu closes
+                if (!nav.classList.contains('active')) {
+                  document.querySelectorAll('.nav-drop').forEach(function (drop) {
+                    drop.classList.remove('open');
+                  });
+                }
+              });
+
+              // Handle mobile dropdown toggles
+              const dropdownToggles = nav.querySelectorAll('.nav-drop__toggle');
+              dropdownToggles.forEach(function (toggle) {
+                toggle.addEventListener('click', function (e) {
+                  e.preventDefault();
+                  e.stopPropagation();
+
+                  const parentDrop = toggle.closest('.nav-drop');
+                  const isOpen = parentDrop.classList.contains('open');
+
+                  // Close all other dropdowns
+                  document.querySelectorAll('.nav-drop').forEach(function (drop) {
+                    if (drop !== parentDrop) {
+                      drop.classList.remove('open');
+                    }
+                  });
+
+                  // Toggle current dropdown
+                  parentDrop.classList.toggle('open');
+
+                  console.log('📂 Dropdown toggled:', isOpen ? 'closed' : 'opened');
+                });
+              });
+
+              // Close when clicking regular nav links (not dropdown toggles)
+              const regularLinks = nav.querySelectorAll('a:not(.nav-drop__toggle)');
+              regularLinks.forEach(function (link) {
+                link.addEventListener('click', function () {
+                  console.log('🔗 Nav link clicked, closing menu');
+                  ham.classList.remove('active');
+                  nav.classList.remove('active');
+                  if (cta) cta.classList.remove('active');
+                  body.classList.remove('nav-open');
+
+                  // Close all dropdowns
+                  document.querySelectorAll('.nav-drop').forEach(function (drop) {
+                    drop.classList.remove('open');
+                  });
+                });
+              });
+
+              // Close when clicking outside
+              document.addEventListener('click', function (e) {
+                if (!e.target.closest('.navbar')) {
+                  if (nav.classList.contains('active')) {
+                    console.log('👆 Clicked outside, closing menu');
+                  }
+                  ham.classList.remove('active');
+                  nav.classList.remove('active');
+                  if (cta) cta.classList.remove('active');
+                  body.classList.remove('nav-open');
+
+                  // Close all dropdowns
+                  document.querySelectorAll('.nav-drop').forEach(function (drop) {
+                    drop.classList.remove('open');
+                  });
+                }
+              });
+            } else {
+              console.warn('⚠️ Mobile nav elements not found!');
+            }
+
+            // ── Scroll Reveal Animations ──
+            const els = document.querySelectorAll(
+              ".branch-card,.branch-full-card,.value-card,.panel-card," +
+              ".event-card,.video-card,.info-card,.faq-item," +
+              ".curriculum-card,.gallery-item,.photo-item," +
+              ".vm-card,.hero__trust-item,.stat"
+            );
+
+            console.log(`Found ${els.length} elements for scroll reveal`);
+
+            if (els.length > 0) {
+              const io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e, i) {
+                  if (e.isIntersecting) {
+                    setTimeout(function () {
+                      e.target.classList.add("_vis");
+                      console.log('✨ Element revealed:', e.target.className.split(' ')[0]);
+                    }, i * 55);
+                    io.unobserve(e.target);
+                  }
+                });
+              }, {
+                threshold: 0.1,
+                rootMargin: "0px 0px -30px 0px"
+              });
+
+              els.forEach(function (el) {
+                el.classList.add("_rev");
+                io.observe(el);
+              });
+
+              console.log('✓ Scroll reveal initialized');
+            }
+
+            console.log('✅ All scripts initialized successfully');
+          });
+  
+</script>
