@@ -613,15 +613,218 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 /* ============================================================
    RESPONSIVE
    ============================================================ */
-@media (max-width: 900px) {
-  .footer__grid { grid-template-columns: 1fr 1fr; }
-}
+
+/* Hamburger animation */
+.navbar__ham.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.navbar__ham.active span:nth-child(2) { opacity: 0; }
+.navbar__ham.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ============================================================
+   MOBILE NAVBAR FIXES - Enhanced Z-Index & Display
+   ============================================================ */
+
 @media (max-width: 680px) {
-  .navbar__nav, .navbar__cta { display: none; }
-  .navbar__ham { display: flex; }
+  /* Increase navbar z-index to be above everything */
+  .navbar {
+    z-index: 9999 !important;
+  }
+  
+  /* Show hamburger, hide desktop nav */
+  .navbar__ham { 
+    display: flex !important; 
+    cursor: pointer; 
+    z-index: 10001; 
+    position: relative;
+  }
+  
+  /* Add dark overlay when menu is open */
+  body.nav-open::before {
+    content: '';
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 9998;
+    animation: fadeIn 0.3s ease;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  /* Mobile nav menu - slide down from navbar */
+  .navbar__nav {
+    position: fixed;
+    top: 70px; 
+    left: 0; 
+    right: 0;
+    background: rgba(15,33,55,.98);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0;
+    gap: 0;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height .45s var(--ease-out), opacity .45s;
+    box-shadow: 0 8px 32px rgba(0,0,0,.35);
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    z-index: 10000;
+  }
+  
+  .navbar__nav.active {
+    max-height: calc(100vh - 140px);
+    opacity: 1;
+    overflow-y: auto;
+    padding: 20px 16px 100px;
+  }
+  
+  .navbar__nav > a,
+  .navbar__nav > .nav-drop {
+    padding: 0 !important;
+    margin: 0 0 8px 0 !important;
+    width: 100%;
+  }
+  
+  /* Style for regular nav links (Home, Branches, Contact) */
+  .navbar__nav > a {
+    padding: 15px 18px !important;
+    border-radius: 8px;
+    font-size: .9rem;
+    display: block;
+    color: rgba(255,255,255,.9);
+    text-align: left !important;
+    width: 100%;
+  }
+  
+  /* Style for all nav links including dropdown toggles */
+  .navbar__nav a {
+    padding: 15px 18px !important;
+    border-radius: 8px;
+    font-size: .9rem;
+    display: block;
+    color: rgba(255,255,255,.9);
+    text-align: left !important;
+  }
+  
+  .navbar__nav a:hover,
+  .navbar__nav a.active {
+    background: rgba(255,255,255,.15);
+    color: #fff;
+  }
+  
+  /* Mobile dropdown container */
+  .nav-drop {
+    display: flex;
+    flex-direction: column;
+    padding: 0 !important;
+    margin: 0 0 8px 0 !important;
+    width: 100%;
+  }
+  
+  /* Mobile dropdown toggle */
+  .nav-drop__toggle {
+    width: 100%;
+    justify-content: space-between;
+    padding: 15px 18px !important;
+    display: flex !important;
+    align-items: center;
+    color: rgba(255,255,255,.9);
+    border-radius: 8px;
+    font-size: .9rem;
+    text-align: left !important;
+    margin: 0 !important;
+  }
+  
+  .nav-drop__toggle:hover {
+    background: rgba(255,255,255,.15);
+    color: #fff;
+  }
+  
+  .nav-drop__toggle svg {
+    transition: transform .3s;
+  }
+  
+  .nav-drop.open .nav-drop__toggle svg {
+    transform: rotate(180deg);
+  }
+  
+  /* Mobile dropdown menu */
+  .nav-drop__menu {
+    position: static !important;
+    transform: none !important;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    background: rgba(255,255,255,.08);
+    margin: 4px 0 0 16px;
+    box-shadow: none;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .3s ease, opacity .3s, visibility .3s;
+    border-radius: 8px;
+  }
+  
+  /* Show dropdown when parent is open */
+  .nav-drop.open .nav-drop__menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    max-height: 400px;
+    padding: 8px;
+  }
+  
+  .nav-drop__menu a {
+    color: rgba(255,255,255,.85) !important;
+    font-size: .85rem;
+  }
+  
+  .nav-drop__menu a:hover {
+    background: rgba(255,255,255,.1) !important;
+    color: #fff !important;
+    padding-left: 18px !important;
+  }
+  
+  /* Mobile CTA - fixed at bottom of menu */
+  .navbar__cta {
+    position: fixed !important;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 !important;
+    padding: 18px 28px !important;
+    border-radius: 0 !important;
+    text-align: center;
+    z-index: 10001;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: transform .4s var(--ease-out) .15s, opacity .4s .15s;
+    box-shadow: 0 -4px 20px rgba(0,0,0,.2);
+  }
+  
+  .navbar__cta.active {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  
+  /* Lock body scroll when menu open */
+  body.nav-open { 
+    overflow: hidden; 
+  }
+  
+  /* Other responsive adjustments */
   .section-pad { padding: 70px 0; }
   .stats-bar { gap: 34px; }
   .stat + .stat::before { display: none; }
   .footer__grid { grid-template-columns: 1fr; gap: 32px; }
   .footer__bottom { flex-direction: column; gap: 12px; text-align: center; }
+}
+
+@media (max-width: 900px) {
+  .footer__grid { grid-template-columns: 1fr 1fr; }
 }
