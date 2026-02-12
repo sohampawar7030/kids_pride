@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Academics – Aaryans World School</title>
+<title>Academics  Kids Pride World School</title>
 <link rel="stylesheet" href="styles.css">
 <style>
-/* ── Level Hero Strip ── */
+/*  Level Hero Strip  */
 .level-strip {
   display: flex;
   gap: 16px;
@@ -20,8 +20,8 @@
   gap: 8px;
   padding: 10px 22px;
   border-radius: 50px;
-  border: 1.5px solid #e2ddd4;
-  background: #fff;
+  border: 1.5px solid rgba(255, 202, 40, 0.15);
+  background: var(--clr-bg-card);
   font-size: .82rem;
   font-weight: 600;
   color: var(--clr-primary);
@@ -37,10 +37,10 @@
 }
 .level-pill .lp-icon { font-size: 1rem; }
 
-/* ── Academics Section ── */
+/*  Academics Section  */
 .academics-section { position: relative; }
-.academics-section + .academics-section { background: #fff; }
-.academics-section:nth-child(odd) { background: var(--clr-cream); }
+.academics-section + .academics-section { background: var(--clr-bg-card); }
+.academics-section:nth-child(odd) { background: var(--clr-bg-dark); }
 
 .academics-grid {
   display: grid;
@@ -70,13 +70,13 @@
   position: absolute; inset: 0;
   background: radial-gradient(circle at 70% 30%, rgba(255,255,255,.12) 0%, transparent 60%);
 }
-.av--preprimary { background: linear-gradient(145deg, #2e7d52, #4caf76); }
-.av--primary   { background: linear-gradient(145deg, #e8a838, #c8882a); }
-.av--secondary { background: linear-gradient(145deg, #1a3c5e, #2a5a8a); }
+.av--preprimary { background: var(--clr-primary); }
+.av--primary   { background: var(--clr-primary); }
+.av--secondary { background: var(--clr-primary); }
 
 .academics-visual__float {
   position: absolute;
-  background: #fff;
+  background: var(--clr-bg-card);
   border-radius: 14px;
   padding: 14px 18px;
   box-shadow: var(--shadow-md);
@@ -98,8 +98,8 @@
 }
 .academics-text .classes-badge {
   display: inline-block;
-  background: var(--clr-cream);
-  border: 1.5px solid #e2ddd4;
+  background: var(--clr-bg-dark);
+  border: 1.5px solid rgba(255, 202, 40, 0.15);
   border-radius: 50px;
   padding: 5px 14px;
   font-size: .73rem;
@@ -128,7 +128,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  background: var(--clr-cream);
+  background: var(--clr-bg-dark);
   border-radius: var(--radius-sm);
   padding: 10px 14px;
   font-size: .8rem;
@@ -152,7 +152,7 @@
 .highlight-row__text { font-size: .84rem; color: var(--clr-text); line-height: 1.55; }
 .highlight-row__text strong { color: var(--clr-primary); }
 
-/* ── Curriculum Overview ── */
+/*  Curriculum Overview  */
 .curriculum-overview { background: var(--clr-navy); padding: 90px 0; }
 .curriculum-overview .section-heading h2 { color: #fff; }
 .curriculum-overview .section-heading p { color: rgba(255,255,255,.5); }
@@ -173,9 +173,9 @@
 .curriculum-card h3 { color: #fff; font-family: var(--ff-display); font-size: 1.1rem; margin-bottom: 10px; }
 .curriculum-card p { color: rgba(255,255,255,.5); font-size: .82rem; line-height: 1.7; }
 
-/* ── Admission CTA ── */
+/*  Admission CTA  */
 .admission-cta {
-  background: linear-gradient(135deg, var(--clr-accent), #c8882a);
+  background: var(--clr-primary), #E0B004);
   padding: 70px 0;
   text-align: center;
 }
@@ -195,30 +195,30 @@
 </style>
 
 <style>
-/* ── Scroll-reveal base ── */
+/*  Scroll-reveal base  */
 ._rev { opacity:0; transform:translateY(30px); transition:opacity .68s cubic-bezier(.16,1,.3,1), transform .68s cubic-bezier(.16,1,.3,1); }
 ._vis { opacity:1; transform:translateY(0); }
 
-/* ── Branch Cards ── */
-.branch-card { background:#fff; border-radius:14px; padding:30px 26px; box-shadow:0 2px 10px rgba(26,60,94,.1); transition:.36s cubic-bezier(.4,0,.2,1); border-left:3px solid transparent; position:relative; overflow:hidden; display:flex; flex-direction:column; gap:8px; }
-.branch-card::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(232,168,56,.06) 0%,transparent 55%); opacity:0; transition:opacity .4s; pointer-events:none; }
+/*  Branch Cards  */
+.branch-card { background: var(--clr-bg-card); border-radius:14px; padding:30px 26px; box-shadow:0 2px 10px rgba(26,60,94,.1); transition:.36s cubic-bezier(.4,0,.2,1); border-left:3px solid transparent; position:relative; overflow:hidden; display:flex; flex-direction:column; gap:8px; }
+.branch-card::before { content:''; position:absolute; inset:0; background: linear-gradient(135deg, var(--clr-primary) 0%, transparent 55%); opacity:0; transition:opacity .4s; pointer-events:none; }
 .branch-card:hover { border-left-color:var(--clr-accent); box-shadow:0 0 32px rgba(232,168,56,.2),0 8px 28px rgba(26,60,94,.14); transform:translateY(-4px); }
 .branch-card:hover::before { opacity:1; }
 .branch-card__loc { font-size:.71rem; color:var(--clr-accent); text-transform:uppercase; letter-spacing:.12em; font-weight:600; position:relative; z-index:1; }
 .branch-card h3 { font-family:var(--ff-display); font-size:1.06rem; color:var(--clr-primary); position:relative; z-index:1; }
 .branch-card p { font-size:.8rem; color:var(--clr-text-soft); line-height:1.62; position:relative; z-index:1; }
 
-/* ── Full Branch Cards ── */
-.branch-full-card { background:#fff; border-radius:14px; overflow:hidden; box-shadow:0 2px 10px rgba(26,60,94,.1); transition:.36s cubic-bezier(.4,0,.2,1); position:relative; display:flex; flex-direction:column; }
-.branch-full-card::after { content:''; position:absolute; inset:0; background:linear-gradient(160deg,rgba(232,168,56,.07) 0%,transparent 45%); opacity:0; transition:opacity .42s; pointer-events:none; z-index:1; }
+/*  Full Branch Cards  */
+.branch-full-card { background: var(--clr-bg-card); border-radius:14px; overflow:hidden; box-shadow:0 2px 10px rgba(26,60,94,.1); transition:.36s cubic-bezier(.4,0,.2,1); position:relative; display:flex; flex-direction:column; }
+.branch-full-card::after { content:''; position:absolute; inset:0; background: linear-gradient(135deg, var(--clr-primary) 0%, transparent 45%); opacity:0; transition:opacity .42s; pointer-events:none; z-index:1; }
 .branch-full-card:hover { box-shadow:0 0 38px rgba(232,168,56,.2),0 10px 32px rgba(26,60,94,.15); transform:translateY(-5px); }
 .branch-full-card:hover::after { opacity:1; }
 .bfc__header { height:162px; position:relative; display:flex; align-items:center; justify-content:center; font-size:2.6rem; }
-.bfc__header--pune { background:linear-gradient(145deg,#1a3c5e,#2a5a8a); }
-.bfc__header--hubli { background:linear-gradient(145deg,#2e7d52,#4caf76); }
-.bfc__header--belgavi { background:linear-gradient(145deg,#e8a838,#c8882a); }
-.bfc__header--solapur { background:linear-gradient(145deg,#2a5a8a,#1a3c5e); }
-.bfc__header::after { content:''; position:absolute; inset:0; background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.12) 50%,transparent 70%); background-size:200% 100%; animation:shimmer 3s ease-in-out infinite; pointer-events:none; }
+.bfc__header--pune { background: var(--clr-primary); }
+.bfc__header--hubli { background: var(--clr-primary); }
+.bfc__header--belgavi { background: var(--clr-primary); }
+.bfc__header--solapur { background: var(--clr-primary); }
+.bfc__header::after { content:''; position:absolute; inset:0; background: linear-gradient(90deg, var(--clr-primary) 50%, transparent 70%); background-size:200% 100%; animation:shimmer 3s ease-in-out infinite; pointer-events:none; }
 .bfc__city-badge { position:absolute; top:14px; left:14px; background:rgba(255,255,255,.14); backdrop-filter:blur(6px); border-radius:50px; padding:5px 14px; font-size:.69rem; color:#fff; font-weight:600; letter-spacing:.08em; text-transform:uppercase; z-index:2; }
 .bfc__star { position:absolute; top:14px; right:14px; background:var(--clr-accent); border-radius:50px; padding:4px 11px; font-size:.64rem; color:var(--clr-navy); font-weight:700; z-index:2; box-shadow:0 2px 10px rgba(232,168,56,.35); }
 .bfc__body { padding:24px; flex:1; display:flex; flex-direction:column; position:relative; z-index:2; }
@@ -231,9 +231,9 @@
 .bfc-link { display:inline-flex; align-items:center; gap:6px; margin-top:16px; font-size:.79rem; font-weight:600; color:var(--clr-primary); transition:.3s; }
 .bfc-link:hover { color:var(--clr-accent); gap:11px; }
 
-/* ── Value Cards ── */
-.value-card { background:#fff; border-radius:14px; padding:36px 30px; box-shadow:0 2px 10px rgba(26,60,94,.1); text-align:center; transition:.36s cubic-bezier(.4,0,.2,1); position:relative; overflow:hidden; }
-.value-card::before { content:''; position:absolute; bottom:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--clr-accent),var(--clr-green),var(--clr-accent)); background-size:200% 100%; animation:borderFlow 3s linear infinite; transform:scaleX(0); transition:transform .38s cubic-bezier(.16,1,.3,1); transform-origin:left; }
+/*  Value Cards  */
+.value-card { background: var(--clr-bg-card); border-radius:14px; padding:36px 30px; box-shadow:0 2px 10px rgba(26,60,94,.1); text-align:center; transition:.36s cubic-bezier(.4,0,.2,1); position:relative; overflow:hidden; }
+.value-card::before { content:''; position:absolute; bottom:0; left:0; right:0; height:3px; background: linear-gradient(90deg, var(--clr-primary), var(--clr-green),var(--clr-accent)); background-size:200% 100%; animation:borderFlow 3s linear infinite; transform:scaleX(0); transition:transform .38s cubic-bezier(.16,1,.3,1); transform-origin:left; }
 .value-card:hover { box-shadow:0 0 34px rgba(232,168,56,.18),0 8px 28px rgba(26,60,94,.14); transform:translateY(-5px); }
 .value-card:hover::before { transform:scaleX(1); }
 .value-card__icon { width:66px; height:66px; margin:0 auto 20px; border-radius:18px; display:flex; align-items:center; justify-content:center; font-size:1.65rem; }
@@ -244,30 +244,30 @@
 .value-card h4 { font-family:var(--ff-display); font-size:1.02rem; color:var(--clr-primary); margin-bottom:8px; }
 .value-card p { font-size:.79rem; color:var(--clr-text-soft); line-height:1.66; }
 
-/* ── Panel Cards ── */
-.panel-card { background:#fff; border-radius:14px; overflow:hidden; box-shadow:0 2px 10px rgba(26,60,94,.1); transition:.36s cubic-bezier(.4,0,.2,1); text-align:center; position:relative; }
-.panel-card::after { content:''; position:absolute; inset:0; background:linear-gradient(180deg,transparent 55%,rgba(232,168,56,.06) 100%); opacity:0; transition:opacity .4s; pointer-events:none; z-index:1; }
+/*  Panel Cards  */
+.panel-card { background: var(--clr-bg-card); border-radius:14px; overflow:hidden; box-shadow:0 2px 10px rgba(26,60,94,.1); transition:.36s cubic-bezier(.4,0,.2,1); text-align:center; position:relative; }
+.panel-card::after { content:''; position:absolute; inset:0; background: var(--clr-primary) 100%); opacity:0; transition:opacity .4s; pointer-events:none; z-index:1; }
 .panel-card:hover { box-shadow:0 0 36px rgba(232,168,56,.2),0 10px 34px rgba(26,60,94,.15); transform:translateY(-5px); }
 .panel-card:hover::after { opacity:1; }
 .panel-card__avatar { height:200px; display:flex; align-items:center; justify-content:center; font-size:4rem; position:relative; overflow:hidden; }
-.panel-card__avatar::after { content:''; position:absolute; inset:0; background:linear-gradient(100deg,transparent 32%,rgba(255,255,255,.1) 50%,transparent 68%); background-size:200% 100%; animation:shimmer 3.4s ease-in-out infinite; pointer-events:none; }
-.panel-card__avatar--1 { background:linear-gradient(145deg,#1a3c5e,#2a5a8a); }
-.panel-card__avatar--2 { background:linear-gradient(145deg,#2e7d52,#4caf76); }
-.panel-card__avatar--3 { background:linear-gradient(145deg,#e8a838,#c8882a); }
-.panel-card__avatar--4 { background:linear-gradient(145deg,#2a5a8a,#1a3c5e); }
+.panel-card__avatar::after { content:''; position:absolute; inset:0; background: linear-gradient(90deg, var(--clr-primary) 50%, transparent 68%); background-size:200% 100%; animation:shimmer 3.4s ease-in-out infinite; pointer-events:none; }
+.panel-card__avatar--1 { background: var(--clr-primary); }
+.panel-card__avatar--2 { background: var(--clr-primary); }
+.panel-card__avatar--3 { background: var(--clr-primary); }
+.panel-card__avatar--4 { background: var(--clr-primary); }
 .panel-card__info { padding:24px 20px; position:relative; z-index:2; }
 .panel-card__info h3 { font-family:var(--ff-display); font-size:1.06rem; color:var(--clr-primary); margin-bottom:4px; }
 .panel-card__info .role { font-size:.72rem; color:var(--clr-accent); text-transform:uppercase; letter-spacing:.11em; font-weight:600; margin-bottom:8px; }
 .panel-card__info p { font-size:.78rem; color:var(--clr-text-soft); line-height:1.6; }
 
-/* ── Event Cards ── */
-.event-card { border-radius:14px; overflow:hidden; box-shadow:0 2px 10px rgba(26,60,94,.1); transition:.36s cubic-bezier(.4,0,.2,1); background:#fff; border:1px solid #f0ebe0; position:relative; }
-.event-card::before { content:''; position:absolute; inset:0; background:linear-gradient(145deg,rgba(232,168,56,.06) 0%,transparent 48%); opacity:0; transition:opacity .4s; pointer-events:none; z-index:1; }
+/*  Event Cards  */
+.event-card { border-radius:14px; overflow:hidden; box-shadow:0 2px 10px rgba(26,60,94,.1); transition:.36s cubic-bezier(.4,0,.2,1); background: var(--clr-bg-card); border: 1px solid rgba(255, 202, 40, 0.1); position:relative; }
+.event-card::before { content:''; position:absolute; inset:0; background: linear-gradient(135deg, var(--clr-primary) 0%, transparent 48%); opacity:0; transition:opacity .4s; pointer-events:none; z-index:1; }
 .event-card:hover { box-shadow:0 0 36px rgba(232,168,56,.2),0 10px 32px rgba(26,60,94,.15); transform:translateY(-5px); border-color:rgba(232,168,56,.25); }
 .event-card:hover::before { opacity:1; }
 .event-card__header { height:182px; display:flex; align-items:center; justify-content:center; font-size:2.8rem; position:relative; overflow:hidden; }
-.ec--1{background:linear-gradient(145deg,#1a3c5e,#2a5a8a)} .ec--2{background:linear-gradient(145deg,#e8a838,#c8882a)} .ec--3{background:linear-gradient(145deg,#2e7d52,#4caf76)} .ec--4{background:linear-gradient(145deg,#2a5a8a,#1a3c5e)} .ec--5{background:linear-gradient(145deg,#c8882a,#2e7d52)} .ec--6{background:linear-gradient(145deg,#4caf76,#1a3c5e)}
-.event-card__header::after { content:''; position:absolute; inset:0; background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.1) 50%,transparent 70%); background-size:200% 100%; animation:shimmer 3.2s ease-in-out infinite; pointer-events:none; }
+.ec--1{background: var(--clr-primary)} .ec--2{background: var(--clr-primary)} .ec--3{background: var(--clr-primary)} .ec--4{background: var(--clr-primary)} .ec--5{background: var(--clr-primary)} .ec--6{background: var(--clr-primary)}
+.event-card__header::after { content:''; position:absolute; inset:0; background: linear-gradient(90deg, var(--clr-primary) 50%, transparent 70%); background-size:200% 100%; animation:shimmer 3.2s ease-in-out infinite; pointer-events:none; }
 .event-card__date-badge { position:absolute; top:16px; left:16px; background:rgba(255,255,255,.14); backdrop-filter:blur(6px); border-radius:12px; padding:8px 14px; text-align:center; z-index:2; }
 .edb-day { font-family:var(--ff-display); font-size:1.3rem; color:#fff; font-weight:700; line-height:1; }
 .edb-mon { font-size:.61rem; color:rgba(255,255,255,.68); text-transform:uppercase; letter-spacing:.08em; }
@@ -276,36 +276,36 @@
 .ec-type { font-size:.69rem; color:var(--clr-accent); text-transform:uppercase; letter-spacing:.11em; font-weight:600; margin-bottom:8px; }
 .event-card__body p { font-size:.79rem; color:var(--clr-text-soft); line-height:1.62; }
 
-/* ── Video Cards ── */
-.video-card { background:#fff; border-radius:14px; overflow:hidden; box-shadow:0 2px 10px rgba(26,60,94,.1); transition:.36s cubic-bezier(.4,0,.2,1); cursor:pointer; position:relative; }
-.video-card::before { content:''; position:absolute; inset:0; background:linear-gradient(160deg,rgba(232,168,56,.07) 0%,transparent 50%); opacity:0; transition:opacity .4s; pointer-events:none; z-index:1; }
+/*  Video Cards  */
+.video-card { background: var(--clr-bg-card); border-radius:14px; overflow:hidden; box-shadow:0 2px 10px rgba(26,60,94,.1); transition:.36s cubic-bezier(.4,0,.2,1); cursor:pointer; position:relative; }
+.video-card::before { content:''; position:absolute; inset:0; background: linear-gradient(135deg, var(--clr-primary) 0%, transparent 50%); opacity:0; transition:opacity .4s; pointer-events:none; z-index:1; }
 .video-card:hover { box-shadow:0 0 34px rgba(232,168,56,.2),0 8px 30px rgba(26,60,94,.14); transform:translateY(-4px); }
 .video-card:hover::before { opacity:1; }
 .video-card__thumb { height:192px; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; }
-.vc--1{background:linear-gradient(145deg,#0f2137,#1a3c5e)} .vc--2{background:linear-gradient(145deg,#1a3c5e,#2e7d52)} .vc--3{background:linear-gradient(145deg,#2e7d52,#e8a838)} .vc--4{background:linear-gradient(145deg,#e8a838,#1a3c5e)}
-.video-card__thumb::after { content:''; position:absolute; inset:0; background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.09) 50%,transparent 70%); background-size:200% 100%; animation:shimmer 3.6s ease-in-out infinite; pointer-events:none; }
+.vc--1{background: var(--clr-primary)} .vc--2{background: var(--clr-primary)} .vc--3{background: var(--clr-primary)} .vc--4{background: var(--clr-primary)}
+.video-card__thumb::after { content:''; position:absolute; inset:0; background: linear-gradient(90deg, var(--clr-primary) 50%, transparent 70%); background-size:200% 100%; animation:shimmer 3.6s ease-in-out infinite; pointer-events:none; }
 .video-card__play { width:56px; height:56px; background:rgba(255,255,255,.93); border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 18px rgba(0,0,0,.22); transition:.32s cubic-bezier(.16,1,.3,1); z-index:2; position:relative; }
-.video-card:hover .video-card__play { transform:scale(1.14); background:#fff; box-shadow:0 6px 24px rgba(0,0,0,.28); }
+.video-card:hover .video-card__play { transform:scale(1.14); background: var(--clr-bg-card); box-shadow:0 6px 24px rgba(0,0,0,.28); }
 .video-card__play svg { width:20px; height:20px; fill:var(--clr-primary); margin-left:3px; }
 .video-card__duration { position:absolute; bottom:12px; right:12px; background:rgba(0,0,0,.56); border-radius:6px; padding:3px 9px; font-size:.67rem; color:#fff; font-weight:600; z-index:2; }
 .video-card__info { padding:18px; position:relative; z-index:2; }
 .video-card__info h4 { font-size:.89rem; color:var(--clr-primary); margin-bottom:4px; font-weight:600; }
 .vc-cat { font-size:.71rem; color:var(--clr-accent); font-weight:600; text-transform:uppercase; letter-spacing:.06em; }
 
-/* ── Photo Items ── */
+/*  Photo Items  */
 .photo-item { position:relative; border-radius:14px; overflow:hidden; cursor:pointer; margin-bottom:16px; break-inside:avoid; }
 .photo-item__img { width:100%; display:flex; align-items:center; justify-content:center; font-size:2rem; color:rgba(255,255,255,.55); transition:transform .48s cubic-bezier(.16,1,.3,1); }
 .photo-item:hover .photo-item__img { transform:scale(1.06); }
-.photo-item__overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(15,33,55,.72) 0%,transparent 56%); opacity:0; transition:opacity .36s; display:flex; align-items:flex-end; padding:22px; }
+.photo-item__overlay { position:absolute; inset:0; background: linear-gradient(135deg, var(--clr-primary) 0%, transparent 56%); opacity:0; transition:opacity .36s; display:flex; align-items:flex-end; padding:22px; }
 .photo-item:hover .photo-item__overlay { opacity:1; }
 .photo-item__overlay span { color:#fff; font-size:.81rem; font-weight:500; }
-.photo-item::after { content:''; position:absolute; inset:0; background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.08) 50%,transparent 70%); background-size:200% 100%; animation:shimmer 4s ease-in-out infinite; pointer-events:none; border-radius:14px; }
+.photo-item::after { content:''; position:absolute; inset:0; background: linear-gradient(90deg, var(--clr-primary) 50%, transparent 70%); background-size:200% 100%; animation:shimmer 4s ease-in-out infinite; pointer-events:none; border-radius:14px; }
 .pi--h1{height:222px} .pi--h2{height:182px} .pi--h3{height:244px} .pi--h4{height:162px} .pi--h5{height:202px} .pi--h6{height:192px}
-.c1{background:linear-gradient(145deg,#1a3c5e,#2a5a8a)} .c2{background:linear-gradient(145deg,#2e7d52,#4caf76)} .c3{background:linear-gradient(145deg,#e8a838,#c8882a)} .c4{background:linear-gradient(145deg,#2a5a8a,#4caf76)} .c5{background:linear-gradient(145deg,#c8882a,#1a3c5e)} .c6{background:linear-gradient(145deg,#4caf76,#e8a838)} .c7{background:linear-gradient(145deg,#0f2137,#2e7d52)} .c8{background:linear-gradient(145deg,#1a3c5e,#e8a838)}
+.c1{background: var(--clr-primary)} .c2{background: var(--clr-primary)} .c3{background: var(--clr-primary)} .c4{background: var(--clr-primary)} .c5{background: var(--clr-primary)} .c6{background: var(--clr-primary)} .c7{background: var(--clr-primary)} .c8{background: var(--clr-primary)}
 
-/* ── Info Cards ── */
-.info-card { display:flex; align-items:flex-start; gap:18px; padding:22px; background:#fff; border-radius:14px; box-shadow:0 2px 10px rgba(26,60,94,.1); transition:.36s cubic-bezier(.4,0,.2,1); position:relative; overflow:hidden; margin-bottom:16px; }
-.info-card::before { content:''; position:absolute; left:0; top:0; bottom:0; width:3px; background:linear-gradient(180deg,var(--clr-accent),var(--clr-green)); transform:scaleY(0); transition:transform .38s cubic-bezier(.16,1,.3,1); transform-origin:top; }
+/*  Info Cards  */
+.info-card { display:flex; align-items:flex-start; gap:18px; padding:22px; background: var(--clr-bg-card); border-radius:14px; box-shadow:0 2px 10px rgba(26,60,94,.1); transition:.36s cubic-bezier(.4,0,.2,1); position:relative; overflow:hidden; margin-bottom:16px; }
+.info-card::before { content:''; position:absolute; left:0; top:0; bottom:0; width:3px; background: linear-gradient(90deg, var(--clr-primary), var(--clr-green)); transform:scaleY(0); transition:transform .38s cubic-bezier(.16,1,.3,1); transform-origin:top; }
 .info-card:hover { box-shadow:0 0 28px rgba(232,168,56,.18),0 6px 22px rgba(26,60,94,.12); transform:translateX(4px); }
 .info-card:hover::before { transform:scaleY(1); }
 .info-card__icon { width:52px; height:52px; min-width:52px; border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:1.3rem; }
@@ -315,25 +315,25 @@
 .info-card__text .ic-value a { color:var(--clr-primary); transition:color .3s; }
 .info-card__text .ic-value a:hover { color:var(--clr-accent); }
 
-/* ── FAQ ── */
-.faq-item { background:#fff; border-radius:14px; padding:28px; box-shadow:0 2px 10px rgba(26,60,94,.1); transition:.36s cubic-bezier(.4,0,.2,1); position:relative; overflow:hidden; border:1px solid transparent; }
-.faq-item::before { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--clr-accent),var(--clr-green)); transform:scaleX(0); transition:transform .38s cubic-bezier(.16,1,.3,1); transform-origin:left; }
+/*  FAQ  */
+.faq-item { background: var(--clr-bg-card); border-radius:14px; padding:28px; box-shadow:0 2px 10px rgba(26,60,94,.1); transition:.36s cubic-bezier(.4,0,.2,1); position:relative; overflow:hidden; border:1px solid transparent; }
+.faq-item::before { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background: linear-gradient(90deg, var(--clr-primary), var(--clr-green)); transform:scaleX(0); transition:transform .38s cubic-bezier(.16,1,.3,1); transform-origin:left; }
 .faq-item:hover { box-shadow:0 0 28px rgba(232,168,56,.16),0 6px 24px rgba(26,60,94,.12); border-color:rgba(232,168,56,.18); }
 .faq-item:hover::before { transform:scaleX(1); }
 .faq-item h4 { font-size:.9rem; color:var(--clr-primary); margin-bottom:8px; display:flex; align-items:flex-start; gap:10px; }
 .faq-item h4 .faq-icon { color:var(--clr-accent); font-size:.84rem; flex-shrink:0; margin-top:1px; }
 .faq-item p { font-size:.79rem; color:var(--clr-text-soft); line-height:1.7; padding-left:22px; }
 
-/* ── Curriculum Cards (dark bg) ── */
+/*  Curriculum Cards (dark bg)  */
 .curriculum-card { border-radius:14px; padding:38px 30px; border:1px solid rgba(255,255,255,.07); background:rgba(255,255,255,.04); transition:.36s cubic-bezier(.4,0,.2,1); position:relative; overflow:hidden; }
-.curriculum-card::before { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--clr-accent),var(--clr-green),var(--clr-accent)); background-size:200% 100%; animation:borderFlow 3s linear infinite; transform:scaleX(0); transition:transform .4s cubic-bezier(.16,1,.3,1); transform-origin:left; }
+.curriculum-card::before { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background: linear-gradient(90deg, var(--clr-primary), var(--clr-green),var(--clr-accent)); background-size:200% 100%; animation:borderFlow 3s linear infinite; transform:scaleX(0); transition:transform .4s cubic-bezier(.16,1,.3,1); transform-origin:left; }
 .curriculum-card:hover { background:rgba(255,255,255,.08); border-color:rgba(232,168,56,.28); }
 .curriculum-card:hover::before { transform:scaleX(1); }
 .curriculum-card__icon { font-size:2rem; margin-bottom:18px; }
 .curriculum-card h3 { color:#fff; font-family:var(--ff-display); font-size:1.1rem; margin-bottom:10px; }
 .curriculum-card p { color:rgba(255,255,255,.48); font-size:.81rem; line-height:1.72; }
 
-/* ── Hero trust ── */
+/*  Hero trust  */
 .hero__trust-item { text-align:center; }
 .hero__trust-item .num { font-family:var(--ff-display); font-size:1.72rem; font-weight:700; color:#fff; }
 .hero__trust-item .num span { color:var(--clr-accent); }
@@ -346,7 +346,7 @@
 <!-- NAVBAR -->
 <nav class="navbar">
   <div class="container navbar__inner">
-    <a href="index.html" class="navbar__logo">Aaryans<span>.</span></a>
+    <a href="index.html" class="navbar__logo">Kids Pride<span>.</span></a>
     <div class="navbar__nav">
       <a href="index.html">Home</a>
       <div class="nav-drop">
@@ -383,24 +383,24 @@
 </nav>
 
 <!-- PAGE HERO -->
-<section class="page-hero" style="background-color:#1a3c5e;">
-  <div class="page-hero__bg" style="background:linear-gradient(135deg,#1a3c5e,#2e7d52,#0f2137);"></div>
+<section class="page-hero" style="background-color:#0FB4E1;">
+  <div class="page-hero__bg" style="background: var(--clr-primary);"></div>
   <div class="page-hero__overlay"></div>
   <div class="page-hero__content">
-    <div class="breadcrumb"><a href="index.html">Home</a> &nbsp;›&nbsp; Academics</div>
+    <div class="breadcrumb"><a href="index.html">Home</a> &nbsp;&nbsp; Academics</div>
     <span class="tag">Academic Excellence</span>
     <h1>Academics</h1>
-    <p>A CBSE curriculum enriched with experiential learning — from early childhood through secondary</p>
+    <p>A CBSE curriculum enriched with experiential learning  from early childhood through secondary</p>
   </div>
 </section>
 
 <!-- QUICK NAV PILLS -->
-<div style="background:#fff;border-bottom:1px solid #eee;">
+<div style="background: var(--clr-bg-card);border-bottom:1px solid #eee;">
   <div class="container">
     <div class="level-strip">
-      <a href="#preprimary" class="level-pill active"><span class="lp-icon">🌱</span> Pre-Primary</a>
-      <a href="#primary" class="level-pill"><span class="lp-icon">📚</span> Primary</a>
-      <a href="#secondary" class="level-pill"><span class="lp-icon">🎓</span> Secondary</a>
+      <a href="#preprimary" class="level-pill active"><span class="lp-icon"></span> Pre-Primary</a>
+      <a href="#primary" class="level-pill"><span class="lp-icon"></span> Primary</a>
+      <a href="#secondary" class="level-pill"><span class="lp-icon"></span> Secondary</a>
     </div>
   </div>
 </div>
@@ -410,30 +410,30 @@
   <div class="container">
     <div class="academics-grid">
       <div class="academics-visual">
-        <div class="academics-visual__main av--preprimary">🌻</div>
+        <div class="academics-visual__main av--preprimary"></div>
         <div class="academics-visual__float float-1"><div class="f-num">3</div><div class="f-lbl">Classes</div></div>
-        <div class="academics-visual__float float-2"><div class="f-num">Age<br>3–6</div><div class="f-lbl">Years</div></div>
+        <div class="academics-visual__float float-2"><div class="f-num">Age<br>36</div><div class="f-lbl">Years</div></div>
       </div>
       <div class="academics-text">
         <span class="tag tag--green">Pre-Primary</span>
         <h2>Where Every Journey<br>Begins</h2>
-        <span class="classes-badge">Nursery · LKG · UKG</span>
+        <span class="classes-badge">Nursery LKG UKG</span>
         <p>Our Pre-Primary programme is designed to nurture curiosity, creativity, and foundational skills through play-based, experiential learning in a safe and loving environment.</p>
         <div class="subjects-wrap">
           <h4>Key Areas of Focus</h4>
           <div class="subjects-grid">
-            <div class="subject-tag"><span class="st-icon">🎨</span> Creative Arts</div>
-            <div class="subject-tag"><span class="st-icon">🎵</span> Music &amp; Rhythm</div>
-            <div class="subject-tag"><span class="st-icon">🧮</span> Pre-Math Concepts</div>
-            <div class="subject-tag"><span class="st-icon">📖</span> Language Skills</div>
-            <div class="subject-tag"><span class="st-icon">🌿</span> Nature Awareness</div>
-            <div class="subject-tag"><span class="st-icon">🏃</span> Physical Activity</div>
+            <div class="subject-tag"><span class="st-icon"></span> Creative Arts</div>
+            <div class="subject-tag"><span class="st-icon"></span> Music &amp; Rhythm</div>
+            <div class="subject-tag"><span class="st-icon">span> Pre-Math Concepts</div>
+            <div class="subject-tag"><span class="st-icon"></span> Language Skills</div>
+            <div class="subject-tag"><span class="st-icon"></span> Nature Awareness</div>
+            <div class="subject-tag"><span class="st-icon"></span> Physical Activity</div>
           </div>
         </div>
         <div class="highlights">
-          <div class="highlight-row"><div class="highlight-row__check">✓</div><div class="highlight-row__text"><strong>Play-based learning</strong> in a stimulating, child-friendly environment</div></div>
-          <div class="highlight-row"><div class="highlight-row__check">✓</div><div class="highlight-row__text"><strong>Trained early childhood educators</strong> with care and compassion</div></div>
-          <div class="highlight-row"><div class="highlight-row__check">✓</div><div class="highlight-row__text"><strong>Holistic development</strong> — social, emotional, cognitive, and physical</div></div>
+          <div class="highlight-row"><div class="highlight-row__check"></div><div class="highlight-row__text"><strong>Play-based learning</strong> in a stimulating, child-friendly environment</div></div>
+          <div class="highlight-row"><div class="highlight-row__check"></div><div class="highlight-row__text"><strong>Trained early childhood educators</strong> with care and compassion</div></div>
+          <div class="highlight-row"><div class="highlight-row__check"></div><div class="highlight-row__text"><strong>Holistic development</strong>  social, emotional, cognitive, and physical</div></div>
         </div>
         <a href="contact.html" class="btn btn--primary">Enquire Now <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9h12M10 5l4 4-4 4"/></svg></a>
       </div>
@@ -446,30 +446,30 @@
   <div class="container">
     <div class="academics-grid academics-grid--reverse">
       <div class="academics-visual">
-        <div class="academics-visual__main av--primary">📕</div>
+        <div class="academics-visual__main av--primary"></div>
         <div class="academics-visual__float float-1"><div class="f-num">5</div><div class="f-lbl">Classes</div></div>
-        <div class="academics-visual__float float-2"><div class="f-num">Age<br>6–11</div><div class="f-lbl">Years</div></div>
+        <div class="academics-visual__float float-2"><div class="f-num">Age<br>611</div><div class="f-lbl">Years</div></div>
       </div>
       <div class="academics-text">
         <span class="tag">Primary</span>
         <h2>Building Strong<br>Foundations</h2>
-        <span class="classes-badge">Class 1 · Class 2 · Class 3 · Class 4 · Class 5</span>
+        <span class="classes-badge">Class 1 Class 2 Class 3 Class 4 Class 5</span>
         <p>Our Primary programme combines the CBSE curriculum with hands-on, experiential learning to build strong academic foundations while keeping students engaged and excited about school.</p>
         <div class="subjects-wrap">
           <h4>Core Subjects</h4>
           <div class="subjects-grid">
-            <div class="subject-tag"><span class="st-icon">🔢</span> Mathematics</div>
-            <div class="subject-tag"><span class="st-icon">📝</span> English</div>
-            <div class="subject-tag"><span class="st-icon">🇮🇳</span> Hindi</div>
-            <div class="subject-tag"><span class="st-icon">🔬</span> Science</div>
-            <div class="subject-tag"><span class="st-icon">📚</span> Social Studies</div>
-            <div class="subject-tag"><span class="st-icon">🎨</span> Arts &amp; Crafts</div>
+            <div class="subject-tag"><span class="st-icon"></span> Mathematics</div>
+            <div class="subject-tag"><span class="st-icon"></span> English</div>
+            <div class="subject-tag"><span class="st-icon"></span> Hindi</div>
+            <div class="subject-tag"><span class="st-icon"></span> Science</div>
+            <div class="subject-tag"><span class="st-icon"></span> Social Studies</div>
+            <div class="subject-tag"><span class="st-icon"></span> Arts &amp; Crafts</div>
           </div>
         </div>
         <div class="highlights">
-          <div class="highlight-row"><div class="highlight-row__check">✓</div><div class="highlight-row__text"><strong>CBSE curriculum</strong> enhanced with experiential learning projects</div></div>
-          <div class="highlight-row"><div class="highlight-row__check">✓</div><div class="highlight-row__text"><strong>Smart classrooms</strong> with interactive technology for engaging lessons</div></div>
-          <div class="highlight-row"><div class="highlight-row__check">✓</div><div class="highlight-row__text"><strong>Regular assessments</strong> and parent-teacher interactions</div></div>
+          <div class="highlight-row"><div class="highlight-row__check"></div><div class="highlight-row__text"><strong>CBSE curriculum</strong> enhanced with experiential learning projects</div></div>
+          <div class="highlight-row"><div class="highlight-row__check"></div><div class="highlight-row__text"><strong>Smart classrooms</strong> with interactive technology for engaging lessons</div></div>
+          <div class="highlight-row"><div class="highlight-row__check"></div><div class="highlight-row__text"><strong>Regular assessments</strong> and parent-teacher interactions</div></div>
         </div>
         <a href="contact.html" class="btn btn--primary">Enquire Now <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9h12M10 5l4 4-4 4"/></svg></a>
       </div>
@@ -482,30 +482,30 @@
   <div class="container">
     <div class="academics-grid">
       <div class="academics-visual">
-        <div class="academics-visual__main av--secondary">🎓</div>
+        <div class="academics-visual__main av--secondary"></div>
         <div class="academics-visual__float float-1"><div class="f-num">5</div><div class="f-lbl">Classes</div></div>
-        <div class="academics-visual__float float-2"><div class="f-num">Age<br>11–16</div><div class="f-lbl">Years</div></div>
+        <div class="academics-visual__float float-2"><div class="f-num">Age<br>1116</div><div class="f-lbl">Years</div></div>
       </div>
       <div class="academics-text">
         <span class="tag" style="background:rgba(26,60,94,.1);color:var(--clr-primary);">Secondary</span>
         <h2>Preparing for the<br>Future</h2>
-        <span class="classes-badge">Class 6 · Class 7 · Class 8 · Class 9 · Class 10</span>
+        <span class="classes-badge">Class 6 Class 7 Class 8 Class 9 Class 10</span>
         <p>Our Secondary programme is designed to prepare students for board examinations while fostering critical thinking, leadership, and a love for lifelong learning through a rigorous yet balanced curriculum.</p>
         <div class="subjects-wrap">
           <h4>Core Subjects</h4>
           <div class="subjects-grid">
-            <div class="subject-tag"><span class="st-icon">🔢</span> Mathematics</div>
-            <div class="subject-tag"><span class="st-icon">📝</span> English</div>
-            <div class="subject-tag"><span class="st-icon">🔬</span> Physics</div>
-            <div class="subject-tag"><span class="st-icon">⚗️</span> Chemistry</div>
-            <div class="subject-tag"><span class="st-icon">🧬</span> Biology</div>
-            <div class="subject-tag"><span class="st-icon">📖</span> History &amp; Geography</div>
+            <div class="subject-tag"><span class="st-icon"></span> Mathematics</div>
+            <div class="subject-tag"><span class="st-icon"></span> English</div>
+            <div class="subject-tag"><span class="st-icon"></span> Physics</div>
+            <div class="subject-tag"><span class="st-icon"></span> Chemistry</div>
+            <div class="subject-tag"><span class="st-icon">/span> Biology</div>
+            <div class="subject-tag"><span class="st-icon"></span> History &amp; Geography</div>
           </div>
         </div>
         <div class="highlights">
-          <div class="highlight-row"><div class="highlight-row__check">✓</div><div class="highlight-row__text"><strong>Board-exam focused</strong> preparation with expert coaching</div></div>
-          <div class="highlight-row"><div class="highlight-row__check">✓</div><div class="highlight-row__text"><strong>Extracurricular development</strong> — sports, clubs, and leadership programmes</div></div>
-          <div class="highlight-row"><div class="highlight-row__check">✓</div><div class="highlight-row__text"><strong>Career guidance</strong> and counselling for informed future decisions</div></div>
+          <div class="highlight-row"><div class="highlight-row__check"></div><div class="highlight-row__text"><strong>Board-exam focused</strong> preparation with expert coaching</div></div>
+          <div class="highlight-row"><div class="highlight-row__check"></div><div class="highlight-row__text"><strong>Extracurricular development</strong>  sports, clubs, and leadership programmes</div></div>
+          <div class="highlight-row"><div class="highlight-row__check"></div><div class="highlight-row__text"><strong>Career guidance</strong> and counselling for informed future decisions</div></div>
         </div>
         <a href="contact.html" class="btn btn--primary">Enquire Now <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9h12M10 5l4 4-4 4"/></svg></a>
       </div>
@@ -519,21 +519,21 @@
     <div class="section-heading">
       <span class="tag">Approach</span>
       <h2>Our Curriculum Philosophy</h2>
-      <p>Beyond textbooks — building knowledge, character, and capability</p>
+      <p>Beyond textbooks  building knowledge, character, and capability</p>
     </div>
     <div class="curriculum-cards">
       <div class="curriculum-card">
-        <div class="curriculum-card__icon">🧪</div>
+        <div class="curriculum-card__icon">/div>
         <h3>Experiential Learning</h3>
-        <p>Students learn by doing — through labs, projects, and real-world experiments that make concepts tangible and memorable.</p>
+        <p>Students learn by doing  through labs, projects, and real-world experiments that make concepts tangible and memorable.</p>
       </div>
       <div class="curriculum-card">
-        <div class="curriculum-card__icon">💻</div>
+        <div class="curriculum-card__icon"></div>
         <h3>Technology Integration</h3>
         <p>Smart classrooms and digital tools bring lessons to life, preparing students for a technology-driven future.</p>
       </div>
       <div class="curriculum-card">
-        <div class="curriculum-card__icon">🌱</div>
+        <div class="curriculum-card__icon"></div>
         <h3>Value-Based Education</h3>
         <p>Character development, empathy, and social responsibility are woven throughout every aspect of the curriculum.</p>
       </div>
@@ -545,7 +545,7 @@
 <section class="admission-cta">
   <div class="container">
     <h2>Ready to Enroll Your Child?</h2>
-    <p>Admissions are open — take the first step towards an exceptional education.</p>
+    <p>Admissions are open  take the first step towards an exceptional education.</p>
     <a href="contact.html" class="btn btn--primary" style="color:var(--clr-navy);">Apply for Admission <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9h12M10 5l4 4-4 4"/></svg></a>
   </div>
 </section>
@@ -555,8 +555,8 @@
   <div class="container">
     <div class="footer__grid">
       <div class="footer__brand">
-        <div class="footer__brand-title">Aaryans<span>.</span> World School</div>
-        <p>Established in 2005, nurturing minds and building character across 16 campuses in 4 cities. Excellence in education — always.</p>
+        <div class="footer__brand-title">Kids Pride<span>.</span> World School</div>
+        <p>Established in 2005, nurturing minds and building character across 16 campuses in 4 cities. Excellence in education  always.</p>
       </div>
       <div class="footer__col">
         <h4>Quick Links</h4>
@@ -568,20 +568,26 @@
       </div>
       <div class="footer__col">
         <h4>Premium Ventures</h4>
-        <a href="#">Aaryans YO Bhajiwala</a>
-        <a href="#">Aaryans Commando Training</a>
-        <a href="#">Aaryans Farm Fresh</a>
-        <a href="#">Aaryans Preschool</a>
-        <a href="#">Aaryans Edutainment Park</a>
+        <a href="#">Kids Pride YO Bhajiwala</a>
+        <a href="#">Kids Pride Commando Training</a>
+        <a href="#">Kids Pride Farm Fresh</a>
+        <a href="#">Kids Pride Preschool</a>
+        <a href="#">Kids Pride Edutainment Park</a>
       </div>
       <div class="footer__col footer__contact">
         <h4>Contact</h4>
-        <p><span class="icon">📍</span> Bhilarewadi, Pune – 411046</p>
-        <p><span class="icon">📞</span> +91 96997 74488</p>
-        <p><span class="icon">✉️</span> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5839392a2139362b2f372a343c2b3b30373734183f35393134763b3735">[email&#160;protected]</a></p>
+        <p><span class="icon"></span> Bhilarewadi, Pune  411046</p>
+        <p><span class="icon"></span> +91 96997 74488</p>
+        <p><span class="icon"></span> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5839392a2139362b2f372a343c2b3b30373734183f35393134763b3735">[email&#160;protected]</a></p>
       </div>
     </div>
     <div class="footer__bottom">
-      <span>© 2025 Aaryans World School. All Rights Reserved.</span>
+      <span>025 Kids Pride World School. All Rights Reserved.</span>
       <div class="footer__socials">
         <a href="#">f</a><a hr
+
+
+
+
+
+

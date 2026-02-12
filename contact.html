@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact Us – Aaryans World School</title>
+<title>Contact Us  Kids Pride World School</title>
 <link rel="stylesheet" href="styles.css">
 <style>
-/* ── Contact Layout ── */
+/*  Contact Layout  */
 .contact-layout {
   display: grid;
   grid-template-columns: .85fr 1.15fr;
@@ -32,7 +32,7 @@
   gap: 18px;
   margin-bottom: 24px;
   padding: 22px;
-  background: #fff;
+  background: var(--clr-bg-card);
   border-radius: var(--radius);
   box-shadow: var(--shadow-sm);
   transition: var(--transition);
@@ -64,7 +64,7 @@
 /* Hours */
 .hours-wrap {
   margin-top: 28px;
-  background: var(--clr-cream);
+  background: var(--clr-bg-dark);
   border-radius: var(--radius);
   padding: 22px;
 }
@@ -77,7 +77,7 @@
 
 /* Right: Form */
 .contact-form-wrap {
-  background: #fff;
+  background: var(--clr-bg-card);
   border-radius: var(--radius);
   padding: 44px 40px;
   box-shadow: var(--shadow-md);
@@ -102,18 +102,18 @@
 .form-row textarea {
   width: 100%;
   padding: 12px 16px;
-  border: 1.5px solid #e2ddd4;
+  border: 1.5px solid rgba(255, 202, 40, 0.15);
   border-radius: var(--radius-sm);
   font-family: var(--ff-body);
   font-size: .87rem;
-  background: var(--clr-cream);
+  background: var(--clr-bg-dark);
   color: var(--clr-text);
   transition: var(--transition);
   outline: none;
 }
 .form-row input:focus,
 .form-row select:focus,
-.form-row textarea:focus { border-color: var(--clr-primary); background: #fff; box-shadow: 0 0 0 3px rgba(26,60,94,.08); }
+.form-row textarea:focus { border-color: var(--clr-primary); background: var(--clr-bg-card); box-shadow: 0 0 0 3px rgba(26,60,94,.08); }
 .form-row select { appearance: none; cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%236b6b6b'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; }
 .form-row textarea { resize: vertical; min-height: 110px; }
 .form-row.full { grid-column: span 2; }
@@ -138,8 +138,8 @@
 
 .form-note { font-size: .72rem; color: var(--clr-text-soft); text-align: center; margin-top: 14px; }
 
-/* ── Map Section ── */
-.contact-map { background: #fff; padding: 80px 0; }
+/*  Map Section  */
+.contact-map { background: var(--clr-bg-card); padding: 80px 0; }
 .contact-map__wrap {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -149,7 +149,7 @@
   box-shadow: var(--shadow-md);
 }
 .contact-map__placeholder {
-  background: var(--clr-cream);
+  background: var(--clr-bg-dark);
   min-height: 380px;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   gap: 10px;
@@ -176,19 +176,19 @@
 .dot--pune { background: var(--clr-primary); }
 .dot--hubli { background: var(--clr-green); }
 .dot--belgavi { background: var(--clr-accent); }
-.dot--solapur { background: #2a5a8a; }
+.dot--solapur { background: #4FCBEF; }
 .map-branch-item .mbi-name { font-size: .84rem; color: var(--clr-primary); font-weight: 500; }
 .map-branch-item .mbi-city { font-size: .7rem; color: var(--clr-text-soft); }
 
-/* ── FAQ ── */
-.faq-section { background: var(--clr-cream); }
+/*  FAQ  */
+.faq-section { background: var(--clr-bg-dark); }
 .faq-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
 }
 .faq-item {
-  background: #fff;
+  background: var(--clr-bg-card);
   border-radius: var(--radius);
   padding: 26px;
   box-shadow: var(--shadow-sm);
@@ -206,7 +206,7 @@
 .faq-item h4 .faq-icon { color: var(--clr-accent); font-size: .85rem; flex-shrink: 0; margin-top: 1px; }
 .faq-item p { font-size: .8rem; color: var(--clr-text-soft); line-height: 1.7; padding-left: 22px; }
 
-/* ── ERP + Chat ── */
+/*  ERP + Chat  */
 .erp-bar {
   background: var(--clr-navy);
   padding: 18px 0;
@@ -245,30 +245,30 @@
 </style>
 
 <style>
-/* ── Scroll-reveal base ── */
+/*  Scroll-reveal base  */
 ._rev { opacity:0; transform:translateY(30px); transition:opacity .68s cubic-bezier(.16,1,.3,1), transform .68s cubic-bezier(.16,1,.3,1); }
 ._vis { opacity:1; transform:translateY(0); }
 
-/* ── Branch Cards ── */
-.branch-card { background:#fff; border-radius:14px; padding:30px 26px; box-shadow:0 2px 10px rgba(26,60,94,.1); transition:.36s cubic-bezier(.4,0,.2,1); border-left:3px solid transparent; position:relative; overflow:hidden; display:flex; flex-direction:column; gap:8px; }
-.branch-card::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(232,168,56,.06) 0%,transparent 55%); opacity:0; transition:opacity .4s; pointer-events:none; }
+/*  Branch Cards  */
+.branch-card { background: var(--clr-bg-card); border-radius:14px; padding:30px 26px; box-shadow:0 2px 10px rgba(26,60,94,.1); transition:.36s cubic-bezier(.4,0,.2,1); border-left:3px solid transparent; position:relative; overflow:hidden; display:flex; flex-direction:column; gap:8px; }
+.branch-card::before { content:''; position:absolute; inset:0; background: linear-gradient(135deg, var(--clr-primary) 0%, transparent 55%); opacity:0; transition:opacity .4s; pointer-events:none; }
 .branch-card:hover { border-left-color:var(--clr-accent); box-shadow:0 0 32px rgba(232,168,56,.2),0 8px 28px rgba(26,60,94,.14); transform:translateY(-4px); }
 .branch-card:hover::before { opacity:1; }
 .branch-card__loc { font-size:.71rem; color:var(--clr-accent); text-transform:uppercase; letter-spacing:.12em; font-weight:600; position:relative; z-index:1; }
 .branch-card h3 { font-family:var(--ff-display); font-size:1.06rem; color:var(--clr-primary); position:relative; z-index:1; }
 .branch-card p { font-size:.8rem; color:var(--clr-text-soft); line-height:1.62; position:relative; z-index:1; }
 
-/* ── Full Branch Cards ── */
-.branch-full-card { background:#fff; border-radius:14px; overflow:hidden; box-shadow:0 2px 10px rgba(26,60,94,.1); transition:.36s cubic-bezier(.4,0,.2,1); position:relative; display:flex; flex-direction:column; }
-.branch-full-card::after { content:''; position:absolute; inset:0; background:linear-gradient(160deg,rgba(232,168,56,.07) 0%,transparent 45%); opacity:0; transition:opacity .42s; pointer-events:none; z-index:1; }
+/*  Full Branch Cards  */
+.branch-full-card { background: var(--clr-bg-card); border-radius:14px; overflow:hidden; box-shadow:0 2px 10px rgba(26,60,94,.1); transition:.36s cubic-bezier(.4,0,.2,1); position:relative; display:flex; flex-direction:column; }
+.branch-full-card::after { content:''; position:absolute; inset:0; background: linear-gradient(135deg, var(--clr-primary) 0%, transparent 45%); opacity:0; transition:opacity .42s; pointer-events:none; z-index:1; }
 .branch-full-card:hover { box-shadow:0 0 38px rgba(232,168,56,.2),0 10px 32px rgba(26,60,94,.15); transform:translateY(-5px); }
 .branch-full-card:hover::after { opacity:1; }
 .bfc__header { height:162px; position:relative; display:flex; align-items:center; justify-content:center; font-size:2.6rem; }
-.bfc__header--pune { background:linear-gradient(145deg,#1a3c5e,#2a5a8a); }
-.bfc__header--hubli { background:linear-gradient(145deg,#2e7d52,#4caf76); }
-.bfc__header--belgavi { background:linear-gradient(145deg,#e8a838,#c8882a); }
-.bfc__header--solapur { background:linear-gradient(145deg,#2a5a8a,#1a3c5e); }
-.bfc__header::after { content:''; position:absolute; inset:0; background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.12) 50%,transparent 70%); background-size:200% 100%; animation:shimmer 3s ease-in-out infinite; pointer-events:none; }
+.bfc__header--pune { background: var(--clr-primary); }
+.bfc__header--hubli { background: var(--clr-primary); }
+.bfc__header--belgavi { background: var(--clr-primary); }
+.bfc__header--solapur { background: var(--clr-primary); }
+.bfc__header::after { content:''; position:absolute; inset:0; background: linear-gradient(90deg, var(--clr-primary) 50%, transparent 70%); background-size:200% 100%; animation:shimmer 3s ease-in-out infinite; pointer-events:none; }
 .bfc__city-badge { position:absolute; top:14px; left:14px; background:rgba(255,255,255,.14); backdrop-filter:blur(6px); border-radius:50px; padding:5px 14px; font-size:.69rem; color:#fff; font-weight:600; letter-spacing:.08em; text-transform:uppercase; z-index:2; }
 .bfc__star { position:absolute; top:14px; right:14px; background:var(--clr-accent); border-radius:50px; padding:4px 11px; font-size:.64rem; color:var(--clr-navy); font-weight:700; z-index:2; box-shadow:0 2px 10px rgba(232,168,56,.35); }
 .bfc__body { padding:24px; flex:1; display:flex; flex-direction:column; position:relative; z-index:2; }
@@ -281,9 +281,9 @@
 .bfc-link { display:inline-flex; align-items:center; gap:6px; margin-top:16px; font-size:.79rem; font-weight:600; color:var(--clr-primary); transition:.3s; }
 .bfc-link:hover { color:var(--clr-accent); gap:11px; }
 
-/* ── Value Cards ── */
-.value-card { background:#fff; border-radius:14px; padding:36px 30px; box-shadow:0 2px 10px rgba(26,60,94,.1); text-align:center; transition:.36s cubic-bezier(.4,0,.2,1); position:relative; overflow:hidden; }
-.value-card::before { content:''; position:absolute; bottom:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--clr-accent),var(--clr-green),var(--clr-accent)); background-size:200% 100%; animation:borderFlow 3s linear infinite; transform:scaleX(0); transition:transform .38s cubic-bezier(.16,1,.3,1); transform-origin:left; }
+/*  Value Cards  */
+.value-card { background: var(--clr-bg-card); border-radius:14px; padding:36px 30px; box-shadow:0 2px 10px rgba(26,60,94,.1); text-align:center; transition:.36s cubic-bezier(.4,0,.2,1); position:relative; overflow:hidden; }
+.value-card::before { content:''; position:absolute; bottom:0; left:0; right:0; height:3px; background: linear-gradient(90deg, var(--clr-primary), var(--clr-green),var(--clr-accent)); background-size:200% 100%; animation:borderFlow 3s linear infinite; transform:scaleX(0); transition:transform .38s cubic-bezier(.16,1,.3,1); transform-origin:left; }
 .value-card:hover { box-shadow:0 0 34px rgba(232,168,56,.18),0 8px 28px rgba(26,60,94,.14); transform:translateY(-5px); }
 .value-card:hover::before { transform:scaleX(1); }
 .value-card__icon { width:66px; height:66px; margin:0 auto 20px; border-radius:18px; display:flex; align-items:center; justify-content:center; font-size:1.65rem; }
@@ -294,30 +294,30 @@
 .value-card h4 { font-family:var(--ff-display); font-size:1.02rem; color:var(--clr-primary); margin-bottom:8px; }
 .value-card p { font-size:.79rem; color:var(--clr-text-soft); line-height:1.66; }
 
-/* ── Panel Cards ── */
-.panel-card { background:#fff; border-radius:14px; overflow:hidden; box-shadow:0 2px 10px rgba(26,60,94,.1); transition:.36s cubic-bezier(.4,0,.2,1); text-align:center; position:relative; }
-.panel-card::after { content:''; position:absolute; inset:0; background:linear-gradient(180deg,transparent 55%,rgba(232,168,56,.06) 100%); opacity:0; transition:opacity .4s; pointer-events:none; z-index:1; }
+/*  Panel Cards  */
+.panel-card { background: var(--clr-bg-card); border-radius:14px; overflow:hidden; box-shadow:0 2px 10px rgba(26,60,94,.1); transition:.36s cubic-bezier(.4,0,.2,1); text-align:center; position:relative; }
+.panel-card::after { content:''; position:absolute; inset:0; background: var(--clr-primary) 100%); opacity:0; transition:opacity .4s; pointer-events:none; z-index:1; }
 .panel-card:hover { box-shadow:0 0 36px rgba(232,168,56,.2),0 10px 34px rgba(26,60,94,.15); transform:translateY(-5px); }
 .panel-card:hover::after { opacity:1; }
 .panel-card__avatar { height:200px; display:flex; align-items:center; justify-content:center; font-size:4rem; position:relative; overflow:hidden; }
-.panel-card__avatar::after { content:''; position:absolute; inset:0; background:linear-gradient(100deg,transparent 32%,rgba(255,255,255,.1) 50%,transparent 68%); background-size:200% 100%; animation:shimmer 3.4s ease-in-out infinite; pointer-events:none; }
-.panel-card__avatar--1 { background:linear-gradient(145deg,#1a3c5e,#2a5a8a); }
-.panel-card__avatar--2 { background:linear-gradient(145deg,#2e7d52,#4caf76); }
-.panel-card__avatar--3 { background:linear-gradient(145deg,#e8a838,#c8882a); }
-.panel-card__avatar--4 { background:linear-gradient(145deg,#2a5a8a,#1a3c5e); }
+.panel-card__avatar::after { content:''; position:absolute; inset:0; background: linear-gradient(90deg, var(--clr-primary) 50%, transparent 68%); background-size:200% 100%; animation:shimmer 3.4s ease-in-out infinite; pointer-events:none; }
+.panel-card__avatar--1 { background: var(--clr-primary); }
+.panel-card__avatar--2 { background: var(--clr-primary); }
+.panel-card__avatar--3 { background: var(--clr-primary); }
+.panel-card__avatar--4 { background: var(--clr-primary); }
 .panel-card__info { padding:24px 20px; position:relative; z-index:2; }
 .panel-card__info h3 { font-family:var(--ff-display); font-size:1.06rem; color:var(--clr-primary); margin-bottom:4px; }
 .panel-card__info .role { font-size:.72rem; color:var(--clr-accent); text-transform:uppercase; letter-spacing:.11em; font-weight:600; margin-bottom:8px; }
 .panel-card__info p { font-size:.78rem; color:var(--clr-text-soft); line-height:1.6; }
 
-/* ── Event Cards ── */
-.event-card { border-radius:14px; overflow:hidden; box-shadow:0 2px 10px rgba(26,60,94,.1); transition:.36s cubic-bezier(.4,0,.2,1); background:#fff; border:1px solid #f0ebe0; position:relative; }
-.event-card::before { content:''; position:absolute; inset:0; background:linear-gradient(145deg,rgba(232,168,56,.06) 0%,transparent 48%); opacity:0; transition:opacity .4s; pointer-events:none; z-index:1; }
+/*  Event Cards  */
+.event-card { border-radius:14px; overflow:hidden; box-shadow:0 2px 10px rgba(26,60,94,.1); transition:.36s cubic-bezier(.4,0,.2,1); background: var(--clr-bg-card); border: 1px solid rgba(255, 202, 40, 0.1); position:relative; }
+.event-card::before { content:''; position:absolute; inset:0; background: linear-gradient(135deg, var(--clr-primary) 0%, transparent 48%); opacity:0; transition:opacity .4s; pointer-events:none; z-index:1; }
 .event-card:hover { box-shadow:0 0 36px rgba(232,168,56,.2),0 10px 32px rgba(26,60,94,.15); transform:translateY(-5px); border-color:rgba(232,168,56,.25); }
 .event-card:hover::before { opacity:1; }
 .event-card__header { height:182px; display:flex; align-items:center; justify-content:center; font-size:2.8rem; position:relative; overflow:hidden; }
-.ec--1{background:linear-gradient(145deg,#1a3c5e,#2a5a8a)} .ec--2{background:linear-gradient(145deg,#e8a838,#c8882a)} .ec--3{background:linear-gradient(145deg,#2e7d52,#4caf76)} .ec--4{background:linear-gradient(145deg,#2a5a8a,#1a3c5e)} .ec--5{background:linear-gradient(145deg,#c8882a,#2e7d52)} .ec--6{background:linear-gradient(145deg,#4caf76,#1a3c5e)}
-.event-card__header::after { content:''; position:absolute; inset:0; background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.1) 50%,transparent 70%); background-size:200% 100%; animation:shimmer 3.2s ease-in-out infinite; pointer-events:none; }
+.ec--1{background: var(--clr-primary)} .ec--2{background: var(--clr-primary)} .ec--3{background: var(--clr-primary)} .ec--4{background: var(--clr-primary)} .ec--5{background: var(--clr-primary)} .ec--6{background: var(--clr-primary)}
+.event-card__header::after { content:''; position:absolute; inset:0; background: linear-gradient(90deg, var(--clr-primary) 50%, transparent 70%); background-size:200% 100%; animation:shimmer 3.2s ease-in-out infinite; pointer-events:none; }
 .event-card__date-badge { position:absolute; top:16px; left:16px; background:rgba(255,255,255,.14); backdrop-filter:blur(6px); border-radius:12px; padding:8px 14px; text-align:center; z-index:2; }
 .edb-day { font-family:var(--ff-display); font-size:1.3rem; color:#fff; font-weight:700; line-height:1; }
 .edb-mon { font-size:.61rem; color:rgba(255,255,255,.68); text-transform:uppercase; letter-spacing:.08em; }
@@ -326,36 +326,36 @@
 .ec-type { font-size:.69rem; color:var(--clr-accent); text-transform:uppercase; letter-spacing:.11em; font-weight:600; margin-bottom:8px; }
 .event-card__body p { font-size:.79rem; color:var(--clr-text-soft); line-height:1.62; }
 
-/* ── Video Cards ── */
-.video-card { background:#fff; border-radius:14px; overflow:hidden; box-shadow:0 2px 10px rgba(26,60,94,.1); transition:.36s cubic-bezier(.4,0,.2,1); cursor:pointer; position:relative; }
-.video-card::before { content:''; position:absolute; inset:0; background:linear-gradient(160deg,rgba(232,168,56,.07) 0%,transparent 50%); opacity:0; transition:opacity .4s; pointer-events:none; z-index:1; }
+/*  Video Cards  */
+.video-card { background: var(--clr-bg-card); border-radius:14px; overflow:hidden; box-shadow:0 2px 10px rgba(26,60,94,.1); transition:.36s cubic-bezier(.4,0,.2,1); cursor:pointer; position:relative; }
+.video-card::before { content:''; position:absolute; inset:0; background: linear-gradient(135deg, var(--clr-primary) 0%, transparent 50%); opacity:0; transition:opacity .4s; pointer-events:none; z-index:1; }
 .video-card:hover { box-shadow:0 0 34px rgba(232,168,56,.2),0 8px 30px rgba(26,60,94,.14); transform:translateY(-4px); }
 .video-card:hover::before { opacity:1; }
 .video-card__thumb { height:192px; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; }
-.vc--1{background:linear-gradient(145deg,#0f2137,#1a3c5e)} .vc--2{background:linear-gradient(145deg,#1a3c5e,#2e7d52)} .vc--3{background:linear-gradient(145deg,#2e7d52,#e8a838)} .vc--4{background:linear-gradient(145deg,#e8a838,#1a3c5e)}
-.video-card__thumb::after { content:''; position:absolute; inset:0; background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.09) 50%,transparent 70%); background-size:200% 100%; animation:shimmer 3.6s ease-in-out infinite; pointer-events:none; }
+.vc--1{background: var(--clr-primary)} .vc--2{background: var(--clr-primary)} .vc--3{background: var(--clr-primary)} .vc--4{background: var(--clr-primary)}
+.video-card__thumb::after { content:''; position:absolute; inset:0; background: linear-gradient(90deg, var(--clr-primary) 50%, transparent 70%); background-size:200% 100%; animation:shimmer 3.6s ease-in-out infinite; pointer-events:none; }
 .video-card__play { width:56px; height:56px; background:rgba(255,255,255,.93); border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 18px rgba(0,0,0,.22); transition:.32s cubic-bezier(.16,1,.3,1); z-index:2; position:relative; }
-.video-card:hover .video-card__play { transform:scale(1.14); background:#fff; box-shadow:0 6px 24px rgba(0,0,0,.28); }
+.video-card:hover .video-card__play { transform:scale(1.14); background: var(--clr-bg-card); box-shadow:0 6px 24px rgba(0,0,0,.28); }
 .video-card__play svg { width:20px; height:20px; fill:var(--clr-primary); margin-left:3px; }
 .video-card__duration { position:absolute; bottom:12px; right:12px; background:rgba(0,0,0,.56); border-radius:6px; padding:3px 9px; font-size:.67rem; color:#fff; font-weight:600; z-index:2; }
 .video-card__info { padding:18px; position:relative; z-index:2; }
 .video-card__info h4 { font-size:.89rem; color:var(--clr-primary); margin-bottom:4px; font-weight:600; }
 .vc-cat { font-size:.71rem; color:var(--clr-accent); font-weight:600; text-transform:uppercase; letter-spacing:.06em; }
 
-/* ── Photo Items ── */
+/*  Photo Items  */
 .photo-item { position:relative; border-radius:14px; overflow:hidden; cursor:pointer; margin-bottom:16px; break-inside:avoid; }
 .photo-item__img { width:100%; display:flex; align-items:center; justify-content:center; font-size:2rem; color:rgba(255,255,255,.55); transition:transform .48s cubic-bezier(.16,1,.3,1); }
 .photo-item:hover .photo-item__img { transform:scale(1.06); }
-.photo-item__overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(15,33,55,.72) 0%,transparent 56%); opacity:0; transition:opacity .36s; display:flex; align-items:flex-end; padding:22px; }
+.photo-item__overlay { position:absolute; inset:0; background: linear-gradient(135deg, var(--clr-primary) 0%, transparent 56%); opacity:0; transition:opacity .36s; display:flex; align-items:flex-end; padding:22px; }
 .photo-item:hover .photo-item__overlay { opacity:1; }
 .photo-item__overlay span { color:#fff; font-size:.81rem; font-weight:500; }
-.photo-item::after { content:''; position:absolute; inset:0; background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.08) 50%,transparent 70%); background-size:200% 100%; animation:shimmer 4s ease-in-out infinite; pointer-events:none; border-radius:14px; }
+.photo-item::after { content:''; position:absolute; inset:0; background: linear-gradient(90deg, var(--clr-primary) 50%, transparent 70%); background-size:200% 100%; animation:shimmer 4s ease-in-out infinite; pointer-events:none; border-radius:14px; }
 .pi--h1{height:222px} .pi--h2{height:182px} .pi--h3{height:244px} .pi--h4{height:162px} .pi--h5{height:202px} .pi--h6{height:192px}
-.c1{background:linear-gradient(145deg,#1a3c5e,#2a5a8a)} .c2{background:linear-gradient(145deg,#2e7d52,#4caf76)} .c3{background:linear-gradient(145deg,#e8a838,#c8882a)} .c4{background:linear-gradient(145deg,#2a5a8a,#4caf76)} .c5{background:linear-gradient(145deg,#c8882a,#1a3c5e)} .c6{background:linear-gradient(145deg,#4caf76,#e8a838)} .c7{background:linear-gradient(145deg,#0f2137,#2e7d52)} .c8{background:linear-gradient(145deg,#1a3c5e,#e8a838)}
+.c1{background: var(--clr-primary)} .c2{background: var(--clr-primary)} .c3{background: var(--clr-primary)} .c4{background: var(--clr-primary)} .c5{background: var(--clr-primary)} .c6{background: var(--clr-primary)} .c7{background: var(--clr-primary)} .c8{background: var(--clr-primary)}
 
-/* ── Info Cards ── */
-.info-card { display:flex; align-items:flex-start; gap:18px; padding:22px; background:#fff; border-radius:14px; box-shadow:0 2px 10px rgba(26,60,94,.1); transition:.36s cubic-bezier(.4,0,.2,1); position:relative; overflow:hidden; margin-bottom:16px; }
-.info-card::before { content:''; position:absolute; left:0; top:0; bottom:0; width:3px; background:linear-gradient(180deg,var(--clr-accent),var(--clr-green)); transform:scaleY(0); transition:transform .38s cubic-bezier(.16,1,.3,1); transform-origin:top; }
+/*  Info Cards  */
+.info-card { display:flex; align-items:flex-start; gap:18px; padding:22px; background: var(--clr-bg-card); border-radius:14px; box-shadow:0 2px 10px rgba(26,60,94,.1); transition:.36s cubic-bezier(.4,0,.2,1); position:relative; overflow:hidden; margin-bottom:16px; }
+.info-card::before { content:''; position:absolute; left:0; top:0; bottom:0; width:3px; background: linear-gradient(90deg, var(--clr-primary), var(--clr-green)); transform:scaleY(0); transition:transform .38s cubic-bezier(.16,1,.3,1); transform-origin:top; }
 .info-card:hover { box-shadow:0 0 28px rgba(232,168,56,.18),0 6px 22px rgba(26,60,94,.12); transform:translateX(4px); }
 .info-card:hover::before { transform:scaleY(1); }
 .info-card__icon { width:52px; height:52px; min-width:52px; border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:1.3rem; }
@@ -365,25 +365,25 @@
 .info-card__text .ic-value a { color:var(--clr-primary); transition:color .3s; }
 .info-card__text .ic-value a:hover { color:var(--clr-accent); }
 
-/* ── FAQ ── */
-.faq-item { background:#fff; border-radius:14px; padding:28px; box-shadow:0 2px 10px rgba(26,60,94,.1); transition:.36s cubic-bezier(.4,0,.2,1); position:relative; overflow:hidden; border:1px solid transparent; }
-.faq-item::before { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--clr-accent),var(--clr-green)); transform:scaleX(0); transition:transform .38s cubic-bezier(.16,1,.3,1); transform-origin:left; }
+/*  FAQ  */
+.faq-item { background: var(--clr-bg-card); border-radius:14px; padding:28px; box-shadow:0 2px 10px rgba(26,60,94,.1); transition:.36s cubic-bezier(.4,0,.2,1); position:relative; overflow:hidden; border:1px solid transparent; }
+.faq-item::before { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background: linear-gradient(90deg, var(--clr-primary), var(--clr-green)); transform:scaleX(0); transition:transform .38s cubic-bezier(.16,1,.3,1); transform-origin:left; }
 .faq-item:hover { box-shadow:0 0 28px rgba(232,168,56,.16),0 6px 24px rgba(26,60,94,.12); border-color:rgba(232,168,56,.18); }
 .faq-item:hover::before { transform:scaleX(1); }
 .faq-item h4 { font-size:.9rem; color:var(--clr-primary); margin-bottom:8px; display:flex; align-items:flex-start; gap:10px; }
 .faq-item h4 .faq-icon { color:var(--clr-accent); font-size:.84rem; flex-shrink:0; margin-top:1px; }
 .faq-item p { font-size:.79rem; color:var(--clr-text-soft); line-height:1.7; padding-left:22px; }
 
-/* ── Curriculum Cards (dark bg) ── */
+/*  Curriculum Cards (dark bg)  */
 .curriculum-card { border-radius:14px; padding:38px 30px; border:1px solid rgba(255,255,255,.07); background:rgba(255,255,255,.04); transition:.36s cubic-bezier(.4,0,.2,1); position:relative; overflow:hidden; }
-.curriculum-card::before { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--clr-accent),var(--clr-green),var(--clr-accent)); background-size:200% 100%; animation:borderFlow 3s linear infinite; transform:scaleX(0); transition:transform .4s cubic-bezier(.16,1,.3,1); transform-origin:left; }
+.curriculum-card::before { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background: linear-gradient(90deg, var(--clr-primary), var(--clr-green),var(--clr-accent)); background-size:200% 100%; animation:borderFlow 3s linear infinite; transform:scaleX(0); transition:transform .4s cubic-bezier(.16,1,.3,1); transform-origin:left; }
 .curriculum-card:hover { background:rgba(255,255,255,.08); border-color:rgba(232,168,56,.28); }
 .curriculum-card:hover::before { transform:scaleX(1); }
 .curriculum-card__icon { font-size:2rem; margin-bottom:18px; }
 .curriculum-card h3 { color:#fff; font-family:var(--ff-display); font-size:1.1rem; margin-bottom:10px; }
 .curriculum-card p { color:rgba(255,255,255,.48); font-size:.81rem; line-height:1.72; }
 
-/* ── Hero trust ── */
+/*  Hero trust  */
 .hero__trust-item { text-align:center; }
 .hero__trust-item .num { font-family:var(--ff-display); font-size:1.72rem; font-weight:700; color:#fff; }
 .hero__trust-item .num span { color:var(--clr-accent); }
@@ -396,7 +396,7 @@
 <!-- NAVBAR -->
 <nav class="navbar">
   <div class="container navbar__inner">
-    <a href="index.html" class="navbar__logo">Aaryans<span>.</span></a>
+    <a href="index.html" class="navbar__logo">Kids Pride<span>.</span></a>
     <div class="navbar__nav">
       <a href="index.html">Home</a>
       <div class="nav-drop">
@@ -433,19 +433,19 @@
 </nav>
 
 <!-- PAGE HERO -->
-<section class="page-hero" style="background-color:#1a3c5e;">
-  <div class="page-hero__bg" style="background:linear-gradient(135deg,#0f2137,#1a3c5e,#2e7d52);"></div>
+<section class="page-hero" style="background-color:#0FB4E1;">
+  <div class="page-hero__bg" style="background: var(--clr-primary);"></div>
   <div class="page-hero__overlay"></div>
   <div class="page-hero__content">
-    <div class="breadcrumb"><a href="index.html">Home</a> &nbsp;›&nbsp; Contact Us</div>
+    <div class="breadcrumb"><a href="index.html">Home</a> &nbsp;&nbsp; Contact Us</div>
     <span class="tag">Get in Touch</span>
     <h1>Contact Us</h1>
-    <p>We'd love to hear from you — reach out for admissions or any queries</p>
+    <p>We'd love to hear from you  reach out for admissions or any queries</p>
   </div>
 </section>
 
 <!-- MAIN CONTACT -->
-<section class="section-pad" style="background:var(--clr-cream);">
+<section class="section-pad" style="background: var(--clr-bg-dark);">
   <div class="container">
     <div class="contact-layout">
 
@@ -456,38 +456,38 @@
         <p>Have questions about admissions, facilities, or anything else? Our friendly team is here to help.</p>
 
         <div class="info-card">
-          <div class="info-card__icon ic--addr">📍</div>
+          <div class="info-card__icon ic--addr"></div>
           <div class="info-card__text">
             <div class="ic-label">Main Branch Address</div>
-            <div class="ic-value">Aaryans Valley, Pune–Satara Road<br>Next to R.K. Transport, Bhilarewadi<br>Before Old Katraj Ghat, Pune – 411046</div>
+            <div class="ic-value">Kids Pride Valley, PuneSatara Road<br>Next to R.K. Transport, Bhilarewadi<br>Before Old Katraj Ghat, Pune  411046</div>
           </div>
         </div>
         <div class="info-card">
-          <div class="info-card__icon ic--phone">📞</div>
+          <div class="info-card__icon ic--phone"></div>
           <div class="info-card__text">
             <div class="ic-label">Phone Number</div>
             <div class="ic-value"><a href="tel:+919699774488">+91 96997 74488</a></div>
           </div>
         </div>
         <div class="info-card">
-          <div class="info-card__icon ic--email">✉️</div>
+          <div class="info-card__icon ic--email"></div>
           <div class="info-card__text">
             <div class="ic-label">Email Address</div>
             <div class="ic-value"><a href="/cdn-cgi/l/email-protection#b0d1d1c2c9d1dec3c7dfc2dcd4c3d3d8dfdfdcf0d7ddd1d9dc9ed3dfdd"><span class="__cf_email__" data-cfemail="3d5c5c4f445c534e4a524f51594e5e555252517d5a505c5451135e5250">[email&#160;protected]</span></a></div>
           </div>
         </div>
         <div class="info-card">
-          <div class="info-card__icon ic--corp">🏢</div>
+          <div class="info-card__icon ic--corp"></div>
           <div class="info-card__text">
             <div class="ic-label">Corporate Office</div>
-            <div class="ic-value">Above Hotel Shree Kateel<br>Next to Amit Bloofield, Near Navle Bridge<br>Narhe, Pune – 411046</div>
+            <div class="ic-value">Above Hotel Shree Kateel<br>Next to Amit Bloofield, Near Navle Bridge<br>Narhe, Pune  411046</div>
           </div>
         </div>
 
         <div class="hours-wrap">
-          <h4>🕐 Office Hours</h4>
-          <div class="hours-row"><span class="h-day">Monday – Friday</span><span class="h-time">8:00 AM – 5:00 PM</span></div>
-          <div class="hours-row"><span class="h-day">Saturday</span><span class="h-time">9:00 AM – 1:00 PM</span></div>
+          <h4> Office Hours</h4>
+          <div class="hours-row"><span class="h-day">Monday  Friday</span><span class="h-time">8:00 AM  5:00 PM</span></div>
+          <div class="hours-row"><span class="h-day">Saturday</span><span class="h-time">9:00 AM  1:00 PM</span></div>
           <div class="hours-row"><span class="h-day">Sunday</span><span class="h-closed">Closed</span></div>
         </div>
       </div>
@@ -533,7 +533,7 @@
             <select>
               <option>Choose a branch...</option>
               <option>Bharati Vidyapeeth (Pune)</option>
-              <option>Bhilarewadi (Pune) — Mother Branch</option>
+              <option>Bhilarewadi (Pune)  Mother Branch</option>
               <option>Bibvewadi (Pune)</option>
               <option>Datta Nagar (Pune)</option>
               <option>Gokul Nagar (Pune)</option>
@@ -558,14 +558,14 @@
           </div>
           <div class="form-row full">
             <label>Message / Query</label>
-            <textarea placeholder="Tell us about your enquiry — admissions, facilities, or anything else..."></textarea>
+            <textarea placeholder="Tell us about your enquiry  admissions, facilities, or anything else..."></textarea>
           </div>
         </div>
         <button class="form-submit">
           Submit Enquiry
           <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9h12M10 5l4 4-4 4"/></svg>
         </button>
-        <p class="form-note">🔒 Your information is secure. We'll respond within 24 hours.</p>
+        <p class="form-note"> Your information is secure. We'll respond within 24 hours.</p>
       </div>
     </div>
   </div>
@@ -581,13 +581,13 @@
     </div>
     <div class="contact-map__wrap">
       <div class="contact-map__placeholder">
-        <div class="mp-icon">🗺️</div>
+        <div class="mp-icon"></div>
         <h3>Interactive Map</h3>
         <p>Embed your Google Maps here</p>
       </div>
       <div class="contact-map__branches">
         <h4>All Branches</h4>
-        <div class="map-branch-item"><div class="mbi-dot dot--pune"></div><div><div class="mbi-name">Bhilarewadi ⭐</div><div class="mbi-city">Mother Branch · Pune</div></div></div>
+        <div class="map-branch-item"><div class="mbi-dot dot--pune"></div><div><div class="mbi-name">Bhilarewadi </div><div class="mbi-city">Mother Branch Pune</div></div></div>
         <div class="map-branch-item"><div class="mbi-dot dot--pune"></div><div><div class="mbi-name">Bharati Vidyapeeth</div><div class="mbi-city">Pune</div></div></div>
         <div class="map-branch-item"><div class="mbi-dot dot--pune"></div><div><div class="mbi-name">Bibvewadi</div><div class="mbi-city">Pune</div></div></div>
         <div class="map-branch-item"><div class="mbi-dot dot--pune"></div><div><div class="mbi-name">Datta Nagar</div><div class="mbi-city">Pune</div></div></div>
@@ -612,31 +612,31 @@
     <div class="section-heading">
       <span class="tag">FAQ</span>
       <h2>Frequently Asked Questions</h2>
-      <p>Quick answers to common queries about Aaryans World School</p>
+      <p>Quick answers to common queries about Kids Pride World School</p>
     </div>
     <div class="faq-grid">
       <div class="faq-item">
-        <h4><span class="faq-icon">❓</span> When do admissions open?</h4>
+        <h4><span class="faq-icon"></span> When do admissions open?</h4>
         <p>Admissions are open year-round, subject to availability. We encourage families to apply early for the upcoming academic year to secure their preferred branch and class.</p>
       </div>
       <div class="faq-item">
-        <h4><span class="faq-icon">❓</span> What is the admission process?</h4>
-        <p>Submit your enquiry form → Our team contacts you → Schedule a campus visit → Complete the application → Seat confirmation. The process is simple and transparent.</p>
+        <h4><span class="faq-icon"></span> What is the admission process?</h4>
+        <p>Submit your enquiry form  Our team contacts you  Schedule a campus visit  Complete the application  Seat confirmation. The process is simple and transparent.</p>
       </div>
       <div class="faq-item">
-        <h4><span class="faq-icon">❓</span> Is transport facility available?</h4>
+        <h4><span class="faq-icon"></span> Is transport facility available?</h4>
         <p>Yes, school transport is available from select pickup points across Pune and nearby areas. Please contact our admissions team for route details and availability.</p>
       </div>
       <div class="faq-item">
-        <h4><span class="faq-icon">❓</span> What board does the school follow?</h4>
-        <p>Aaryans World School follows the CBSE (Central Board of Secondary Education) curriculum, enhanced with experiential and value-based learning across all levels.</p>
+        <h4><span class="faq-icon"></span> What board does the school follow?</h4>
+        <p>Kids Pride World School follows the CBSE (Central Board of Secondary Education) curriculum, enhanced with experiential and value-based learning across all levels.</p>
       </div>
       <div class="faq-item">
-        <h4><span class="faq-icon">❓</span> Are extracurricular activities available?</h4>
+        <h4><span class="faq-icon"></span> Are extracurricular activities available?</h4>
         <p>Absolutely! We offer sports, arts, music, drama, robotics, and many more clubs and activities to ensure holistic development beyond academics.</p>
       </div>
       <div class="faq-item">
-        <h4><span class="faq-icon">❓</span> Can I visit the campus before enrolling?</h4>
+        <h4><span class="faq-icon"></span> Can I visit the campus before enrolling?</h4>
         <p>Yes! We welcome campus visits. Simply fill in our enquiry form or call us, and we'll arrange a guided tour at your convenience.</p>
       </div>
     </div>
@@ -645,8 +645,8 @@
 
 <!-- ERP + CHAT BAR -->
 <div class="erp-bar">
-  <a href="#">💬 Chat with Us</a>
-  <a href="#">🔐 ERP Login</a>
+  <a href="#"> Chat with Us</a>
+  <a href="#"> ERP Login</a>
 </div>
 
 <!-- FOOTER -->
@@ -654,8 +654,8 @@
   <div class="container">
     <div class="footer__grid">
       <div class="footer__brand">
-        <div class="footer__brand-title">Aaryans<span>.</span> World School</div>
-        <p>Established in 2005, nurturing minds and building character across 16 campuses in 4 cities. Excellence in education — always.</p>
+        <div class="footer__brand-title">Kids Pride<span>.</span> World School</div>
+        <p>Established in 2005, nurturing minds and building character across 16 campuses in 4 cities. Excellence in education  always.</p>
       </div>
       <div class="footer__col">
         <h4>Quick Links</h4>
@@ -667,17 +667,23 @@
       </div>
       <div class="footer__col">
         <h4>Premium Ventures</h4>
-        <a href="#">Aaryans YO Bhajiwala</a>
-        <a href="#">Aaryans Commando Training</a>
-        <a href="#">Aaryans Farm Fresh</a>
-        <a href="#">Aaryans Preschool</a>
-        <a href="#">Aaryans Edutainment Park</a>
+        <a href="#">Kids Pride YO Bhajiwala</a>
+        <a href="#">Kids Pride Commando Training</a>
+        <a href="#">Kids Pride Farm Fresh</a>
+        <a href="#">Kids Pride Preschool</a>
+        <a href="#">Kids Pride Edutainment Park</a>
       </div>
       <div class="footer__col footer__contact">
         <h4>Contact</h4>
-        <p><span class="icon">📍</span> Bhilarewadi, Pune – 411046</p>
-        <p><span class="icon">📞</span> +91 96997 74488</p>
-        <p><span class="icon">✉️</span> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a0c1c1d2d9c1ced3d7cfd2ccc4d3c3c8cfcfcce0c7cdc1c9cc8ec3cfcd">[email&#160;protected]</a></p>
+        <p><span class="icon"></span> Bhilarewadi, Pune  411046</p>
+        <p><span class="icon"></span> +91 96997 74488</p>
+        <p><span class="icon"></span> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a0c1c1d2d9c1ced3d7cfd2ccc4d3c3c8cfcfcce0c7cdc1c9cc8ec3cfcd">[email&#160;protected]</a></p>
       </div>
     </div>
     <div class="
+
+
+
+
+
+
