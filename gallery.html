@@ -1,627 +1,1840 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gallery – Aaryans World School</title>
-<link rel="stylesheet" href="styles.css">
-<style>
-/* ── Category Tabs ── */
-.gallery-tabs {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  flex-wrap: wrap;
-  padding: 0 0 44px;
-}
-.gallery-tab {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 24px;
-  border-radius: 50px;
-  border: 1.5px solid #e2ddd4;
-  background: #fff;
-  font-size: .82rem;
-  font-weight: 600;
-  color: var(--clr-text-soft);
-  text-decoration: none;
-  transition: var(--transition);
-  box-shadow: var(--shadow-sm);
-  cursor: pointer;
-}
-.gallery-tab:hover { border-color: var(--clr-primary); color: var(--clr-primary); }
-.gallery-tab.active { background: var(--clr-primary); color: #fff; border-color: var(--clr-primary); }
-.gallery-tab .gt-icon { font-size: .95rem; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery – Aaryans World School</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ── Category Tabs ── */
+    .gallery-tabs {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 0 0 44px;
+    }
 
-/* ── Photo Masonry ── */
-.photo-masonry {
-  columns: 4;
-  column-gap: 16px;
-}
-.photo-item {
-  break-inside: avoid;
-  margin-bottom: 16px;
-  border-radius: var(--radius);
-  overflow: hidden;
-  position: relative;
-  cursor: pointer;
-}
-.photo-item__img {
-  width: 100%;
-  display: block;
-  transition: transform .45s ease;
-}
-.photo-item:hover .photo-item__img { transform: scale(1.04); }
-.photo-item__overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(15,33,55,.7) 0%, transparent 55%);
-  opacity: 0;
-  transition: opacity .35s;
-  display: flex; align-items: flex-end;
-  padding: 20px;
-}
-.photo-item:hover .photo-item__overlay { opacity: 1; }
-.photo-item__overlay span {
-  color: #fff;
-  font-size: .8rem;
-  font-weight: 500;
-}
-/* Colored placeholder blocks for photos */
-.photo-item__img {
-  height: auto;
-  min-height: 140px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  color: rgba(255,255,255,.6);
-  background-size: cover;
-  background-position: center;
-}
-.pi--h1 { height: 220px; }
-.pi--h2 { height: 180px; }
-.pi--h3 { height: 240px; }
-.pi--h4 { height: 160px; }
-.pi--h5 { height: 200px; }
-.pi--h6 { height: 190px; }
+    .gallery-tab {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 24px;
+      border-radius: 50px;
+      border: 1.5px solid rgba(255, 202, 40, .15);
+      background: var(--clr-bg-dark);
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--clr-text-soft);
+      text-decoration: none;
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+      cursor: pointer;
+    }
 
-.c1 { background: linear-gradient(145deg, #1a3c5e, #2a5a8a); }
-.c2 { background: linear-gradient(145deg, #2e7d52, #4caf76); }
-.c3 { background: linear-gradient(145deg, #e8a838, #c8882a); }
-.c4 { background: linear-gradient(145deg, #2a5a8a, #4caf76); }
-.c5 { background: linear-gradient(145deg, #c8882a, #1a3c5e); }
-.c6 { background: linear-gradient(145deg, #4caf76, #e8a838); }
-.c7 { background: linear-gradient(145deg, #0f2137, #2e7d52); }
-.c8 { background: linear-gradient(145deg, #1a3c5e, #e8a838); }
+    .gallery-tab:hover {
+      border-color: var(--clr-primary);
+      color: var(--clr-primary);
+    }
 
-/* ── Events Section ── */
-.events-section { background: #fff; }
-.events-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 28px;
-}
-.event-card {
-  border-radius: var(--radius);
-  overflow: hidden;
-  box-shadow: var(--shadow-sm);
-  transition: var(--transition);
-  background: #fff;
-  border: 1px solid #f0ebe0;
-}
-.event-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); }
-.event-card__header {
-  height: 180px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 2.8rem;
-  position: relative;
-}
-.ec--1 { background: linear-gradient(145deg, #1a3c5e, #2a5a8a); }
-.ec--2 { background: linear-gradient(145deg, #e8a838, #c8882a); }
-.ec--3 { background: linear-gradient(145deg, #2e7d52, #4caf76); }
-.ec--4 { background: linear-gradient(145deg, #2a5a8a, #1a3c5e); }
-.ec--5 { background: linear-gradient(145deg, #c8882a, #2e7d52); }
-.ec--6 { background: linear-gradient(145deg, #4caf76, #1a3c5e); }
+    .gallery-tab.active {
+      background: var(--clr-primary);
+      color: #fff;
+      border-color: var(--clr-primary);
+    }
 
-.event-card__date-badge {
-  position: absolute; top: 16px; left: 16px;
-  background: rgba(255,255,255,.15);
-  backdrop-filter: blur(6px);
-  border-radius: 10px;
-  padding: 8px 14px;
-  text-align: center;
-}
-.event-card__date-badge .edb-day { font-family: var(--ff-display); font-size: 1.3rem; color: #fff; font-weight: 700; line-height: 1; }
-.event-card__date-badge .edb-mon { font-size: .62rem; color: rgba(255,255,255,.7); text-transform: uppercase; letter-spacing: .08em; }
+    .gallery-tab .gt-icon {
+      font-size: .95rem;
+    }
 
-.event-card__body { padding: 22px; }
-.event-card__body h3 { font-family: var(--ff-display); font-size: 1.05rem; color: var(--clr-primary); margin-bottom: 6px; }
-.event-card__body .ec-type {
-  font-size: .7rem;
-  color: var(--clr-accent);
-  text-transform: uppercase;
-  letter-spacing: .1em;
-  font-weight: 600;
-  margin-bottom: 8px;
-}
-.event-card__body p { font-size: .8rem; color: var(--clr-text-soft); line-height: 1.6; }
+    /* ── Photo Masonry ── */
+    .photo-masonry {
+      columns: 4;
+      column-gap: 16px;
+    }
 
-/* ── Videos Section ── */
-.videos-section { background: var(--clr-cream); }
-.videos-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 24px;
-}
-.video-card {
-  background: #fff;
-  border-radius: var(--radius);
-  overflow: hidden;
-  box-shadow: var(--shadow-sm);
-  transition: var(--transition);
-  cursor: pointer;
-}
-.video-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
-.video-card__thumb {
-  height: 190px;
-  display: flex; align-items: center; justify-content: center;
-  position: relative;
-}
-.vc--1 { background: linear-gradient(145deg, #0f2137, #1a3c5e); }
-.vc--2 { background: linear-gradient(145deg, #1a3c5e, #2e7d52); }
-.vc--3 { background: linear-gradient(145deg, #2e7d52, #e8a838); }
-.vc--4 { background: linear-gradient(145deg, #e8a838, #1a3c5e); }
+    .photo-item {
+      break-inside: avoid;
+      margin-bottom: 16px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
 
-.video-card__play {
-  width: 54px; height: 54px;
-  background: rgba(255,255,255,.92);
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 4px 16px rgba(0,0,0,.2);
-  transition: var(--transition);
-  z-index: 2;
-}
-.video-card:hover .video-card__play { transform: scale(1.12); background: #fff; }
-.video-card__play svg { width: 20px; height: 20px; fill: var(--clr-primary); margin-left: 3px; }
-.video-card__duration {
-  position: absolute; bottom: 12px; right: 12px;
-  background: rgba(0,0,0,.55);
-  border-radius: 6px;
-  padding: 3px 8px;
-  font-size: .68rem;
-  color: #fff;
-  font-weight: 600;
-}
-.video-card__info { padding: 18px; }
-.video-card__info h4 { font-size: .9rem; color: var(--clr-primary); margin-bottom: 4px; font-weight: 600; }
-.video-card__info .vc-cat { font-size: .72rem; color: var(--clr-accent); font-weight: 600; text-transform: uppercase; letter-spacing: .06em; }
+    .photo-item__img {
+      width: 100%;
+      display: block;
+      transition: transform .45s ease;
+    }
 
-/* ── Share Banner ── */
-.share-banner {
-  background: linear-gradient(135deg, var(--clr-primary), var(--clr-navy));
-  padding: 64px 0;
-  text-align: center;
-}
-.share-banner h2 { font-family: var(--ff-display); color: #fff; font-size: clamp(1.5rem,2.8vw,2rem); margin-bottom: 10px; }
-.share-banner p { color: rgba(255,255,255,.55); margin-bottom: 22px; font-size: .9rem; }
-.social-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-.social-btn {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 10px 22px;
-  border-radius: 50px;
-  background: rgba(255,255,255,.1);
-  border: 1px solid rgba(255,255,255,.15);
-  color: #fff;
-  font-size: .8rem;
-  font-weight: 600;
-  transition: var(--transition);
-  text-decoration: none;
-}
-.social-btn:hover { background: var(--clr-accent); border-color: var(--clr-accent); color: var(--clr-navy); }
+    .photo-item:hover .photo-item__img {
+      transform: scale(1.04);
+    }
 
-/* Responsive */
-@media (max-width: 900px) { .photo-masonry { columns: 3; } }
-@media (max-width: 600px) { .photo-masonry { columns: 2; } }
-</style>
+    .photo-item__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(15, 33, 55, .7) 0%, transparent 55%);
+      opacity: 0;
+      transition: opacity .35s;
+      display: flex;
+      align-items: flex-end;
+      padding: 20px;
+    }
 
-<style>
-/* ── Scroll-reveal base ── */
-._rev { opacity:0; transform:translateY(30px); transition:opacity .68s cubic-bezier(.16,1,.3,1), transform .68s cubic-bezier(.16,1,.3,1); }
-._vis { opacity:1; transform:translateY(0); }
+    .photo-item:hover .photo-item__overlay {
+      opacity: 1;
+    }
 
-/* ── Branch Cards ── */
-.branch-card { background:#fff; border-radius:14px; padding:30px 26px; box-shadow:0 2px 10px rgba(26,60,94,.1); transition:.36s cubic-bezier(.4,0,.2,1); border-left:3px solid transparent; position:relative; overflow:hidden; display:flex; flex-direction:column; gap:8px; }
-.branch-card::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(232,168,56,.06) 0%,transparent 55%); opacity:0; transition:opacity .4s; pointer-events:none; }
-.branch-card:hover { border-left-color:var(--clr-accent); box-shadow:0 0 32px rgba(232,168,56,.2),0 8px 28px rgba(26,60,94,.14); transform:translateY(-4px); }
-.branch-card:hover::before { opacity:1; }
-.branch-card__loc { font-size:.71rem; color:var(--clr-accent); text-transform:uppercase; letter-spacing:.12em; font-weight:600; position:relative; z-index:1; }
-.branch-card h3 { font-family:var(--ff-display); font-size:1.06rem; color:var(--clr-primary); position:relative; z-index:1; }
-.branch-card p { font-size:.8rem; color:var(--clr-text-soft); line-height:1.62; position:relative; z-index:1; }
+    .photo-item__overlay span {
+      color: #fff;
+      font-size: .8rem;
+      font-weight: 500;
+    }
 
-/* ── Full Branch Cards ── */
-.branch-full-card { background:#fff; border-radius:14px; overflow:hidden; box-shadow:0 2px 10px rgba(26,60,94,.1); transition:.36s cubic-bezier(.4,0,.2,1); position:relative; display:flex; flex-direction:column; }
-.branch-full-card::after { content:''; position:absolute; inset:0; background:linear-gradient(160deg,rgba(232,168,56,.07) 0%,transparent 45%); opacity:0; transition:opacity .42s; pointer-events:none; z-index:1; }
-.branch-full-card:hover { box-shadow:0 0 38px rgba(232,168,56,.2),0 10px 32px rgba(26,60,94,.15); transform:translateY(-5px); }
-.branch-full-card:hover::after { opacity:1; }
-.bfc__header { height:162px; position:relative; display:flex; align-items:center; justify-content:center; font-size:2.6rem; }
-.bfc__header--pune { background:linear-gradient(145deg,#1a3c5e,#2a5a8a); }
-.bfc__header--hubli { background:linear-gradient(145deg,#2e7d52,#4caf76); }
-.bfc__header--belgavi { background:linear-gradient(145deg,#e8a838,#c8882a); }
-.bfc__header--solapur { background:linear-gradient(145deg,#2a5a8a,#1a3c5e); }
-.bfc__header::after { content:''; position:absolute; inset:0; background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.12) 50%,transparent 70%); background-size:200% 100%; animation:shimmer 3s ease-in-out infinite; pointer-events:none; }
-.bfc__city-badge { position:absolute; top:14px; left:14px; background:rgba(255,255,255,.14); backdrop-filter:blur(6px); border-radius:50px; padding:5px 14px; font-size:.69rem; color:#fff; font-weight:600; letter-spacing:.08em; text-transform:uppercase; z-index:2; }
-.bfc__star { position:absolute; top:14px; right:14px; background:var(--clr-accent); border-radius:50px; padding:4px 11px; font-size:.64rem; color:var(--clr-navy); font-weight:700; z-index:2; box-shadow:0 2px 10px rgba(232,168,56,.35); }
-.bfc__body { padding:24px; flex:1; display:flex; flex-direction:column; position:relative; z-index:2; }
-.bfc__body h3 { font-family:var(--ff-display); font-size:1.14rem; color:var(--clr-primary); margin-bottom:5px; }
-.bfc-tagline { font-size:.77rem; color:var(--clr-accent); font-weight:600; margin-bottom:10px; }
-.bfc__body p { font-size:.81rem; color:var(--clr-text-soft); line-height:1.66; flex:1; }
-.bfc-details { margin-top:18px; display:flex; flex-direction:column; gap:5px; }
-.bfc-detail { font-size:.75rem; color:var(--clr-text-soft); display:flex; align-items:center; gap:8px; }
-.bfc-detail .d-icon { color:var(--clr-primary); font-size:.81rem; }
-.bfc-link { display:inline-flex; align-items:center; gap:6px; margin-top:16px; font-size:.79rem; font-weight:600; color:var(--clr-primary); transition:.3s; }
-.bfc-link:hover { color:var(--clr-accent); gap:11px; }
+    /* Colored placeholder blocks for photos */
+    .photo-item__img {
+      height: auto;
+      min-height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: rgba(255, 255, 255, .6);
+      background-size: cover;
+      background-position: center;
+    }
 
-/* ── Value Cards ── */
-.value-card { background:#fff; border-radius:14px; padding:36px 30px; box-shadow:0 2px 10px rgba(26,60,94,.1); text-align:center; transition:.36s cubic-bezier(.4,0,.2,1); position:relative; overflow:hidden; }
-.value-card::before { content:''; position:absolute; bottom:0; left:0; right:0; height:3px; background:linear-gradient(90deg,var(--clr-accent),var(--clr-green),var(--clr-accent)); background-size:200% 100%; animation:borderFlow 3s linear infinite; transform:scaleX(0); transition:transform .38s cubic-bezier(.16,1,.3,1); transform-origin:left; }
-.value-card:hover { box-shadow:0 0 34px rgba(232,168,56,.18),0 8px 28px rgba(26,60,94,.14); transform:translateY(-5px); }
-.value-card:hover::before { transform:scaleX(1); }
-.value-card__icon { width:66px; height:66px; margin:0 auto 20px; border-radius:18px; display:flex; align-items:center; justify-content:center; font-size:1.65rem; }
-.value-card__icon--1 { background:rgba(26,60,94,.07); }
-.value-card__icon--2 { background:rgba(46,125,82,.08); }
-.value-card__icon--3 { background:rgba(232,168,56,.1); }
-.value-card__icon--4 { background:rgba(26,60,94,.07); }
-.value-card h4 { font-family:var(--ff-display); font-size:1.02rem; color:var(--clr-primary); margin-bottom:8px; }
-.value-card p { font-size:.79rem; color:var(--clr-text-soft); line-height:1.66; }
+    .pi--h1 {
+      height: 220px;
+    }
 
-/* ── Panel Cards ── */
-.panel-card { background:#fff; border-radius:14px; overflow:hidden; box-shadow:0 2px 10px rgba(26,60,94,.1); transition:.36s cubic-bezier(.4,0,.2,1); text-align:center; position:relative; }
-.panel-card::after { content:''; position:absolute; inset:0; background:linear-gradient(180deg,transparent 55%,rgba(232,168,56,.06) 100%); opacity:0; transition:opacity .4s; pointer-events:none; z-index:1; }
-.panel-card:hover { box-shadow:0 0 36px rgba(232,168,56,.2),0 10px 34px rgba(26,60,94,.15); transform:translateY(-5px); }
-.panel-card:hover::after { opacity:1; }
-.panel-card__avatar { height:200px; display:flex; align-items:center; justify-content:center; font-size:4rem; position:relative; overflow:hidden; }
-.panel-card__avatar::after { content:''; position:absolute; inset:0; background:linear-gradient(100deg,transparent 32%,rgba(255,255,255,.1) 50%,transparent 68%); background-size:200% 100%; animation:shimmer 3.4s ease-in-out infinite; pointer-events:none; }
-.panel-card__avatar--1 { background:linear-gradient(145deg,#1a3c5e,#2a5a8a); }
-.panel-card__avatar--2 { background:linear-gradient(145deg,#2e7d52,#4caf76); }
-.panel-card__avatar--3 { background:linear-gradient(145deg,#e8a838,#c8882a); }
-.panel-card__avatar--4 { background:linear-gradient(145deg,#2a5a8a,#1a3c5e); }
-.panel-card__info { padding:24px 20px; position:relative; z-index:2; }
-.panel-card__info h3 { font-family:var(--ff-display); font-size:1.06rem; color:var(--clr-primary); margin-bottom:4px; }
-.panel-card__info .role { font-size:.72rem; color:var(--clr-accent); text-transform:uppercase; letter-spacing:.11em; font-weight:600; margin-bottom:8px; }
-.panel-card__info p { font-size:.78rem; color:var(--clr-text-soft); line-height:1.6; }
+    .pi--h2 {
+      height: 180px;
+    }
 
-/* ── Event Cards ── */
-.event-card { border-radius:14px; overflow:hidden; box-shadow:0 2px 10px rgba(26,60,94,.1); transition:.36s cubic-bezier(.4,0,.2,1); background:#fff; border:1px solid #f0ebe0; position:relative; }
-.event-card::before { content:''; position:absolute; inset:0; background:linear-gradient(145deg,rgba(232,168,56,.06) 0%,transparent 48%); opacity:0; transition:opacity .4s; pointer-events:none; z-index:1; }
-.event-card:hover { box-shadow:0 0 36px rgba(232,168,56,.2),0 10px 32px rgba(26,60,94,.15); transform:translateY(-5px); border-color:rgba(232,168,56,.25); }
-.event-card:hover::before { opacity:1; }
-.event-card__header { height:182px; display:flex; align-items:center; justify-content:center; font-size:2.8rem; position:relative; overflow:hidden; }
-.ec--1{background:linear-gradient(145deg,#1a3c5e,#2a5a8a)} .ec--2{background:linear-gradient(145deg,#e8a838,#c8882a)} .ec--3{background:linear-gradient(145deg,#2e7d52,#4caf76)} .ec--4{background:linear-gradient(145deg,#2a5a8a,#1a3c5e)} .ec--5{background:linear-gradient(145deg,#c8882a,#2e7d52)} .ec--6{background:linear-gradient(145deg,#4caf76,#1a3c5e)}
-.event-card__header::after { content:''; position:absolute; inset:0; background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.1) 50%,transparent 70%); background-size:200% 100%; animation:shimmer 3.2s ease-in-out infinite; pointer-events:none; }
-.event-card__date-badge { position:absolute; top:16px; left:16px; background:rgba(255,255,255,.14); backdrop-filter:blur(6px); border-radius:12px; padding:8px 14px; text-align:center; z-index:2; }
-.edb-day { font-family:var(--ff-display); font-size:1.3rem; color:#fff; font-weight:700; line-height:1; }
-.edb-mon { font-size:.61rem; color:rgba(255,255,255,.68); text-transform:uppercase; letter-spacing:.08em; }
-.event-card__body { padding:22px; position:relative; z-index:2; }
-.event-card__body h3 { font-family:var(--ff-display); font-size:1.06rem; color:var(--clr-primary); margin-bottom:5px; }
-.ec-type { font-size:.69rem; color:var(--clr-accent); text-transform:uppercase; letter-spacing:.11em; font-weight:600; margin-bottom:8px; }
-.event-card__body p { font-size:.79rem; color:var(--clr-text-soft); line-height:1.62; }
+    .pi--h3 {
+      height: 240px;
+    }
 
-/* ── Video Cards ── */
-.video-card { background:#fff; border-radius:14px; overflow:hidden; box-shadow:0 2px 10px rgba(26,60,94,.1); transition:.36s cubic-bezier(.4,0,.2,1); cursor:pointer; position:relative; }
-.video-card::before { content:''; position:absolute; inset:0; background:linear-gradient(160deg,rgba(232,168,56,.07) 0%,transparent 50%); opacity:0; transition:opacity .4s; pointer-events:none; z-index:1; }
-.video-card:hover { box-shadow:0 0 34px rgba(232,168,56,.2),0 8px 30px rgba(26,60,94,.14); transform:translateY(-4px); }
-.video-card:hover::before { opacity:1; }
-.video-card__thumb { height:192px; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; }
-.vc--1{background:linear-gradient(145deg,#0f2137,#1a3c5e)} .vc--2{background:linear-gradient(145deg,#1a3c5e,#2e7d52)} .vc--3{background:linear-gradient(145deg,#2e7d52,#e8a838)} .vc--4{background:linear-gradient(145deg,#e8a838,#1a3c5e)}
-.video-card__thumb::after { content:''; position:absolute; inset:0; background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.09) 50%,transparent 70%); background-size:200% 100%; animation:shimmer 3.6s ease-in-out infinite; pointer-events:none; }
-.video-card__play { width:56px; height:56px; background:rgba(255,255,255,.93); border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 18px rgba(0,0,0,.22); transition:.32s cubic-bezier(.16,1,.3,1); z-index:2; position:relative; }
-.video-card:hover .video-card__play { transform:scale(1.14); background:#fff; box-shadow:0 6px 24px rgba(0,0,0,.28); }
-.video-card__play svg { width:20px; height:20px; fill:var(--clr-primary); margin-left:3px; }
-.video-card__duration { position:absolute; bottom:12px; right:12px; background:rgba(0,0,0,.56); border-radius:6px; padding:3px 9px; font-size:.67rem; color:#fff; font-weight:600; z-index:2; }
-.video-card__info { padding:18px; position:relative; z-index:2; }
-.video-card__info h4 { font-size:.89rem; color:var(--clr-primary); margin-bottom:4px; font-weight:600; }
-.vc-cat { font-size:.71rem; color:var(--clr-accent); font-weight:600; text-transform:uppercase; letter-spacing:.06em; }
+    .pi--h4 {
+      height: 160px;
+    }
 
-/* ── Photo Items ── */
-.photo-item { position:relative; border-radius:14px; overflow:hidden; cursor:pointer; margin-bottom:16px; break-inside:avoid; }
-.photo-item__img { width:100%; display:flex; align-items:center; justify-content:center; font-size:2rem; color:rgba(255,255,255,.55); transition:transform .48s cubic-bezier(.16,1,.3,1); }
-.photo-item:hover .photo-item__img { transform:scale(1.06); }
-.photo-item__overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(15,33,55,.72) 0%,transparent 56%); opacity:0; transition:opacity .36s; display:flex; align-items:flex-end; padding:22px; }
-.photo-item:hover .photo-item__overlay { opacity:1; }
-.photo-item__overlay span { color:#fff; font-size:.81rem; font-weight:500; }
-.photo-item::after { content:''; position:absolute; inset:0; background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.08) 50%,transparent 70%); background-size:200% 100%; animation:shimmer 4s ease-in-out infinite; pointer-events:none; border-radius:14px; }
-.pi--h1{height:222px} .pi--h2{height:182px} .pi--h3{height:244px} .pi--h4{height:162px} .pi--h5{height:202px} .pi--h6{height:192px}
-.c1{background:linear-gradient(145deg,#1a3c5e,#2a5a8a)} .c2{background:linear-gradient(145deg,#2e7d52,#4caf76)} .c3{background:linear-gradient(145deg,#e8a838,#c8882a)} .c4{background:linear-gradient(145deg,#2a5a8a,#4caf76)} .c5{background:linear-gradient(145deg,#c8882a,#1a3c5e)} .c6{background:linear-gradient(145deg,#4caf76,#e8a838)} .c7{background:linear-gradient(145deg,#0f2137,#2e7d52)} .c8{background:linear-gradient(145deg,#1a3c5e,#e8a838)}
+    .pi--h5 {
+      height: 200px;
+    }
 
-/* ── Info Cards ── */
-.info-card { display:flex; align-items:flex-start; gap:18px; padding:22px; background:#fff; border-radius:14px; box-shadow:0 2px 10px rgba(26,60,94,.1); transition:.36s cubic-bezier(.4,0,.2,1); position:relative; overflow:hidden; margin-bottom:16px; }
-.info-card::before { content:''; position:absolute; left:0; top:0; bottom:0; width:3px; background:linear-gradient(180deg,var(--clr-accent),var(--clr-green)); transform:scaleY(0); transition:transform .38s cubic-bezier(.16,1,.3,1); transform-origin:top; }
-.info-card:hover { box-shadow:0 0 28px rgba(232,168,56,.18),0 6px 22px rgba(26,60,94,.12); transform:translateX(4px); }
-.info-card:hover::before { transform:scaleY(1); }
-.info-card__icon { width:52px; height:52px; min-width:52px; border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:1.3rem; }
-.ic--addr{background:rgba(26,60,94,.07)} .ic--phone{background:rgba(46,125,82,.09)} .ic--email{background:rgba(232,168,56,.11)} .ic--corp{background:rgba(26,60,94,.07)}
-.info-card__text .ic-label { font-size:.69rem; color:var(--clr-text-soft); text-transform:uppercase; letter-spacing:.11em; font-weight:600; margin-bottom:4px; }
-.info-card__text .ic-value { font-size:.87rem; color:var(--clr-primary); font-weight:500; line-height:1.58; }
-.info-card__text .ic-value a { color:var(--clr-primary); transition:color .3s; }
-.info-card__text .ic-value a:hover { color:var(--clr-accent); }
+    .pi--h6 {
+      height: 190px;
+    }
 
-/* ── FAQ ── */
-.faq-item { background:#fff; border-radius:14px; padding:28px; box-shadow:0 2px 10px rgba(26,60,94,.1); transition:.36s cubic-bezier(.4,0,.2,1); position:relative; overflow:hidden; border:1px solid transparent; }
-.faq-item::before { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--clr-accent),var(--clr-green)); transform:scaleX(0); transition:transform .38s cubic-bezier(.16,1,.3,1); transform-origin:left; }
-.faq-item:hover { box-shadow:0 0 28px rgba(232,168,56,.16),0 6px 24px rgba(26,60,94,.12); border-color:rgba(232,168,56,.18); }
-.faq-item:hover::before { transform:scaleX(1); }
-.faq-item h4 { font-size:.9rem; color:var(--clr-primary); margin-bottom:8px; display:flex; align-items:flex-start; gap:10px; }
-.faq-item h4 .faq-icon { color:var(--clr-accent); font-size:.84rem; flex-shrink:0; margin-top:1px; }
-.faq-item p { font-size:.79rem; color:var(--clr-text-soft); line-height:1.7; padding-left:22px; }
+    .c1 {
+      background: var(--clr-primary);
+    }
 
-/* ── Curriculum Cards (dark bg) ── */
-.curriculum-card { border-radius:14px; padding:38px 30px; border:1px solid rgba(255,255,255,.07); background:rgba(255,255,255,.04); transition:.36s cubic-bezier(.4,0,.2,1); position:relative; overflow:hidden; }
-.curriculum-card::before { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--clr-accent),var(--clr-green),var(--clr-accent)); background-size:200% 100%; animation:borderFlow 3s linear infinite; transform:scaleX(0); transition:transform .4s cubic-bezier(.16,1,.3,1); transform-origin:left; }
-.curriculum-card:hover { background:rgba(255,255,255,.08); border-color:rgba(232,168,56,.28); }
-.curriculum-card:hover::before { transform:scaleX(1); }
-.curriculum-card__icon { font-size:2rem; margin-bottom:18px; }
-.curriculum-card h3 { color:#fff; font-family:var(--ff-display); font-size:1.1rem; margin-bottom:10px; }
-.curriculum-card p { color:rgba(255,255,255,.48); font-size:.81rem; line-height:1.72; }
+    .c2 {
+      background: var(--clr-green);
+    }
 
-/* ── Hero trust ── */
-.hero__trust-item { text-align:center; }
-.hero__trust-item .num { font-family:var(--ff-display); font-size:1.72rem; font-weight:700; color:#fff; }
-.hero__trust-item .num span { color:var(--clr-accent); }
-.hero__trust-item .lbl { font-size:.71rem; color:rgba(255,255,255,.42); text-transform:uppercase; letter-spacing:.11em; margin-top:3px; }
-</style>
+    .c3 {
+      background: var(--clr-accent);
+    }
+
+    .c4 {
+      background: var(--clr-primary-light);
+    }
+
+    .c5 {
+      background: var(--clr-accent);
+    }
+
+    .c6 {
+      background: var(--clr-green);
+    }
+
+    .c7 {
+      background: var(--clr-primary);
+    }
+
+    .c8 {
+      background: var(--clr-accent);
+    }
+
+    /* ── Events Section ── */
+    .events-section {
+      background: var(--clr-bg-dark);
+    }
+
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 28px;
+    }
+
+    .event-card {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      background: var(--clr-bg-dark);
+      border: 1px solid rgba(255, 202, 40, .1);
+    }
+
+    .event-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-4px);
+    }
+
+    .event-card__header {
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.8rem;
+      position: relative;
+    }
+
+    .ec--1 {
+      background: var(--clr-primary);
+    }
+
+    .ec--2 {
+      background: var(--clr-accent);
+    }
+
+    .ec--3 {
+      background: var(--clr-green);
+    }
+
+    .ec--4 {
+      background: var(--clr-primary);
+    }
+
+    .ec--5 {
+      background: var(--clr-accent);
+    }
+
+    .ec--6 {
+      background: var(--clr-green);
+    }
+
+    .event-card__date-badge {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: rgba(255, 255, 255, .15);
+      backdrop-filter: blur(6px);
+      border-radius: 10px;
+      padding: 8px 14px;
+      text-align: center;
+    }
+
+    .event-card__date-badge .edb-day {
+      font-family: var(--ff-display);
+      font-size: 1.3rem;
+      color: #fff;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .event-card__date-badge .edb-mon {
+      font-size: .62rem;
+      color: rgba(255, 255, 255, .7);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .event-card__body {
+      padding: 22px;
+    }
+
+    .event-card__body h3 {
+      font-family: var(--ff-display);
+      font-size: 1.05rem;
+      color: var(--clr-primary);
+      margin-bottom: 6px;
+    }
+
+    .event-card__body .ec-type {
+      font-size: .7rem;
+      color: var(--clr-accent);
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .event-card__body p {
+      font-size: .8rem;
+      color: var(--clr-text-soft);
+      line-height: 1.6;
+    }
+
+    /* ── Videos Section ── */
+    .videos-section {
+      background: var(--clr-bg-dark);
+    }
+
+    .videos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .video-card {
+      background: var(--clr-bg-dark);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .video-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-3px);
+    }
+
+    .video-card__thumb {
+      height: 190px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .vc--1 {
+      background: var(--clr-primary);
+    }
+
+    .vc--2 {
+      background: var(--clr-primary);
+    }
+
+    .vc--3 {
+      background: var(--clr-accent);
+    }
+
+    .vc--4 {
+      background: var(--clr-accent);
+    }
+
+    .video-card__play {
+      width: 54px;
+      height: 54px;
+      background: rgba(255, 255, 255, .92);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, .2);
+      transition: var(--transition);
+      z-index: 2;
+    }
+
+    .video-card:hover .video-card__play {
+      transform: scale(1.12);
+      background: var(--clr-bg-dark);
+    }
+
+    .video-card__play svg {
+      width: 20px;
+      height: 20px;
+      fill: var(--clr-primary);
+      margin-left: 3px;
+    }
+
+    .video-card__duration {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      background: rgba(0, 0, 0, .55);
+      border-radius: 6px;
+      padding: 3px 8px;
+      font-size: .68rem;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .video-card__info {
+      padding: 18px;
+    }
+
+    .video-card__info h4 {
+      font-size: .9rem;
+      color: var(--clr-primary);
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+
+    .video-card__info .vc-cat {
+      font-size: .72rem;
+      color: var(--clr-accent);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    /* ── Share Banner ── */
+    .share-banner {
+      background: linear-gradient(135deg, var(--clr-primary), var(--clr-navy));
+      padding: 64px 0;
+      text-align: center;
+    }
+
+    .share-banner h2 {
+      font-family: var(--ff-display);
+      color: #fff;
+      font-size: clamp(1.5rem, 2.8vw, 2rem);
+      margin-bottom: 10px;
+    }
+
+    .share-banner p {
+      color: rgba(255, 255, 255, .55);
+      margin-bottom: 22px;
+      font-size: .9rem;
+    }
+
+    .social-row {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      border-radius: 50px;
+      background: rgba(255, 255, 255, .1);
+      border: 1px solid rgba(255, 255, 255, .15);
+      color: #fff;
+      font-size: .8rem;
+      font-weight: 600;
+      transition: var(--transition);
+      text-decoration: none;
+    }
+
+    .social-btn:hover {
+      background: var(--clr-accent);
+      border-color: var(--clr-accent);
+      color: var(--clr-navy);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .photo-masonry {
+        columns: 3;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .photo-masonry {
+        columns: 2;
+      }
+    }
+  </style>
+
+  <style>
+    /* ── Scroll-reveal base ── */
+    ._rev {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .68s cubic-bezier(.16, 1, .3, 1), transform .68s cubic-bezier(.16, 1, .3, 1);
+    }
+
+    ._vis {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Branch Cards ── */
+    .branch-card {
+      background: var(--clr-bg-dark);
+      border-radius: 14px;
+      padding: 30px 26px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, .3);
+      transition: .36s cubic-bezier(.4, 0, .2, 1);
+      border-left: 3px solid transparent;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .branch-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(232, 168, 56, .06) 0%, transparent 55%);
+      opacity: 0;
+      transition: opacity .4s;
+      pointer-events: none;
+    }
+
+    .branch-card:hover {
+      border-left-color: var(--clr-accent);
+      box-shadow: 0 0 32px rgba(232, 168, 56, .2), 0 8px 28px rgba(26, 60, 94, .14);
+      transform: translateY(-4px);
+    }
+
+    .branch-card:hover::before {
+      opacity: 1;
+    }
+
+    .branch-card__loc {
+      font-size: .71rem;
+      color: var(--clr-accent);
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-weight: 600;
+      position: relative;
+      z-index: 1;
+    }
+
+    .branch-card h3 {
+      font-family: var(--ff-display);
+      font-size: 1.06rem;
+      color: var(--clr-primary);
+      position: relative;
+      z-index: 1;
+    }
+
+    .branch-card p {
+      font-size: .8rem;
+      color: var(--clr-text-soft);
+      line-height: 1.62;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── Full Branch Cards ── */
+    .branch-full-card {
+      background: var(--clr-bg-dark);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, .3);
+      transition: .36s cubic-bezier(.4, 0, .2, 1);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .branch-full-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg, rgba(232, 168, 56, .07) 0%, transparent 45%);
+      opacity: 0;
+      transition: opacity .42s;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .branch-full-card:hover {
+      box-shadow: 0 0 38px rgba(232, 168, 56, .2), 0 10px 32px rgba(26, 60, 94, .15);
+      transform: translateY(-5px);
+    }
+
+    .branch-full-card:hover::after {
+      opacity: 1;
+    }
+
+    .bfc__header {
+      height: 162px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.6rem;
+    }
+
+    .bfc__header--pune {
+      background: var(--clr-primary);
+    }
+
+    .bfc__header--hubli {
+      background: var(--clr-green);
+    }
+
+    .bfc__header--belgavi {
+      background: var(--clr-accent);
+    }
+
+    .bfc__header--solapur {
+      background: var(--clr-primary);
+    }
+
+    .bfc__header::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(100deg, transparent 30%, rgba(255, 255, 255, .12) 50%, transparent 70%);
+      background-size: 200% 100%;
+      animation: shimmer 3s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .bfc__city-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(255, 255, 255, .14);
+      backdrop-filter: blur(6px);
+      border-radius: 50px;
+      padding: 5px 14px;
+      font-size: .69rem;
+      color: #fff;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      z-index: 2;
+    }
+
+    .bfc__star {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: var(--clr-accent);
+      border-radius: 50px;
+      padding: 4px 11px;
+      font-size: .64rem;
+      color: var(--clr-navy);
+      font-weight: 700;
+      z-index: 2;
+      box-shadow: 0 2px 10px rgba(232, 168, 56, .35);
+    }
+
+    .bfc__body {
+      padding: 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      z-index: 2;
+    }
+
+    .bfc__body h3 {
+      font-family: var(--ff-display);
+      font-size: 1.14rem;
+      color: var(--clr-primary);
+      margin-bottom: 5px;
+    }
+
+    .bfc-tagline {
+      font-size: .77rem;
+      color: var(--clr-accent);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .bfc__body p {
+      font-size: .81rem;
+      color: var(--clr-text-soft);
+      line-height: 1.66;
+      flex: 1;
+    }
+
+    .bfc-details {
+      margin-top: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .bfc-detail {
+      font-size: .75rem;
+      color: var(--clr-text-soft);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .bfc-detail .d-icon {
+      color: var(--clr-primary);
+      font-size: .81rem;
+    }
+
+    .bfc-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 16px;
+      font-size: .79rem;
+      font-weight: 600;
+      color: var(--clr-primary);
+      transition: .3s;
+    }
+
+    .bfc-link:hover {
+      color: var(--clr-accent);
+      gap: 11px;
+    }
+
+    /* ── Value Cards ── */
+    .value-card {
+      background: var(--clr-bg-dark);
+      border-radius: 14px;
+      padding: 36px 30px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, .3);
+      text-align: center;
+      transition: .36s cubic-bezier(.4, 0, .2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .value-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--clr-accent), var(--clr-green), var(--clr-accent));
+      background-size: 200% 100%;
+      animation: borderFlow 3s linear infinite;
+      transform: scaleX(0);
+      transition: transform .38s cubic-bezier(.16, 1, .3, 1);
+      transform-origin: left;
+    }
+
+    .value-card:hover {
+      box-shadow: 0 0 34px rgba(232, 168, 56, .18), 0 8px 28px rgba(26, 60, 94, .14);
+      transform: translateY(-5px);
+    }
+
+    .value-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .value-card__icon {
+      width: 66px;
+      height: 66px;
+      margin: 0 auto 20px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.65rem;
+    }
+
+    .value-card__icon--1 {
+      background: rgba(26, 60, 94, .07);
+    }
+
+    .value-card__icon--2 {
+      background: rgba(46, 125, 82, .08);
+    }
+
+    .value-card__icon--3 {
+      background: rgba(232, 168, 56, .1);
+    }
+
+    .value-card__icon--4 {
+      background: rgba(26, 60, 94, .07);
+    }
+
+    .value-card h4 {
+      font-family: var(--ff-display);
+      font-size: 1.02rem;
+      color: var(--clr-primary);
+      margin-bottom: 8px;
+    }
+
+    .value-card p {
+      font-size: .79rem;
+      color: var(--clr-text-soft);
+      line-height: 1.66;
+    }
+
+    /* ── Panel Cards ── */
+    .panel-card {
+      background: var(--clr-bg-dark);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, .3);
+      transition: .36s cubic-bezier(.4, 0, .2, 1);
+      text-align: center;
+      position: relative;
+    }
+
+    .panel-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 55%, rgba(232, 168, 56, .06) 100%);
+      opacity: 0;
+      transition: opacity .4s;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .panel-card:hover {
+      box-shadow: 0 0 36px rgba(232, 168, 56, .2), 0 10px 34px rgba(26, 60, 94, .15);
+      transform: translateY(-5px);
+    }
+
+    .panel-card:hover::after {
+      opacity: 1;
+    }
+
+    .panel-card__avatar {
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .panel-card__avatar::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(100deg, transparent 32%, rgba(255, 255, 255, .1) 50%, transparent 68%);
+      background-size: 200% 100%;
+      animation: shimmer 3.4s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .panel-card__avatar--1 {
+      background: var(--clr-primary);
+    }
+
+    .panel-card__avatar--2 {
+      background: var(--clr-green);
+    }
+
+    .panel-card__avatar--3 {
+      background: var(--clr-accent);
+    }
+
+    .panel-card__avatar--4 {
+      background: var(--clr-primary);
+    }
+
+    .panel-card__info {
+      padding: 24px 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .panel-card__info h3 {
+      font-family: var(--ff-display);
+      font-size: 1.06rem;
+      color: var(--clr-primary);
+      margin-bottom: 4px;
+    }
+
+    .panel-card__info .role {
+      font-size: .72rem;
+      color: var(--clr-accent);
+      text-transform: uppercase;
+      letter-spacing: .11em;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .panel-card__info p {
+      font-size: .78rem;
+      color: var(--clr-text-soft);
+      line-height: 1.6;
+    }
+
+    /* ── Event Cards ── */
+    .event-card {
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, .3);
+      transition: .36s cubic-bezier(.4, 0, .2, 1);
+      background: var(--clr-bg-dark);
+      border: 1px solid rgba(255, 202, 40, .1);
+      position: relative;
+    }
+
+    .event-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(145deg, rgba(232, 168, 56, .06) 0%, transparent 48%);
+      opacity: 0;
+      transition: opacity .4s;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .event-card:hover {
+      box-shadow: 0 0 36px rgba(232, 168, 56, .2), 0 10px 32px rgba(26, 60, 94, .15);
+      transform: translateY(-5px);
+      border-color: rgba(232, 168, 56, .25);
+    }
+
+    .event-card:hover::before {
+      opacity: 1;
+    }
+
+    .event-card__header {
+      height: 182px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.8rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ec--1 {
+      background: var(--clr-primary)
+    }
+
+    .ec--2 {
+      background: var(--clr-accent)
+    }
+
+    .ec--3 {
+      background: var(--clr-green)
+    }
+
+    .ec--4 {
+      background: var(--clr-primary)
+    }
+
+    .ec--5 {
+      background: var(--clr-accent)
+    }
+
+    .ec--6 {
+      background: var(--clr-green)
+    }
+
+    .event-card__header::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(100deg, transparent 30%, rgba(255, 255, 255, .1) 50%, transparent 70%);
+      background-size: 200% 100%;
+      animation: shimmer 3.2s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .event-card__date-badge {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: rgba(255, 255, 255, .14);
+      backdrop-filter: blur(6px);
+      border-radius: 12px;
+      padding: 8px 14px;
+      text-align: center;
+      z-index: 2;
+    }
+
+    .edb-day {
+      font-family: var(--ff-display);
+      font-size: 1.3rem;
+      color: #fff;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .edb-mon {
+      font-size: .61rem;
+      color: rgba(255, 255, 255, .68);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .event-card__body {
+      padding: 22px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .event-card__body h3 {
+      font-family: var(--ff-display);
+      font-size: 1.06rem;
+      color: var(--clr-primary);
+      margin-bottom: 5px;
+    }
+
+    .ec-type {
+      font-size: .69rem;
+      color: var(--clr-accent);
+      text-transform: uppercase;
+      letter-spacing: .11em;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .event-card__body p {
+      font-size: .79rem;
+      color: var(--clr-text-soft);
+      line-height: 1.62;
+    }
+
+    /* ── Video Cards ── */
+    .video-card {
+      background: var(--clr-bg-dark);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, .3);
+      transition: .36s cubic-bezier(.4, 0, .2, 1);
+      cursor: pointer;
+      position: relative;
+    }
+
+    .video-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg, rgba(232, 168, 56, .07) 0%, transparent 50%);
+      opacity: 0;
+      transition: opacity .4s;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .video-card:hover {
+      box-shadow: 0 0 34px rgba(232, 168, 56, .2), 0 8px 30px rgba(26, 60, 94, .14);
+      transform: translateY(-4px);
+    }
+
+    .video-card:hover::before {
+      opacity: 1;
+    }
+
+    .video-card__thumb {
+      height: 192px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .vc--1 {
+      background: var(--clr-primary)
+    }
+
+    .vc--2 {
+      background: var(--clr-primary)
+    }
+
+    .vc--3 {
+      background: var(--clr-accent)
+    }
+
+    .vc--4 {
+      background: var(--clr-accent)
+    }
+
+    .video-card__thumb::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(100deg, transparent 30%, rgba(255, 255, 255, .09) 50%, transparent 70%);
+      background-size: 200% 100%;
+      animation: shimmer 3.6s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .video-card__play {
+      width: 56px;
+      height: 56px;
+      background: rgba(255, 255, 255, .93);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, .22);
+      transition: .32s cubic-bezier(.16, 1, .3, 1);
+      z-index: 2;
+      position: relative;
+    }
+
+    .video-card:hover .video-card__play {
+      transform: scale(1.14);
+      background: var(--clr-bg-dark);
+      box-shadow: 0 6px 24px rgba(0, 0, 0, .28);
+    }
+
+    .video-card__play svg {
+      width: 20px;
+      height: 20px;
+      fill: var(--clr-primary);
+      margin-left: 3px;
+    }
+
+    .video-card__duration {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      background: rgba(0, 0, 0, .56);
+      border-radius: 6px;
+      padding: 3px 9px;
+      font-size: .67rem;
+      color: #fff;
+      font-weight: 600;
+      z-index: 2;
+    }
+
+    .video-card__info {
+      padding: 18px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .video-card__info h4 {
+      font-size: .89rem;
+      color: var(--clr-primary);
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+
+    .vc-cat {
+      font-size: .71rem;
+      color: var(--clr-accent);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    /* ── Photo Items ── */
+    .photo-item {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      cursor: pointer;
+      margin-bottom: 16px;
+      break-inside: avoid;
+    }
+
+    .photo-item__img {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: rgba(255, 255, 255, .55);
+      transition: transform .48s cubic-bezier(.16, 1, .3, 1);
+    }
+
+    .photo-item:hover .photo-item__img {
+      transform: scale(1.06);
+    }
+
+    .photo-item__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(15, 33, 55, .72) 0%, transparent 56%);
+      opacity: 0;
+      transition: opacity .36s;
+      display: flex;
+      align-items: flex-end;
+      padding: 22px;
+    }
+
+    .photo-item:hover .photo-item__overlay {
+      opacity: 1;
+    }
+
+    .photo-item__overlay span {
+      color: #fff;
+      font-size: .81rem;
+      font-weight: 500;
+    }
+
+    .photo-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(100deg, transparent 30%, rgba(255, 255, 255, .08) 50%, transparent 70%);
+      background-size: 200% 100%;
+      animation: shimmer 4s ease-in-out infinite;
+      pointer-events: none;
+      border-radius: 14px;
+    }
+
+    .pi--h1 {
+      height: 222px
+    }
+
+    .pi--h2 {
+      height: 182px
+    }
+
+    .pi--h3 {
+      height: 244px
+    }
+
+    .pi--h4 {
+      height: 162px
+    }
+
+    .pi--h5 {
+      height: 202px
+    }
+
+    .pi--h6 {
+      height: 192px
+    }
+
+    .c1 {
+      background: var(--clr-primary)
+    }
+
+    .c2 {
+      background: var(--clr-green)
+    }
+
+    .c3 {
+      background: var(--clr-accent)
+    }
+
+    .c4 {
+      background: var(--clr-primary-light)
+    }
+
+    .c5 {
+      background: var(--clr-accent)
+    }
+
+    .c6 {
+      background: var(--clr-green)
+    }
+
+    .c7 {
+      background: var(--clr-primary)
+    }
+
+    .c8 {
+      background: var(--clr-accent)
+    }
+
+    /* ── Info Cards ── */
+    .info-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      padding: 22px;
+      background: var(--clr-bg-dark);
+      border-radius: 14px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, .3);
+      transition: .36s cubic-bezier(.4, 0, .2, 1);
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+
+    .info-card::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, var(--clr-accent), var(--clr-green));
+      transform: scaleY(0);
+      transition: transform .38s cubic-bezier(.16, 1, .3, 1);
+      transform-origin: top;
+    }
+
+    .info-card:hover {
+      box-shadow: 0 0 28px rgba(232, 168, 56, .18), 0 6px 22px rgba(26, 60, 94, .12);
+      transform: translateX(4px);
+    }
+
+    .info-card:hover::before {
+      transform: scaleY(1);
+    }
+
+    .info-card__icon {
+      width: 52px;
+      height: 52px;
+      min-width: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+    }
+
+    .ic--addr {
+      background: rgba(26, 60, 94, .07)
+    }
+
+    .ic--phone {
+      background: rgba(46, 125, 82, .09)
+    }
+
+    .ic--email {
+      background: rgba(232, 168, 56, .11)
+    }
+
+    .ic--corp {
+      background: rgba(26, 60, 94, .07)
+    }
+
+    .info-card__text .ic-label {
+      font-size: .69rem;
+      color: var(--clr-text-soft);
+      text-transform: uppercase;
+      letter-spacing: .11em;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .info-card__text .ic-value {
+      font-size: .87rem;
+      color: var(--clr-primary);
+      font-weight: 500;
+      line-height: 1.58;
+    }
+
+    .info-card__text .ic-value a {
+      color: var(--clr-primary);
+      transition: color .3s;
+    }
+
+    .info-card__text .ic-value a:hover {
+      color: var(--clr-accent);
+    }
+
+    /* ── FAQ ── */
+    .faq-item {
+      background: var(--clr-bg-dark);
+      border-radius: 14px;
+      padding: 28px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, .3);
+      transition: .36s cubic-bezier(.4, 0, .2, 1);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid transparent;
+    }
+
+    .faq-item::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--clr-accent), var(--clr-green));
+      transform: scaleX(0);
+      transition: transform .38s cubic-bezier(.16, 1, .3, 1);
+      transform-origin: left;
+    }
+
+    .faq-item:hover {
+      box-shadow: 0 0 28px rgba(232, 168, 56, .16), 0 6px 24px rgba(26, 60, 94, .12);
+      border-color: rgba(232, 168, 56, .18);
+    }
+
+    .faq-item:hover::before {
+      transform: scaleX(1);
+    }
+
+    .faq-item h4 {
+      font-size: .9rem;
+      color: var(--clr-primary);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .faq-item h4 .faq-icon {
+      color: var(--clr-accent);
+      font-size: .84rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .faq-item p {
+      font-size: .79rem;
+      color: var(--clr-text-soft);
+      line-height: 1.7;
+      padding-left: 22px;
+    }
+
+    /* ── Curriculum Cards (dark bg) ── */
+    .curriculum-card {
+      border-radius: 14px;
+      padding: 38px 30px;
+      border: 1px solid rgba(255, 255, 255, .07);
+      background: rgba(255, 255, 255, .04);
+      transition: .36s cubic-bezier(.4, 0, .2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .curriculum-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--clr-accent), var(--clr-green), var(--clr-accent));
+      background-size: 200% 100%;
+      animation: borderFlow 3s linear infinite;
+      transform: scaleX(0);
+      transition: transform .4s cubic-bezier(.16, 1, .3, 1);
+      transform-origin: left;
+    }
+
+    .curriculum-card:hover {
+      background: rgba(255, 255, 255, .08);
+      border-color: rgba(232, 168, 56, .28);
+    }
+
+    .curriculum-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .curriculum-card__icon {
+      font-size: 2rem;
+      margin-bottom: 18px;
+    }
+
+    .curriculum-card h3 {
+      color: #fff;
+      font-family: var(--ff-display);
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+
+    .curriculum-card p {
+      color: rgba(255, 255, 255, .48);
+      font-size: .81rem;
+      line-height: 1.72;
+    }
+
+    /* ── Hero trust ── */
+    .hero__trust-item {
+      text-align: center;
+    }
+
+    .hero__trust-item .num {
+      font-family: var(--ff-display);
+      font-size: 1.72rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .hero__trust-item .num span {
+      color: var(--clr-accent);
+    }
+
+    .hero__trust-item .lbl {
+      font-size: .71rem;
+      color: rgba(255, 255, 255, .42);
+      text-transform: uppercase;
+      letter-spacing: .11em;
+      margin-top: 3px;
+    }
+  </style>
 
 </head>
+
 <body>
 
-<!-- NAVBAR -->
-<nav class="navbar">
-  <div class="container navbar__inner">
-    <a href="index.html" class="navbar__logo">Aaryans<span>.</span></a>
-    <div class="navbar__nav">
-      <a href="index.html">Home</a>
-      <div class="nav-drop">
-        <a href="#" class="nav-drop__toggle">About <svg viewBox="0 0 12 12" fill="currentColor"><path d="M2 4l4 4 4-4"/></svg></a>
-        <div class="nav-drop__menu">
-          <a href="about.html">About Us</a>
-          <a href="about.html#vision">Vision &amp; Mission</a>
-          <a href="about.html#md">Managing Director</a>
-          <a href="about.html#panel">Director Panel</a>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container navbar__inner">
+      <a href="index.html" class="navbar__logo">Aaryans<span>.</span></a>
+      <div class="navbar__nav">
+        <a href="index.html">Home</a>
+        <div class="nav-drop">
+          <a href="#" class="nav-drop__toggle">About <svg viewBox="0 0 12 12" fill="currentColor">
+              <path d="M2 4l4 4 4-4" />
+            </svg></a>
+          <div class="nav-drop__menu">
+            <a href="about.html">About Us</a>
+            <a href="about.html#vision">Vision &amp; Mission</a>
+            <a href="about.html#md">Managing Director</a>
+            <a href="about.html#panel">Director Panel</a>
+          </div>
+        </div>
+        <div class="nav-drop">
+          <a href="#" class="nav-drop__toggle">Academics <svg viewBox="0 0 12 12" fill="currentColor">
+              <path d="M2 4l4 4 4-4" />
+            </svg></a>
+          <div class="nav-drop__menu">
+            <a href="academics.html#preprimary">Pre-Primary</a>
+            <a href="academics.html#primary">Primary</a>
+            <a href="academics.html#secondary">Secondary</a>
+          </div>
+        </div>
+        <a href="branches.html">Branches</a>
+        <div class="nav-drop">
+          <a href="#" class="nav-drop__toggle active">Gallery <svg viewBox="0 0 12 12" fill="currentColor">
+              <path d="M2 4l4 4 4-4" />
+            </svg></a>
+          <div class="nav-drop__menu">
+            <a href="gallery.html#photos">Photo Gallery</a>
+            <a href="gallery.html#events">Mega Events</a>
+            <a href="gallery.html#videos">Videos</a>
+          </div>
+        </div>
+        <a href="contact.html">Contact</a>
+      </div>
+      <a href="contact.html" class="navbar__cta">Quick Enquiry</a>
+      <div class="navbar__ham"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero" style="background-color:var(--clr-bg-dark);">
+    <div class="page-hero__bg"
+      style="background:linear-gradient(135deg,var(--clr-bg-darker),var(--clr-bg-dark),var(--clr-primary));"></div>
+    <div class="page-hero__overlay"></div>
+    <div class="page-hero__content">
+      <div class="breadcrumb"><a href="index.html">Home</a> &nbsp;›&nbsp; Gallery</div>
+      <span class="tag">Memories & Moments</span>
+      <h1>Gallery</h1>
+      <p>A glimpse into the vibrant life at Aaryans World School</p>
+    </div>
+  </section>
+
+  <!-- QUICK NAV -->
+  <div style="background: var(--clr-bg-dark);border-bottom:1px solid #eee;">
+    <div class="container">
+      <div class="gallery-tabs" style="padding-top:28px;">
+        <a href="#photos" class="gallery-tab active"><span class="gt-icon">📸</span> Photos</a>
+        <a href="#events" class="gallery-tab"><span class="gt-icon">🎪</span> Mega Events</a>
+        <a href="#videos" class="gallery-tab"><span class="gt-icon">🎬</span> Videos</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHOTO GALLERY -->
+  <section class="section-pad" id="photos" style="background: var(--clr-bg-dark);">
+    <div class="container">
+      <div class="section-heading">
+        <span class="tag">Photo Gallery</span>
+        <h2>Captured Moments</h2>
+        <p>Snapshots of learning, laughter, and life at AWS</p>
+      </div>
+      <div class="photo-masonry">
+        <div class="photo-item">
+          <div class="photo-item__img c1 pi--h1">🏃</div>
+          <div class="photo-item__overlay"><span>Sports Day — Inter-House Tournament</span></div>
+        </div>
+        <div class="photo-item">
+          <div class="photo-item__img c2 pi--h2">🎨</div>
+          <div class="photo-item__overlay"><span>Art Exhibition 2024</span></div>
+        </div>
+        <div class="photo-item">
+          <div class="photo-item__img c3 pi--h3">🎭</div>
+          <div class="photo-item__overlay"><span>Annual Day Performance</span></div>
+        </div>
+        <div class="photo-item">
+          <div class="photo-item__img c4 pi--h4">🌳</div>
+          <div class="photo-item__overlay"><span>Green Campus Walk</span></div>
+        </div>
+        <div class="photo-item">
+          <div class="photo-item__img c5 pi--h5">💻</div>
+          <div class="photo-item__overlay"><span>Smart Classroom Session</span></div>
+        </div>
+        <div class="photo-item">
+          <div class="photo-item__img c6 pi--h2">🎵</div>
+          <div class="photo-item__overlay"><span>Music Concert</span></div>
+        </div>
+        <div class="photo-item">
+          <div class="photo-item__img c7 pi--h4">🏆</div>
+          <div class="photo-item__overlay"><span>Award Ceremony</span></div>
+        </div>
+        <div class="photo-item">
+          <div class="photo-item__img c8 pi--h3">📚</div>
+          <div class="photo-item__overlay"><span>Library Day</span></div>
+        </div>
+        <div class="photo-item">
+          <div class="photo-item__img c1 pi--h5">🌱</div>
+          <div class="photo-item__overlay"><span>Nature Trail Activity</span></div>
+        </div>
+        <div class="photo-item">
+          <div class="photo-item__img c2 pi--h1">🤝</div>
+          <div class="photo-item__overlay"><span>Parent-Teacher Day</span></div>
+        </div>
+        <div class="photo-item">
+          <div class="photo-item__img c3 pi--h2">🎪</div>
+          <div class="photo-item__overlay"><span>Science Fair 2024</span></div>
+        </div>
+        <div class="photo-item">
+          <div class="photo-item__img c5 pi--h4">⚽</div>
+          <div class="photo-item__overlay"><span>Football Practice</span></div>
         </div>
       </div>
-      <div class="nav-drop">
-        <a href="#" class="nav-drop__toggle">Academics <svg viewBox="0 0 12 12" fill="currentColor"><path d="M2 4l4 4 4-4"/></svg></a>
-        <div class="nav-drop__menu">
-          <a href="academics.html#preprimary">Pre-Primary</a>
+    </div>
+  </section>
+
+  <!-- MEGA EVENTS -->
+  <section class="events-section section-pad" id="events">
+    <div class="container">
+      <div class="section-heading">
+        <span class="tag tag--green">Mega Events</span>
+        <h2>Annual Celebrations</h2>
+        <p>The highlights of our vibrant school year</p>
+      </div>
+      <div class="events-grid">
+        <div class="event-card">
+          <div class="event-card__header ec--1">🎓<div class="event-card__date-badge">
+              <div class="edb-day">15</div>
+              <div class="edb-mon">Jan</div>
+            </div>
+          </div>
+          <div class="event-card__body">
+            <div class="ec-type">Annual Event</div>
+            <h3>Republic Day Celebration</h3>
+            <p>A grand celebration of national pride with flag hoisting, cultural performances, and student addresses.
+            </p>
+          </div>
+        </div>
+        <div class="event-card">
+          <div class="event-card__header ec--2">🎪<div class="event-card__date-badge">
+              <div class="edb-day">22</div>
+              <div class="edb-mon">Mar</div>
+            </div>
+          </div>
+          <div class="event-card__body">
+            <div class="ec-type">Annual Day</div>
+            <h3>Annual Day &amp; Prize Distribution</h3>
+            <p>Our biggest celebration — honouring academic excellence, sports stars, and cultural achievers of the
+              year.</p>
+          </div>
+        </div>
+        <div class="event-card">
+          <div class="event-card__header ec--3">⚽<div class="event-card__date-badge">
+              <div class="edb-day">08</div>
+              <div class="edb-mon">Nov</div>
+            </div>
+          </div>
+          <div class="event-card__body">
+            <div class="ec-type">Sports</div>
+            <h3>Sports Day — Inter-House</h3>
+            <p>A week-long sporting extravaganza with track &amp; field, team sports, and exciting relay races.</p>
+          </div>
+        </div>
+        <div class="event-card">
+          <div class="event-card__header ec--4">🔬<div class="event-card__date-badge">
+              <div class="edb-day">19</div>
+              <div class="edb-mon">Sep</div>
+            </div>
+          </div>
+          <div class="event-card__body">
+            <div class="ec-type">Academic</div>
+            <h3>Science Fair 2024</h3>
+            <p>Students showcase innovative experiments and projects, inspiring curiosity and scientific thinking.</p>
+          </div>
+        </div>
+        <div class="event-card">
+          <div class="event-card__header ec--5">🎨<div class="event-card__date-badge">
+              <div class="edb-day">03</div>
+              <div class="edb-mon">Dec</div>
+            </div>
+          </div>
+          <div class="event-card__body">
+            <div class="ec-type">Cultural</div>
+            <h3>Art &amp; Culture Week</h3>
+            <p>A vibrant celebration of creativity — exhibitions, performances, and workshops across all campuses.</p>
+          </div>
+        </div>
+        <div class="event-card">
+          <div class="event-card__header ec--6">🌍<div class="event-card__date-badge">
+              <div class="edb-day">05</div>
+              <div class="edb-mon">Jun</div>
+            </div>
+          </div>
+          <div class="event-card__body">
+            <div class="ec-type">Special</div>
+            <h3>World Environment Day</h3>
+            <p>Tree plantations, eco-drives, and awareness campaigns to nurture our connection with nature.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIDEOS -->
+  <section class="videos-section section-pad" id="videos">
+    <div class="container">
+      <div class="section-heading">
+        <span class="tag">Videos</span>
+        <h2>Watch &amp; Explore</h2>
+        <p>Dive into the vibrant world of Aaryans through our video collection</p>
+      </div>
+      <div class="videos-grid">
+        <div class="video-card">
+          <div class="video-card__thumb vc--1">
+            <div class="video-card__play"><svg viewBox="0 0 24 24">
+                <polygon points="5,3 19,12 5,21" />
+              </svg></div>
+            <div class="video-card__duration">3:42</div>
+          </div>
+          <div class="video-card__info">
+            <div class="vc-cat">Campus Tour</div>
+            <h4>Welcome to Aaryans World School — Campus Tour 2024</h4>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-card__thumb vc--2">
+            <div class="video-card__play"><svg viewBox="0 0 24 24">
+                <polygon points="5,3 19,12 5,21" />
+              </svg></div>
+            <div class="video-card__duration">5:18</div>
+          </div>
+          <div class="video-card__info">
+            <div class="vc-cat">Annual Day</div>
+            <h4>Annual Day 2024 — Highlights &amp; Performances</h4>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-card__thumb vc--3">
+            <div class="video-card__play"><svg viewBox="0 0 24 24">
+                <polygon points="5,3 19,12 5,21" />
+              </svg></div>
+            <div class="video-card__duration">2:55</div>
+          </div>
+          <div class="video-card__info">
+            <div class="vc-cat">Sports</div>
+            <h4>Sports Day 2024 — Best Moments</h4>
+          </div>
+        </div>
+        <div class="video-card">
+          <div class="video-card__thumb vc--4">
+            <div class="video-card__play"><svg viewBox="0 0 24 24">
+                <polygon points="5,3 19,12 5,21" />
+              </svg></div>
+            <div class="video-card__duration">4:10</div>
+          </div>
+          <div class="video-card__info">
+            <div class="vc-cat">Academics</div>
+            <h4>Inside the Smart Classroom — Learning Reimagined</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHARE BANNER -->
+  <section class="share-banner">
+    <div class="container">
+      <h2>Enjoyed Browsing? Share the Love!</h2>
+      <p>Follow us on social media for daily updates from our campuses.</p>
+      <div class="social-row">
+        <a href="#" class="social-btn">📘 Facebook</a>
+        <a href="#" class="social-btn">📸 Instagram</a>
+        <a href="#" class="social-btn">🐦 Twitter</a>
+        <a href="#" class="social-btn">▶️ YouTube</a>
+        <a href="#" class="social-btn">💼 LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__brand-title">Aaryans<span>.</span> World School</div>
+          <p>Established in 2005, nurturing minds and building character across 16 campuses in 4 cities. Excellence in
+            education — always.</p>
+        </div>
+        <div class="footer__col">
+          <h4>Quick Links</h4>
+          <a href="about.html">About Us</a>
+          <a href="academics.html#preprimary">Pre Primary</a>
           <a href="academics.html#primary">Primary</a>
           <a href="academics.html#secondary">Secondary</a>
+          <a href="gallery.html">Gallery</a>
+        </div>
+        <div class="footer__col">
+          <h4>Premium Ventures</h4>
+          <a href="#">Aaryans YO Bhajiwala</a>
+          <a href="#">Aaryans Commando Training</a>
+          <a href="#">Aaryans Farm Fresh</a>
+          <a href="#">Aaryans Preschool</a>
+          <a href="#">Aaryans Edutainment Park</a>
+        </div>
+        <div class="footer__col footer__contact">
+          <h4>Contact</h4>
+          <p><span class="icon">📍</span> Bhilarewadi, Pune – 411046</p>
+          <p><span class="icon">📞</span> +91 96997 74488</p>
+          <p><span class="icon">✉️</span> <a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+              data-cfemail="f49595868d959a87839b86989087979c9b9b98b49399959d98da979b99">[email&#160;protected]</a></p>
         </div>
       </div>
-      <a href="branches.html">Branches</a>
-      <div class="nav-drop">
-        <a href="#" class="nav-drop__toggle active">Gallery <svg viewBox="0 0 12 12" fill="currentColor"><path d="M2 4l4 4 4-4"/></svg></a>
-        <div class="nav-drop__menu">
-          <a href="gallery.html#photos">Photo Gallery</a>
-          <a href="gallery.html#events">Mega Events</a>
-          <a href="gallery.html#videos">Videos</a>
+      <div class="footer__bottom">
+        <span>© 2025 Aaryans World School. All Rights Reserved.</span>
+        <div class="footer__socials">
+          <a href="#">f</a><a href="#"></a>
         </div>
       </div>
-      <a href="contact.html">Contact</a>
     </div>
-    <a href="contact.html" class="navbar__cta">Quick Enquiry</a>
-    <div class="navbar__ham"><span></span><span></span><span></span></div>
-  </div>
-</nav>
+  </footer>
 
-<!-- PAGE HERO -->
-<section class="page-hero" style="background-color:#1a3c5e;">
-  <div class="page-hero__bg" style="background:linear-gradient(135deg,#2e7d52,#1a3c5e,#e8a838);"></div>
-  <div class="page-hero__overlay"></div>
-  <div class="page-hero__content">
-    <div class="breadcrumb"><a href="index.html">Home</a> &nbsp;›&nbsp; Gallery</div>
-    <span class="tag">Memories & Moments</span>
-    <h1>Gallery</h1>
-    <p>A glimpse into the vibrant life at Aaryans World School</p>
-  </div>
-</section>
+  <script>
+    const ham = document.querySelector(".navbar__ham");
+    const nav = document.querySelector(".navbar__nav");
+    const cta = document.querySelector(".navbar__cta");
+    const navDrops = document.querySelectorAll(".nav-drop");
 
-<!-- QUICK NAV -->
-<div style="background:#fff;border-bottom:1px solid #eee;">
-  <div class="container">
-    <div class="gallery-tabs" style="padding-top:28px;">
-      <a href="#photos" class="gallery-tab active"><span class="gt-icon">📸</span> Photos</a>
-      <a href="#events" class="gallery-tab"><span class="gt-icon">🎪</span> Mega Events</a>
-      <a href="#videos" class="gallery-tab"><span class="gt-icon">🎬</span> Videos</a>
-    </div>
-  </div>
-</div>
+    if (ham && nav && cta) {
+      ham.addEventListener("click", () => {
+        ham.classList.toggle("active");
+        nav.classList.toggle("active");
+        cta.classList.toggle("active");
+        document.body.classList.toggle("nav-open");
+      });
+    }
 
-<!-- PHOTO GALLERY -->
-<section class="section-pad" id="photos" style="background:var(--clr-cream);">
-  <div class="container">
-    <div class="section-heading">
-      <span class="tag">Photo Gallery</span>
-      <h2>Captured Moments</h2>
-      <p>Snapshots of learning, laughter, and life at AWS</p>
-    </div>
-    <div class="photo-masonry">
-      <div class="photo-item"><div class="photo-item__img c1 pi--h1">🏃</div><div class="photo-item__overlay"><span>Sports Day — Inter-House Tournament</span></div></div>
-      <div class="photo-item"><div class="photo-item__img c2 pi--h2">🎨</div><div class="photo-item__overlay"><span>Art Exhibition 2024</span></div></div>
-      <div class="photo-item"><div class="photo-item__img c3 pi--h3">🎭</div><div class="photo-item__overlay"><span>Annual Day Performance</span></div></div>
-      <div class="photo-item"><div class="photo-item__img c4 pi--h4">🌳</div><div class="photo-item__overlay"><span>Green Campus Walk</span></div></div>
-      <div class="photo-item"><div class="photo-item__img c5 pi--h5">💻</div><div class="photo-item__overlay"><span>Smart Classroom Session</span></div></div>
-      <div class="photo-item"><div class="photo-item__img c6 pi--h2">🎵</div><div class="photo-item__overlay"><span>Music Concert</span></div></div>
-      <div class="photo-item"><div class="photo-item__img c7 pi--h4">🏆</div><div class="photo-item__overlay"><span>Award Ceremony</span></div></div>
-      <div class="photo-item"><div class="photo-item__img c8 pi--h3">📚</div><div class="photo-item__overlay"><span>Library Day</span></div></div>
-      <div class="photo-item"><div class="photo-item__img c1 pi--h5">🌱</div><div class="photo-item__overlay"><span>Nature Trail Activity</span></div></div>
-      <div class="photo-item"><div class="photo-item__img c2 pi--h1">🤝</div><div class="photo-item__overlay"><span>Parent-Teacher Day</span></div></div>
-      <div class="photo-item"><div class="photo-item__img c3 pi--h2">🎪</div><div class="photo-item__overlay"><span>Science Fair 2024</span></div></div>
-      <div class="photo-item"><div class="photo-item__img c5 pi--h4">⚽</div><div class="photo-item__overlay"><span>Football Practice</span></div></div>
-    </div>
-  </div>
-</section>
+    navDrops.forEach(drop => {
+      const toggle = drop.querySelector(".nav-drop__toggle");
+      if (toggle) {
+        toggle.addEventListener("click", (e) => {
+          if (window.innerWidth <= 680) {
+            e.preventDefault();
+            navDrops.forEach(otherDrop => {
+              if (otherDrop !== drop) {
+                otherDrop.classList.remove("open");
+              }
+            });
+            drop.classList.toggle("open");
+          }
+        });
+      }
+    });
 
-<!-- MEGA EVENTS -->
-<section class="events-section section-pad" id="events">
-  <div class="container">
-    <div class="section-heading">
-      <span class="tag tag--green">Mega Events</span>
-      <h2>Annual Celebrations</h2>
-      <p>The highlights of our vibrant school year</p>
-    </div>
-    <div class="events-grid">
-      <div class="event-card">
-        <div class="event-card__header ec--1">🎓<div class="event-card__date-badge"><div class="edb-day">15</div><div class="edb-mon">Jan</div></div></div>
-        <div class="event-card__body">
-          <div class="ec-type">Annual Event</div>
-          <h3>Republic Day Celebration</h3>
-          <p>A grand celebration of national pride with flag hoisting, cultural performances, and student addresses.</p>
-        </div>
-      </div>
-      <div class="event-card">
-        <div class="event-card__header ec--2">🎪<div class="event-card__date-badge"><div class="edb-day">22</div><div class="edb-mon">Mar</div></div></div>
-        <div class="event-card__body">
-          <div class="ec-type">Annual Day</div>
-          <h3>Annual Day &amp; Prize Distribution</h3>
-          <p>Our biggest celebration — honouring academic excellence, sports stars, and cultural achievers of the year.</p>
-        </div>
-      </div>
-      <div class="event-card">
-        <div class="event-card__header ec--3">⚽<div class="event-card__date-badge"><div class="edb-day">08</div><div class="edb-mon">Nov</div></div></div>
-        <div class="event-card__body">
-          <div class="ec-type">Sports</div>
-          <h3>Sports Day — Inter-House</h3>
-          <p>A week-long sporting extravaganza with track &amp; field, team sports, and exciting relay races.</p>
-        </div>
-      </div>
-      <div class="event-card">
-        <div class="event-card__header ec--4">🔬<div class="event-card__date-badge"><div class="edb-day">19</div><div class="edb-mon">Sep</div></div></div>
-        <div class="event-card__body">
-          <div class="ec-type">Academic</div>
-          <h3>Science Fair 2024</h3>
-          <p>Students showcase innovative experiments and projects, inspiring curiosity and scientific thinking.</p>
-        </div>
-      </div>
-      <div class="event-card">
-        <div class="event-card__header ec--5">🎨<div class="event-card__date-badge"><div class="edb-day">03</div><div class="edb-mon">Dec</div></div></div>
-        <div class="event-card__body">
-          <div class="ec-type">Cultural</div>
-          <h3>Art &amp; Culture Week</h3>
-          <p>A vibrant celebration of creativity — exhibitions, performances, and workshops across all campuses.</p>
-        </div>
-      </div>
-      <div class="event-card">
-        <div class="event-card__header ec--6">🌍<div class="event-card__date-badge"><div class="edb-day">05</div><div class="edb-mon">Jun</div></div></div>
-        <div class="event-card__body">
-          <div class="ec-type">Special</div>
-          <h3>World Environment Day</h3>
-          <p>Tree plantations, eco-drives, and awareness campaigns to nurture our connection with nature.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    document.addEventListener("click", (e) => {
+      if (window.innerWidth <= 680 && ham && nav && cta) {
+        if (!e.target.closest(".navbar") && !e.target.closest(".navbar__ham")) {
+          ham.classList.remove("active");
+          nav.classList.remove("active");
+          cta.classList.remove("active");
+          document.body.classList.remove("nav-open");
+          navDrops.forEach(drop => drop.classList.remove("open"));
+        }
+      }
+    });
 
-<!-- VIDEOS -->
-<section class="videos-section section-pad" id="videos">
-  <div class="container">
-    <div class="section-heading">
-      <span class="tag">Videos</span>
-      <h2>Watch &amp; Explore</h2>
-      <p>Dive into the vibrant world of Aaryans through our video collection</p>
-    </div>
-    <div class="videos-grid">
-      <div class="video-card">
-        <div class="video-card__thumb vc--1">
-          <div class="video-card__play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
-          <div class="video-card__duration">3:42</div>
-        </div>
-        <div class="video-card__info">
-          <div class="vc-cat">Campus Tour</div>
-          <h4>Welcome to Aaryans World School — Campus Tour 2024</h4>
-        </div>
-      </div>
-      <div class="video-card">
-        <div class="video-card__thumb vc--2">
-          <div class="video-card__play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
-          <div class="video-card__duration">5:18</div>
-        </div>
-        <div class="video-card__info">
-          <div class="vc-cat">Annual Day</div>
-          <h4>Annual Day 2024 — Highlights &amp; Performances</h4>
-        </div>
-      </div>
-      <div class="video-card">
-        <div class="video-card__thumb vc--3">
-          <div class="video-card__play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
-          <div class="video-card__duration">2:55</div>
-        </div>
-        <div class="video-card__info">
-          <div class="vc-cat">Sports</div>
-          <h4>Sports Day 2024 — Best Moments</h4>
-        </div>
-      </div>
-      <div class="video-card">
-        <div class="video-card__thumb vc--4">
-          <div class="video-card__play"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
-          <div class="video-card__duration">4:10</div>
-        </div>
-        <div class="video-card__info">
-          <div class="vc-cat">Academics</div>
-          <h4>Inside the Smart Classroom — Learning Reimagined</h4>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 680 && ham && nav && cta) {
+        ham.classList.remove("active");
+        nav.classList.remove("active");
+        cta.classList.remove("active");
+        document.body.classList.remove("nav-open");
+        navDrops.forEach(drop => drop.classList.remove("open"));
+      }
+    });
+  </script>
+</body>
 
-<!-- SHARE BANNER -->
-<section class="share-banner">
-  <div class="container">
-    <h2>Enjoyed Browsing? Share the Love!</h2>
-    <p>Follow us on social media for daily updates from our campuses.</p>
-    <div class="social-row">
-      <a href="#" class="social-btn">📘 Facebook</a>
-      <a href="#" class="social-btn">📸 Instagram</a>
-      <a href="#" class="social-btn">🐦 Twitter</a>
-      <a href="#" class="social-btn">▶️ YouTube</a>
-      <a href="#" class="social-btn">💼 LinkedIn</a>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer__grid">
-      <div class="footer__brand">
-        <div class="footer__brand-title">Aaryans<span>.</span> World School</div>
-        <p>Established in 2005, nurturing minds and building character across 16 campuses in 4 cities. Excellence in education — always.</p>
-      </div>
-      <div class="footer__col">
-        <h4>Quick Links</h4>
-        <a href="about.html">About Us</a>
-        <a href="academics.html#preprimary">Pre Primary</a>
-        <a href="academics.html#primary">Primary</a>
-        <a href="academics.html#secondary">Secondary</a>
-        <a href="gallery.html">Gallery</a>
-      </div>
-      <div class="footer__col">
-        <h4>Premium Ventures</h4>
-        <a href="#">Aaryans YO Bhajiwala</a>
-        <a href="#">Aaryans Commando Training</a>
-        <a href="#">Aaryans Farm Fresh</a>
-        <a href="#">Aaryans Preschool</a>
-        <a href="#">Aaryans Edutainment Park</a>
-      </div>
-      <div class="footer__col footer__contact">
-        <h4>Contact</h4>
-        <p><span class="icon">📍</span> Bhilarewadi, Pune – 411046</p>
-        <p><span class="icon">📞</span> +91 96997 74488</p>
-        <p><span class="icon">✉️</span> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f49595868d959a87839b86989087979c9b9b98b49399959d98da979b99">[email&#160;protected]</a></p>
-      </div>
-    </div>
-    <div class="footer__bottom">
-      <span>© 2025 Aaryans World School. All Rights Reserved.</span>
-      <div class="footer__socials">
-        <a href="#">f</a><a hr
+</html>

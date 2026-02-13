@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -14,16 +14,39 @@
       display: flex;
       align-items: center;
       overflow: hidden;
-      background: var(--clr-navy);
+      background: var(--clr-bg-dark);
     }
 
     .hero__bg {
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 80% 60% at 70% 50%, rgba(46, 125, 82, .18) 0%, transparent 70%),
-        radial-gradient(ellipse 60% 70% at 20% 80%, rgba(232, 168, 56, .08) 0%, transparent 60%),
-        linear-gradient(160deg, #08d22a 0%, #0ecfe4 50%, #0f2137 100%);
+        radial-gradient(ellipse 80% 60% at 70% 50%, rgba(255, 202, 40, .08) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 70% at 20% 80%, rgba(255, 167, 38, .06) 0%, transparent 60%),
+        linear-gradient(160deg, #060911 0%, #0A0E27 50%, #060911 100%);
+    }
+
+    /* Noise texture overlay */
+    .hero__bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+      opacity: 0.6;
+      mix-blend-mode: overlay;
+      pointer-events: none;
+    }
+
+    /* Dotted grid pattern */
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(255, 202, 40, 0.15) 1px, transparent 1px);
+      background-size: 50px 50px;
+      opacity: 0.15;
+      pointer-events: none;
+      z-index: 1;
     }
 
     /* Decorative circles */
@@ -32,6 +55,7 @@
       border-radius: 50%;
       border: 1px solid rgba(255, 255, 255, .06);
       pointer-events: none;
+      animation: float 8s ease-in-out infinite;
     }
 
     .hero__deco--1 {
@@ -39,6 +63,9 @@
       height: 500px;
       top: -120px;
       right: -100px;
+      background: radial-gradient(circle at 30% 40%, rgba(255, 202, 40, 0.03), transparent 70%);
+      animation-delay: 0s;
+      animation-duration: 10s;
     }
 
     .hero__deco--2 {
@@ -46,7 +73,10 @@
       height: 300px;
       bottom: -80px;
       left: -60px;
-      border-color: rgba(232, 168, 56, .12);
+      border-color: rgba(255, 202, 40, .12);
+      background: radial-gradient(circle at 60% 50%, rgba(255, 167, 38, 0.04), transparent 65%);
+      animation-delay: 1s;
+      animation-duration: 12s;
     }
 
     .hero__deco--3 {
@@ -54,7 +84,10 @@
       height: 180px;
       top: 30%;
       left: 12%;
-      border-color: rgba(46, 125, 82, .15);
+      border-color: rgba(102, 187, 106, .15);
+      background: radial-gradient(circle at 50% 50%, rgba(102, 187, 106, 0.04), transparent 60%);
+      animation-delay: 2s;
+      animation-duration: 9s;
     }
 
     .hero__content {
@@ -161,7 +194,7 @@
       top: 0;
       left: 50%;
       transform: translateX(-50%);
-      background: linear-gradient(135deg, #2e7d52, #1a3c5e);
+      background: var(--clr-primary);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -169,7 +202,7 @@
       font-family: var(--ff-display);
       font-size: 1rem;
       text-align: center;
-      padding: 24px;
+      padding: 6px;
       line-height: 1.5;
     }
 
@@ -195,7 +228,7 @@
       height: 140px;
       bottom: 10px;
       right: 0;
-      background: linear-gradient(135deg, #1a3c5e, #2a5a8a);
+      background: var(--clr-primary);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -210,7 +243,7 @@
       position: absolute;
       top: 16px;
       right: 8px;
-      background: #fff;
+      background: var(--clr-bg-card);
       border-radius: 14px;
       padding: 12px 18px;
       box-shadow: var(--shadow-md);
@@ -246,7 +279,7 @@
 
     /* ── About Strip ── */
     .about-strip {
-      background: #fff;
+      background: var(--clr-bg-dark);
       padding: 90px 0;
     }
 
@@ -266,7 +299,7 @@
       width: 100%;
       height: 100%;
       border-radius: var(--radius);
-      background: linear-gradient(135deg, #2e7d52 0%, #1a3c5e 100%);
+      background: var(--clr-bg-card);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -365,7 +398,7 @@
 
     /* ── Branches Preview ── */
     .branches-preview {
-      background: var(--clr-cream);
+      background: var(--clr-bg-dark);
     }
 
     .branches-grid {
@@ -375,7 +408,7 @@
     }
 
     .branch-card {
-      background: #fff;
+      background: var(--clr-bg-card);
       border-radius: var(--radius);
       padding: 28px 24px;
       box-shadow: var(--shadow-sm);
@@ -419,7 +452,7 @@
 
     /* ── Gallery Teaser ── */
     .gallery-teaser {
-      background: #fff;
+      background: var(--clr-bg-dark);
     }
 
     .gallery-grid {
@@ -450,22 +483,20 @@
     .gallery-item__overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(15, 33, 55, .6) 0%, transparent 60%);
+      background: rgba(0, 0, 0, .25);
       display: flex;
       align-items: flex-end;
       padding: 20px;
       opacity: 0;
-      transition: opacity .35s;
+      transition: opacity .4s ease;
     }
 
     .gallery-item:hover .gallery-item__overlay {
       opacity: 1;
     }
 
-    .gallery-item__overlay span {
-      color: #fff;
-      font-size: .82rem;
-      font-weight: 500;
+    .gallery-item:hover .gallery-item__bg {
+      filter: brightness(1.08);
     }
 
     .gallery-item--wide {
@@ -527,7 +558,7 @@
 
     /* ── Contact Teaser ── */
     .contact-teaser {
-      background: var(--clr-cream);
+      background: var(--clr-bg-dark);
     }
 
     .contact-teaser__grid {
@@ -590,7 +621,7 @@
 
     /* Enquiry mini-form */
     .enquiry-form {
-      background: #fff;
+      background: var(--clr-bg-card);
       border-radius: var(--radius);
       padding: 36px;
       box-shadow: var(--shadow-md);
@@ -640,7 +671,7 @@
     .form-row input:focus,
     .form-row select:focus {
       border-color: var(--clr-primary);
-      background: #fff;
+      background: var(--clr-cream);
     }
 
     .form-row select {
@@ -653,10 +684,13 @@
       .hero__content {
         grid-template-columns: 1fr;
         text-align: center;
+        padding: 100px 0 60px;
+        gap: 30px;
       }
 
       .hero__text p {
         max-width: 100%;
+        margin-inline: auto;
       }
 
       .hero__btns {
@@ -671,32 +705,92 @@
         display: none;
       }
 
-      .about-strip__grid,
-      .contact-teaser__grid {
+      .about-strip__grid {
         grid-template-columns: 1fr;
+        gap: 30px;
       }
 
       .about-strip__visual {
-        height: 280px;
+        height: 260px;
+      }
+
+      .contact-teaser__grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
       }
 
       .gallery-grid {
         grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(2, 160px);
+        grid-template-rows: repeat(3, 160px);
       }
 
       .gallery-item--wide {
         grid-column: span 1;
       }
+
+      .branches-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+
+      .cta-banner {
+        padding: 60px 0;
+      }
+
+      .cta-banner .btn {
+        margin: 6px;
+      }
     }
 
     @media (max-width: 560px) {
-      .enquiry-form {
-        padding: 24px;
+      .hero__content {
+        padding: 90px 0 50px;
+      }
+
+      .hero__text h1 {
+        font-size: 2rem;
+      }
+
+      .hero__trust {
+        gap: 20px;
+      }
+
+      .hero__trust-item .num {
+        font-size: 1.4rem;
+      }
+
+      .about-strip__visual {
+        height: 220px;
+      }
+
+      .branches-grid {
+        grid-template-columns: 1fr;
       }
 
       .gallery-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+      }
+
+      .gallery-item {
+        aspect-ratio: 16/9;
+      }
+
+      .gallery-item--wide {
+        grid-column: span 1;
+      }
+
+      .enquiry-form {
+        padding: 24px 18px;
+      }
+
+      .cta-banner .btn {
+        padding: 12px 24px;
+        font-size: .85rem;
+      }
+
+      .section-heading h2 {
+        font-size: 1.6rem;
       }
     }
   </style>
@@ -716,10 +810,10 @@
 
     /* ── Branch Cards ── */
     .branch-card {
-      background: #fff;
+      background: var(--clr-bg-card);
       border-radius: 14px;
       padding: 30px 26px;
-      box-shadow: 0 2px 10px rgba(26, 60, 94, .1);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, .3);
       transition: .36s cubic-bezier(.4, 0, .2, 1);
       border-left: 3px solid transparent;
       position: relative;
@@ -733,7 +827,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(232, 168, 56, .06) 0%, transparent 55%);
+      background: rgba(255, 202, 40, 0.03);
       opacity: 0;
       transition: opacity .4s;
       pointer-events: none;
@@ -741,7 +835,7 @@
 
     .branch-card:hover {
       border-left-color: var(--clr-accent);
-      box-shadow: 0 0 32px rgba(232, 168, 56, .2), 0 8px 28px rgba(26, 60, 94, .14);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
       transform: translateY(-4px);
     }
 
@@ -777,7 +871,7 @@
 
     /* ── Full Branch Cards ── */
     .branch-full-card {
-      background: #fff;
+      background: var(--clr-bg-card);
       border-radius: 14px;
       overflow: hidden;
       box-shadow: 0 2px 10px rgba(26, 60, 94, .1);
@@ -817,19 +911,19 @@
     }
 
     .bfc__header--pune {
-      background: linear-gradient(145deg, #1a3c5e, #2a5a8a);
+      background: var(--clr-primary);
     }
 
     .bfc__header--hubli {
-      background: linear-gradient(145deg, #2e7d52, #4caf76);
+      background: var(--clr-primary);
     }
 
     .bfc__header--belgavi {
-      background: linear-gradient(145deg, #e8a838, #c8882a);
+      background: var(--clr-primary);
     }
 
     .bfc__header--solapur {
-      background: linear-gradient(145deg, #2a5a8a, #1a3c5e);
+      background: var(--clr-primary);
     }
 
     .bfc__header::after {
@@ -940,14 +1034,15 @@
 
     /* ── Value Cards ── */
     .value-card {
-      background: #fff;
+      background: var(--clr-bg-card);
       border-radius: 14px;
       padding: 36px 30px;
-      box-shadow: 0 2px 10px rgba(26, 60, 94, .1);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, .3);
       text-align: center;
       transition: .36s cubic-bezier(.4, 0, .2, 1);
       position: relative;
       overflow: hidden;
+      border: 1px solid rgba(255, 202, 40, 0.08);
     }
 
     .value-card::before {
@@ -986,19 +1081,19 @@
     }
 
     .value-card__icon--1 {
-      background: rgba(26, 60, 94, .07);
+      background: rgba(255, 167, 38, .12);
     }
 
     .value-card__icon--2 {
-      background: rgba(46, 125, 82, .08);
+      background: rgba(102, 187, 106, .12);
     }
 
     .value-card__icon--3 {
-      background: rgba(232, 168, 56, .1);
+      background: rgba(255, 202, 40, .12);
     }
 
     .value-card__icon--4 {
-      background: rgba(26, 60, 94, .07);
+      background: rgba(255, 167, 38, .12);
     }
 
     .value-card h4 {
@@ -1016,13 +1111,14 @@
 
     /* ── Panel Cards ── */
     .panel-card {
-      background: #fff;
+      background: var(--clr-bg-card);
       border-radius: 14px;
       overflow: hidden;
-      box-shadow: 0 2px 10px rgba(26, 60, 94, .1);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, .3);
       transition: .36s cubic-bezier(.4, 0, .2, 1);
       text-align: center;
       position: relative;
+      border: 1px solid rgba(255, 202, 40, 0.08);
     }
 
     .panel-card::after {
@@ -1066,19 +1162,19 @@
     }
 
     .panel-card__avatar--1 {
-      background: linear-gradient(145deg, #1a3c5e, #2a5a8a);
+      background: var(--clr-primary);
     }
 
     .panel-card__avatar--2 {
-      background: linear-gradient(145deg, #2e7d52, #4caf76);
+      background: var(--clr-green);
     }
 
     .panel-card__avatar--3 {
-      background: linear-gradient(145deg, #e8a838, #c8882a);
+      background: var(--clr-accent);
     }
 
     .panel-card__avatar--4 {
-      background: linear-gradient(145deg, #2a5a8a, #1a3c5e);
+      background: var(--clr-primary);
     }
 
     .panel-card__info {
@@ -1113,10 +1209,10 @@
     .event-card {
       border-radius: 14px;
       overflow: hidden;
-      box-shadow: 0 2px 10px rgba(26, 60, 94, .1);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, .3);
       transition: .36s cubic-bezier(.4, 0, .2, 1);
-      background: #fff;
-      border: 1px solid #f0ebe0;
+      background: var(--clr-bg-card);
+      border: 1px solid rgba(255, 202, 40, .1);
       position: relative;
     }
 
@@ -1152,27 +1248,27 @@
     }
 
     .ec--1 {
-      background: linear-gradient(145deg, #1a3c5e, #2a5a8a)
+      background: var(--clr-primary)
     }
 
     .ec--2 {
-      background: linear-gradient(145deg, #e8a838, #c8882a)
+      background: var(--clr-accent)
     }
 
     .ec--3 {
-      background: linear-gradient(145deg, #2e7d52, #4caf76)
+      background: var(--clr-green)
     }
 
     .ec--4 {
-      background: linear-gradient(145deg, #2a5a8a, #1a3c5e)
+      background: var(--clr-primary)
     }
 
     .ec--5 {
-      background: linear-gradient(145deg, #c8882a, #2e7d52)
+      background: var(--clr-accent)
     }
 
     .ec--6 {
-      background: linear-gradient(145deg, #4caf76, #1a3c5e)
+      background: var(--clr-green)
     }
 
     .event-card__header::after {
@@ -1242,13 +1338,14 @@
 
     /* ── Video Cards ── */
     .video-card {
-      background: #fff;
+      background: var(--clr-bg-card);
       border-radius: 14px;
       overflow: hidden;
-      box-shadow: 0 2px 10px rgba(26, 60, 94, .1);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, .3);
       transition: .36s cubic-bezier(.4, 0, .2, 1);
       cursor: pointer;
       position: relative;
+      border: 1px solid rgba(255, 202, 40, 0.08);
     }
 
     .video-card::before {
@@ -1281,19 +1378,19 @@
     }
 
     .vc--1 {
-      background: linear-gradient(145deg, #0f2137, #1a3c5e)
+      background: var(--clr-primary)
     }
 
     .vc--2 {
-      background: linear-gradient(145deg, #1a3c5e, #2e7d52)
+      background: var(--clr-green)
     }
 
     .vc--3 {
-      background: linear-gradient(145deg, #2e7d52, #e8a838)
+      background: var(--clr-accent)
     }
 
     .vc--4 {
-      background: linear-gradient(145deg, #e8a838, #1a3c5e)
+      background: var(--clr-primary)
     }
 
     .video-card__thumb::after {
@@ -1448,35 +1545,35 @@
     }
 
     .c1 {
-      background: linear-gradient(145deg, #1a3c5e, #2a5a8a)
+      background: var(--clr-primary)
     }
 
     .c2 {
-      background: linear-gradient(145deg, #2e7d52, #4caf76)
+      background: var(--clr-green)
     }
 
     .c3 {
-      background: linear-gradient(145deg, #e8a838, #c8882a)
+      background: var(--clr-accent)
     }
 
     .c4 {
-      background: linear-gradient(145deg, #2a5a8a, #4caf76)
+      background: var(--clr-primary-light)
     }
 
     .c5 {
-      background: linear-gradient(145deg, #c8882a, #1a3c5e)
+      background: var(--clr-accent)
     }
 
     .c6 {
-      background: linear-gradient(145deg, #4caf76, #e8a838)
+      background: var(--clr-green)
     }
 
     .c7 {
-      background: linear-gradient(145deg, #0f2137, #2e7d52)
+      background: var(--clr-primary)
     }
 
     .c8 {
-      background: linear-gradient(145deg, #1a3c5e, #e8a838)
+      background: var(--clr-accent)
     }
 
     /* ── Info Cards ── */
@@ -1485,13 +1582,14 @@
       align-items: flex-start;
       gap: 18px;
       padding: 22px;
-      background: #fff;
+      background: var(--clr-bg-card);
       border-radius: 14px;
-      box-shadow: 0 2px 10px rgba(26, 60, 94, .1);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, .3);
       transition: .36s cubic-bezier(.4, 0, .2, 1);
       position: relative;
       overflow: hidden;
       margin-bottom: 16px;
+      border: 1px solid rgba(255, 202, 40, 0.08);
     }
 
     .info-card::before {
@@ -1570,14 +1668,14 @@
 
     /* ── FAQ ── */
     .faq-item {
-      background: #fff;
+      background: var(--clr-bg-card);
       border-radius: 14px;
       padding: 28px;
-      box-shadow: 0 2px 10px rgba(26, 60, 94, .1);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, .3);
       transition: .36s cubic-bezier(.4, 0, .2, 1);
       position: relative;
       overflow: hidden;
-      border: 1px solid transparent;
+      border: 1px solid rgba(255, 202, 40, 0.08);
     }
 
     .faq-item::before {
@@ -1701,11 +1799,55 @@
       letter-spacing: .11em;
       margin-top: 3px;
     }
+
+    /* ── Full-Page Background Texture ── */
+    .page-texture {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background-image:
+        /* Grid lines */
+        linear-gradient(0deg, rgba(255, 202, 40, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 202, 40, 0.045) 1px, transparent 1px),
+        /* Diagonal hatching */
+        linear-gradient(45deg, rgba(255, 202, 40, 0.025) 1px, transparent 1px),
+        linear-gradient(-45deg, rgba(255, 202, 40, 0.025) 1px, transparent 1px),
+        /* Dot pattern */
+        radial-gradient(circle, rgba(255, 202, 40, 0.06) 1px, transparent 1px),
+        radial-gradient(circle, rgba(255, 202, 40, 0.04) 1px, transparent 1px);
+      background-size:
+        60px 60px,
+        60px 60px,
+        40px 40px,
+        40px 40px,
+        30px 30px,
+        30px 30px;
+      background-position:
+        0 0, 0 0, 0 0, 0 0,
+        0 0, 15px 15px;
+      opacity: 1;
+    }
+
+    /* Ambient golden glow spots */
+    .page-texture::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 45% 35% at 80% 15%, rgba(255, 202, 40, 0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 35% 45% at 10% 80%, rgba(255, 167, 38, 0.05) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 25% at 50% 50%, rgba(102, 187, 106, 0.03) 0%, transparent 70%);
+      pointer-events: none;
+    }
   </style>
 
 </head>
 
 <body>
+
+  <!-- FULL-PAGE TEXTURE OVERLAY -->
+  <div class="page-texture"></div>
 
   <!-- NAVBAR -->
   <nav class="navbar">
@@ -1761,7 +1903,8 @@
       <div class="hero__text">
         <span class="tag">Welcome to Kids Pride</span>
         <h1>Nurturing Minds,<br>Building <em>Character</em></h1>
-        <p>One of the best CBSE schools in Pune — shaping confident, creative, and responsible global citizens through
+        <p>One of the best Pre-primary schools in Pune — shaping confident, creative, and responsible global citizens
+          through
           experiential learning in harmony with nature.</p>
         <div class="hero__btns">
           <a href="contact.html" class="btn btn--primary">Apply for Admission <svg viewBox="0 0 18 18" fill="none"
@@ -1787,16 +1930,17 @@
             <div class="lbl">Happy Parents</div>
           </div>
           <div class="hero__trust-item">
-            <div class="num">20</div>
+            <div class="num">20 <span>+</span></div>
             <div class="lbl">Years</div>
           </div>
         </div>
       </div>
       <div class="hero__visual">
         <div class="hero__card-stack">
-          <div class="card-img ci-1">🌳 28-Acre Eco-Friendly<br>Mother Campus</div>
-          <div class="card-img ci-2">🎓 CBSE Curriculum<br>with Experiential Learning</div>
-          <div class="card-img ci-3">🌍 Global Exposure &amp;<br>Value-Based Education</div>
+          <div class="card-img ci-1"><img src="assets/img 1.jpeg" alt="Kids Pride School"
+              style="width:100%;height:100%;object-fit:cover;border-radius:inherit;"></div>
+          <div class="card-img ci-2">🎓 CBSE ,SSC ,Semi Curriculum<br>with Experiential Learning</div>
+          <div class="card-img ci-3"> Global Exposure &amp;<br>Value-Based Education</div>
           <div class="hero__badge">
             <div class="b-num">3</div>
             <div class="b-txt">Campuses</div>
@@ -1811,11 +1955,16 @@
     <div class="container">
       <div class="about-strip__grid">
         <div class="about-strip__visual">
-          <div class="about-strip__img">🏫 Learning in Harmony<br>with Nature — Est. 2005</div>
+
+          <div class="about-strip__img">
+            <img src="assets/img 2.jpeg" alt="Kids Pride School"
+              style="width:100%;height:100%;object-fit:cover;border-radius:inherit;">
+          </div>
+
         </div>
         <div class="about-strip__text">
           <span class="tag">About Us</span>
-          <h2>Excellence in Education, Available Across India</h2>
+          <h2>Excellence in Education, Available Across Pune</h2>
           <p>Established in 2005, Kids Pride is one of the best CBSE schools in Pune with 3 campuses educating over
             12,000
             students. Our 28-acre Bhilarewadi Mother Branch blends eco-friendly design with modern infrastructure.</p>
@@ -1862,18 +2011,19 @@
       <div class="branches-grid">
         <div class="branch-card">
           <div class="branch-card__loc">📍 Pune</div>
-          <h3>ABC</h3>
-          <p>28-acre Mother Branch with eco-friendly campus</p>
+          <h3>Kids Pride School</h3>
+          <p>Dalawi Vasti, Near Ratna Hotel, Jambhulwadi Road Ambegaon (kh). Pune 46</p>
         </div>
         <div class="branch-card">
           <div class="branch-card__loc">📍 Pune</div>
-          <h3>XYZ</h3>
-          <p>Premium CBSE education in the heart of Pune</p>
+          <h3>Kids Pride School</h3>
+          <p>Sr.No. 68, Opp. Balaji Sankul, Sacchai Mata Agam Jain Mandir Road, Katraj, Pune - 46</p>
         </div>
         <div class="branch-card">
           <div class="branch-card__loc">📍 Pune</div>
-          <h3>123</h3>
-          <p>Modern infrastructure with holistic approach</p>
+          <h3>Kids Pride School</h3>
+          <p>Sr No 46/17/15 Tilekar Nagar, Bhag - 2, Lane - A, Near Dugad chawl, back to the Iskon Temple Kondhaw (BK),
+            Pune - 411048.</p>
         </div>
         <div class="branches-cta">
           <a href="branches.html" class="btn btn--outline">View All Branches <svg viewBox="0 0 18 18" fill="none"
@@ -1894,34 +2044,29 @@
       </div>
       <div class="gallery-grid">
         <div class="gallery-item gallery-item--wide">
-          <div class="gallery-item__bg"
-            style="background:linear-gradient(135deg,#2e7d52,#1a3c5e);display:flex;align-items:center;justify-content:center;color:#fff;font-size:3rem;">
-            🏃</div>
-          <div class="gallery-item__overlay"><span>Sports Excellence</span></div>
+          <div class="gallery-item__bg" style="background:url('assets/img 13.jpeg') center/cover no-repeat;">
+          </div>
+          <div class="gallery-item__overlay"></div>
         </div>
         <div class="gallery-item">
-          <div class="gallery-item__bg"
-            style="background:linear-gradient(135deg,#e8a838,#c8882a);display:flex;align-items:center;justify-content:center;color:#fff;font-size:3rem;">
-            🎭</div>
-          <div class="gallery-item__overlay"><span>Cultural Events</span></div>
+          <div class="gallery-item__bg" style="background:url('assets/img 8.jpeg') center/cover no-repeat;">
+          </div>
+          <div class="gallery-item__overlay"></div>
         </div>
         <div class="gallery-item">
-          <div class="gallery-item__bg"
-            style="background:linear-gradient(135deg,#1a3c5e,#2a5a8a);display:flex;align-items:center;justify-content:center;color:#fff;font-size:3rem;">
-            💻</div>
-          <div class="gallery-item__overlay"><span>Smart Classrooms</span></div>
+          <div class="gallery-item__bg" style="background:url('assets/img 9.jpeg') center/cover no-repeat;">
+          </div>
+          <div class="gallery-item__overlay"></div>
         </div>
         <div class="gallery-item">
-          <div class="gallery-item__bg"
-            style="background:linear-gradient(135deg,#2e7d52,#4caf76);display:flex;align-items:center;justify-content:center;color:#fff;font-size:3rem;">
-            🌳</div>
-          <div class="gallery-item__overlay"><span>Green Campus</span></div>
+          <div class="gallery-item__bg" style="background:url('assets/img 7.jpeg') center/cover no-repeat;">
+          </div>
+          <div class="gallery-item__overlay"></div>
         </div>
         <div class="gallery-item gallery-item--wide">
-          <div class="gallery-item__bg"
-            style="background:linear-gradient(135deg,#e8a838,#1a3c5e);display:flex;align-items:center;justify-content:center;color:#fff;font-size:3rem;">
-            🎓</div>
-          <div class="gallery-item__overlay"><span>Annual Day</span></div>
+          <div class="gallery-item__bg" style="background:url('assets/img 12.jpeg') center/cover no-repeat;">
+          </div>
+          <div class="gallery-item__overlay"></div>
         </div>
       </div>
       <div style="text-align:center;margin-top:36px;">
@@ -1959,14 +2104,16 @@
             <div class="contact-detail__icon">📍</div>
             <div class="contact-detail__text">
               <div class="cd-label">Address</div>
-              <div class="cd-value">Jambhulwadi Rd, Ambegaon Budruk, Pune, Maharashtra 411046</div>
+              <div class="cd-value">Dalawi Vasti, Near Ratna Hotel, Jambhulwadi Road Ambegaon (kh). Pune 46</div>
             </div>
           </div>
           <div class="contact-detail">
-            <div class="contact-detail__icon">📞</div>
+            <div class="contact-detail__icon" style="align-self: center;">📞</div>
             <div class="contact-detail__text">
               <div class="cd-label">Phone</div>
-              <div class="cd-value">+91 XXXXX XXXXX</div>
+              <div class="cd-value">+91 8408062001</div>
+              <div class="cd-value">+91 8551933640</div>
+              <div class="cd-value">+91 9890871218</div>
             </div>
           </div>
           <div class="contact-detail">
@@ -1974,7 +2121,7 @@
             <div class="contact-detail__text">
               <div class="cd-label">Email</div>
               <div class="cd-value"><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
-                  data-cfemail="kids@gmail.com"></a>
+                  data-cfemail="[EMAIL_ADDRESS]">Kidspride.0503@gmail.com</a>
               </div>
             </div>
           </div>
@@ -2026,60 +2173,59 @@
         </div>
         <div class="footer__col footer__contact">
           <h4>Contact</h4>
-          <p><span class="icon">📍</span> Jambhulwadi Rd, Ambegaon Budruk, Pune, Maharashtra 411046</p>
-          <p><span class="icon">📞</span> +91 XXXXX XXXXX</p>
-          <p><span class="icon">✉️</span> <a href="/cdn-cgi/l/email-protection" class="__cf_email__"
-              data-cfemail="kids@gmail.com"></a></p>
+          <p><span class="icon">📍</span> Dalawi Vasti, Near Ratna Hotel, Jambhulwadi Road Ambegaon (kh). Pune 46</p>
+          <p><span class="icon">📞</span> +91 8408062001</p>
+          <p><span class="icon">📞</span> +91 8551933640</p>
+          <p><span class="icon">📞</span> +91 9890871218</p>
+          <p><span class="icon">✉️</span> <a href="mailto:Kidspride.0503@gmail.com">Kidspride.0503@gmail.com</a></p>
         </div>
       </div>
-      <div class="footer__bottom" <div class="footer__copy">© 2026 Kids Pride English Medium School. All Rights
-        Reserved.</div>
-      <div class="footer__legal">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms & Conditions</a>
+
+      <div class="footer__bottom">
+        <div class="footer__copy">© 2026 Kids Pride English Medium School. All Rights Reserved.</div>
+        <div class="footer__legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms & Conditions</a>
+        </div>
       </div>
-    </div>
     </div>
   </footer>
 
   <script>
-    // Mobile menu toggle
     const ham = document.querySelector(".navbar__ham");
     const nav = document.querySelector(".navbar__nav");
     const cta = document.querySelector(".navbar__cta");
     const navDrops = document.querySelectorAll(".nav-drop");
 
-    // Toggle mobile menu
-    ham.addEventListener("click", () => {
-      ham.classList.toggle("active");
-      nav.classList.toggle("active");
-      cta.classList.toggle("active");
-      document.body.classList.toggle("nav-open");
-    });
+    if (ham && nav && cta) {
+      ham.addEventListener("click", () => {
+        ham.classList.toggle("active");
+        nav.classList.toggle("active");
+        cta.classList.toggle("active");
+        document.body.classList.toggle("nav-open");
+      });
+    }
 
-    // Handle dropdown menus
     navDrops.forEach(drop => {
       const toggle = drop.querySelector(".nav-drop__toggle");
-      toggle.addEventListener("click", (e) => {
-        e.preventDefault();
-
-        // Close other dropdowns in mobile view
-        if (window.innerWidth <= 680) {
-          navDrops.forEach(otherDrop => {
-            if (otherDrop !== drop) {
-              otherDrop.classList.remove("open");
-            }
-          });
-        }
-
-        drop.classList.toggle("open");
-      });
+      if (toggle) {
+        toggle.addEventListener("click", (e) => {
+          if (window.innerWidth <= 680) {
+            e.preventDefault();
+            navDrops.forEach(otherDrop => {
+              if (otherDrop !== drop) {
+                otherDrop.classList.remove("open");
+              }
+            });
+            drop.classList.toggle("open");
+          }
+        });
+      }
     });
 
-    // Close menu when clicking outside
     document.addEventListener("click", (e) => {
-      if (window.innerWidth <= 680) {
-        if (!e.target.closest(".navbar")) {
+      if (window.innerWidth <= 680 && ham && nav && cta) {
+        if (!e.target.closest(".navbar") && !e.target.closest(".navbar__ham")) {
           ham.classList.remove("active");
           nav.classList.remove("active");
           cta.classList.remove("active");
@@ -2089,9 +2235,8 @@
       }
     });
 
-    // Reset on window resize
     window.addEventListener("resize", () => {
-      if (window.innerWidth > 680) {
+      if (window.innerWidth > 680 && ham && nav && cta) {
         ham.classList.remove("active");
         nav.classList.remove("active");
         cta.classList.remove("active");
@@ -2100,7 +2245,6 @@
       }
     });
   </script>
-
 </body>
 
 </html>
