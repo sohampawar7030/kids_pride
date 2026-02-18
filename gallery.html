@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gallery – Aaryans World School</title>
+  <title>Gallery – Kid's Pride</title>
   <link rel="stylesheet" href="styles.css">
   <style>
     /* ── Category Tabs ── */
@@ -96,15 +96,11 @@
 
     /* Colored placeholder blocks for photos */
     .photo-item__img {
-      height: auto;
-      min-height: 140px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-      color: rgba(255, 255, 255, .6);
-      background-size: cover;
-      background-position: center;
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      transition: transform .45s ease;
     }
 
     .pi--h1 {
@@ -1118,11 +1114,9 @@
 
     .photo-item__img {
       width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-      color: rgba(255, 255, 255, .55);
+      height: 100%;
+      display: block;
+      object-fit: cover;
       transition: transform .48s cubic-bezier(.16, 1, .3, 1);
     }
 
@@ -1449,7 +1443,7 @@
   <!-- NAVBAR -->
   <nav class="navbar">
     <div class="container navbar__inner">
-      <a href="index.html" class="navbar__logo">Aaryans<span>.</span></a>
+      <a href="index.html" class="navbar__logo">Kid's Pride<span>.</span></a>
       <div class="navbar__nav">
         <a href="index.html">Home</a>
         <div class="nav-drop">
@@ -1500,7 +1494,7 @@
       <div class="breadcrumb"><a href="index.html">Home</a> &nbsp;›&nbsp; Gallery</div>
       <span class="tag">Memories & Moments</span>
       <h1>Gallery</h1>
-      <p>A glimpse into the vibrant life at Aaryans World School</p>
+      <p>A glimpse into the vibrant life at Kid's Pride</p>
     </div>
   </section>
 
@@ -1521,56 +1515,56 @@
       <div class="section-heading">
         <span class="tag">Photo Gallery</span>
         <h2>Captured Moments</h2>
-        <p>Snapshots of learning, laughter, and life at AWS</p>
+        <p>Snapshots of learning, laughter, and life at Kid's Pride</p>
       </div>
       <div class="photo-masonry">
-        <div class="photo-item">
-          <div class="photo-item__img c1 pi--h1">🏃</div>
-          <div class="photo-item__overlay"><span>Sports Day — Inter-House Tournament</span></div>
+        <div class="photo-item pi--h1">
+          <img class="photo-item__img" src="assets/img 1.jpeg" alt="Gallery Image 1">
+          <div class="photo-item__overlay"><span>School Moments</span></div>
         </div>
-        <div class="photo-item">
-          <div class="photo-item__img c2 pi--h2">🎨</div>
-          <div class="photo-item__overlay"><span>Art Exhibition 2024</span></div>
+        <div class="photo-item pi--h2">
+          <img class="photo-item__img" src="assets/img 2.jpeg" alt="Gallery Image 2">
+          <div class="photo-item__overlay"><span>School Moments</span></div>
         </div>
-        <div class="photo-item">
-          <div class="photo-item__img c3 pi--h3">🎭</div>
-          <div class="photo-item__overlay"><span>Annual Day Performance</span></div>
+        <div class="photo-item pi--h3">
+          <img class="photo-item__img" src="assets/img 4.jpeg" alt="Gallery Image 4">
+          <div class="photo-item__overlay"><span>School Moments</span></div>
         </div>
-        <div class="photo-item">
-          <div class="photo-item__img c4 pi--h4">🌳</div>
-          <div class="photo-item__overlay"><span>Green Campus Walk</span></div>
+        <div class="photo-item pi--h4">
+          <img class="photo-item__img" src="assets/img 5.jpeg" alt="Gallery Image 5">
+          <div class="photo-item__overlay"><span>School Moments</span></div>
         </div>
-        <div class="photo-item">
-          <div class="photo-item__img c5 pi--h5">💻</div>
-          <div class="photo-item__overlay"><span>Smart Classroom Session</span></div>
+        <div class="photo-item pi--h5">
+          <img class="photo-item__img" src="assets/img 6.jpeg" alt="Gallery Image 6">
+          <div class="photo-item__overlay"><span>School Moments</span></div>
         </div>
-        <div class="photo-item">
-          <div class="photo-item__img c6 pi--h2">🎵</div>
-          <div class="photo-item__overlay"><span>Music Concert</span></div>
+        <div class="photo-item pi--h2">
+          <img class="photo-item__img" src="assets/img 7.jpeg" alt="Gallery Image 7">
+          <div class="photo-item__overlay"><span>School Moments</span></div>
         </div>
-        <div class="photo-item">
-          <div class="photo-item__img c7 pi--h4">🏆</div>
-          <div class="photo-item__overlay"><span>Award Ceremony</span></div>
+        <div class="photo-item pi--h4">
+          <img class="photo-item__img" src="assets/img 8.jpeg" alt="Gallery Image 8">
+          <div class="photo-item__overlay"><span>School Moments</span></div>
         </div>
-        <div class="photo-item">
-          <div class="photo-item__img c8 pi--h3">📚</div>
-          <div class="photo-item__overlay"><span>Library Day</span></div>
+        <div class="photo-item pi--h3">
+          <img class="photo-item__img" src="assets/img 9.jpeg" alt="Gallery Image 9">
+          <div class="photo-item__overlay"><span>School Moments</span></div>
         </div>
-        <div class="photo-item">
-          <div class="photo-item__img c1 pi--h5">🌱</div>
-          <div class="photo-item__overlay"><span>Nature Trail Activity</span></div>
+        <div class="photo-item pi--h5">
+          <img class="photo-item__img" src="assets/img 10.jpeg" alt="Gallery Image 10">
+          <div class="photo-item__overlay"><span>School Moments</span></div>
         </div>
-        <div class="photo-item">
-          <div class="photo-item__img c2 pi--h1">🤝</div>
-          <div class="photo-item__overlay"><span>Parent-Teacher Day</span></div>
+        <div class="photo-item pi--h1">
+          <img class="photo-item__img" src="assets/img 11.jpeg" alt="Gallery Image 11">
+          <div class="photo-item__overlay"><span>School Moments</span></div>
         </div>
-        <div class="photo-item">
-          <div class="photo-item__img c3 pi--h2">🎪</div>
-          <div class="photo-item__overlay"><span>Science Fair 2024</span></div>
+        <div class="photo-item pi--h2">
+          <img class="photo-item__img" src="assets/img 12.jpeg" alt="Gallery Image 12">
+          <div class="photo-item__overlay"><span>School Moments</span></div>
         </div>
-        <div class="photo-item">
-          <div class="photo-item__img c5 pi--h4">⚽</div>
-          <div class="photo-item__overlay"><span>Football Practice</span></div>
+        <div class="photo-item pi--h4">
+          <img class="photo-item__img" src="assets/img 13.jpeg" alt="Gallery Image 13">
+          <div class="photo-item__overlay"><span>School Moments</span></div>
         </div>
       </div>
     </div>
@@ -1669,7 +1663,7 @@
       <div class="section-heading">
         <span class="tag">Videos</span>
         <h2>Watch &amp; Explore</h2>
-        <p>Dive into the vibrant world of Aaryans through our video collection</p>
+        <p>Dive into the vibrant world of Kid's Pride through our video collection</p>
       </div>
       <div class="videos-grid">
         <div class="video-card">
@@ -1681,7 +1675,7 @@
           </div>
           <div class="video-card__info">
             <div class="vc-cat">Campus Tour</div>
-            <h4>Welcome to Aaryans World School — Campus Tour 2024</h4>
+            <h4>Welcome to Kid's Pride — Campus Tour 2024</h4>
           </div>
         </div>
         <div class="video-card">
@@ -1744,8 +1738,8 @@
     <div class="container">
       <div class="footer__grid">
         <div class="footer__brand">
-          <div class="footer__brand-title">Aaryans<span>.</span> World School</div>
-          <p>Established in 2005, nurturing minds and building character across 16 campuses in 4 cities. Excellence in
+          <div class="footer__brand-title">Kids Pride<span>.</span> English Medium School</div>
+          <p>Established in 2005, nurturing minds and building character across 3 campuses in Pune Cities. Excellence in
             education — always.</p>
         </div>
         <div class="footer__col">
@@ -1753,29 +1747,31 @@
           <a href="about.html">About Us</a>
           <a href="academics.html#preprimary">Pre Primary</a>
           <a href="academics.html#primary">Primary</a>
-          <a href="academics.html#secondary">Secondary</a>
           <a href="gallery.html">Gallery</a>
         </div>
         <div class="footer__col">
           <h4>Premium Ventures</h4>
-          <a href="#">Aaryans YO Bhajiwala</a>
-          <a href="#">Aaryans Commando Training</a>
-          <a href="#">Aaryans Farm Fresh</a>
-          <a href="#">Aaryans Preschool</a>
-          <a href="#">Aaryans Edutainment Park</a>
+          <a href="#">Kids Pride YO Bhajiwala</a>
+          <a href="#">Kids Pride Commando Training</a>
+          <a href="#">Kids Pride Farm Fresh</a>
+          <a href="#">Kids Pride Preschool</a>
+          <a href="#">Kids Pride Edutainment Park</a>
         </div>
         <div class="footer__col footer__contact">
           <h4>Contact</h4>
-          <p><span class="icon">📍</span> Bhilarewadi, Pune – 411046</p>
-          <p><span class="icon">📞</span> +91 96997 74488</p>
-          <p><span class="icon">✉️</span> <a href="/cdn-cgi/l/email-protection" class="__cf_email__"
-              data-cfemail="f49595868d959a87839b86989087979c9b9b98b49399959d98da979b99">[email&#160;protected]</a></p>
+          <p><span class="icon">📍</span> Dalawi Vasti, Near Ratna Hotel, Jambhulwadi Road Ambegaon (kh). Pune 46</p>
+          <p><span class="icon">📞</span> +91 8408062001</p>
+          <p><span class="icon">📞</span> +91 8551933640</p>
+          <p><span class="icon">📞</span> +91 9890871218</p>
+          <p><span class="icon">✉️</span> <a href="mailto:Kidspride.0503@gmail.com">Kidspride.0503@gmail.com</a></p>
         </div>
       </div>
+
       <div class="footer__bottom">
-        <span>© 2025 Aaryans World School. All Rights Reserved.</span>
-        <div class="footer__socials">
-          <a href="#">f</a><a href="#"></a>
+        <div class="footer__copy">© 2026 Kids Pride English Medium School. All Rights Reserved.</div>
+        <div class="footer__legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms & Conditions</a>
         </div>
       </div>
     </div>

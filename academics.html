@@ -90,6 +90,17 @@
       overflow: hidden;
     }
 
+    .academics-visual__main img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+      padding: 6px;
+      border-radius: var(--radius);
+    }
+
     .academics-visual__main::after {
       content: '';
       position: absolute;
@@ -98,7 +109,7 @@
     }
 
     .av--preprimary {
-      background: var(--clr-green);
+      background: var(--clr-accent);
     }
 
     .av--primary {
@@ -116,6 +127,7 @@
       padding: 14px 18px;
       box-shadow: var(--shadow-md);
       text-align: center;
+      z-index: 2;
     }
 
     .academics-visual__float .f-num {
@@ -1408,7 +1420,7 @@
   </section>
 
   <!-- QUICK NAV PILLS -->
-  <div style="background: var(--clr-bg-dark);border-bottom:1px solid #eee;">
+  <div style="background: var(--clr-bg-dark);">
     <div class="container">
       <div class="level-strip">
         <a href="#preprimary" class="level-pill active"><span class="lp-icon">🌱</span> Pre-Primary</a>
@@ -1422,7 +1434,9 @@
     <div class="container">
       <div class="academics-grid">
         <div class="academics-visual">
-          <div class="academics-visual__main av--preprimary">🌻</div>
+          <div class="academics-visual__main av--preprimary">
+            <img src="assets/img 9.jpeg" alt="Pre-Primary">
+          </div>
           <div class="academics-visual__float float-1">
             <div class="f-num">3</div>
             <div class="f-lbl">Classes</div>
@@ -1480,7 +1494,9 @@
     <div class="container">
       <div class="academics-grid academics-grid--reverse">
         <div class="academics-visual">
-          <div class="academics-visual__main av--primary">📕</div>
+          <div class="academics-visual__main av--primary">
+            <img src="assets/img 11.jpeg" alt="Primary">
+          </div>
           <div class="academics-visual__float float-1">
             <div class="f-num">5</div>
             <div class="f-lbl">Classes</div>
@@ -1582,7 +1598,7 @@
       <div class="footer__grid">
         <div class="footer__brand">
           <div class="footer__brand-title">Kids Pride<span>.</span> English Medium School</div>
-          <p>Established in 2005, nurturing minds and building character across 16 campuses in Pune. Excellence in
+          <p>Established in 2005, nurturing minds and building character across 3 campuses in Pune Cities. Excellence in
             education — always.</p>
         </div>
         <div class="footer__col">
@@ -1602,16 +1618,19 @@
         </div>
         <div class="footer__col footer__contact">
           <h4>Contact</h4>
-          <p><span class="icon">📍</span> Jambhulwadi Rd, Ambegaon Budruk, Pune, Maharashtra 411046</p>
-          <p><span class="icon">📞</span> +91 XXXXX XXXXXX</p>
-          <p><span class="icon">✉️</span> <a href="/cdn-cgi/l/email-protection" class="__cf_email__"
-              data-cfemail="">xyz@gmail.com</a></p>
+          <p><span class="icon">📍</span>Dalawi Vasti, Near Ratna Hotel, Jambhulwadi Road Ambegaon (kh). Pune 46</p>
+          <p><span class="icon">📞</span> +91 8408062001</p>
+          <p><span class="icon">📞</span> +91 8551933640</p>
+          <p><span class="icon">📞</span> +91 9890871218</p>
+          <p><span class="icon">✉️</span> <a href="mailto:Kidspride.0503@gmail.com">Kidspride.0503@gmail.com</a></p>
         </div>
       </div>
+
       <div class="footer__bottom">
-        <span>© 2025 Kids Pride. All Rights Reserved.</span>
-        <div class="footer__socials">
-          <a href="#"></a>
+        <div class="footer__copy">© 2026 Kids Pride English Medium School. All Rights Reserved.</div>
+        <div class="footer__legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms & Conditions</a>
         </div>
       </div>
     </div>
